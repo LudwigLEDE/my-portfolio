@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+/* Optional: If you want to customize fonts or theme variables, 
+  you do it right here in CSS now (CSS-first config).
+*/
+@theme {
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --color-primary: #3b82f6;
+}
