@@ -1,11 +1,11 @@
 /* eslint-disable react/no-unknown-property */
 import * as THREE from 'three';
 // FIX 1: Split imports into value imports and type imports
-import { useRef, useState, useEffect, memo } from 'react';
+import { useRef, useState, memo } from 'react';
 import type { ReactNode } from 'react'; 
 
 // FIX 2: Split imports here as well
-import { Canvas, createPortal, useFrame, useThree } from '@react-three/fiber';
+import { Canvas, createPortal, useFrame } from '@react-three/fiber';
 import type { ThreeElements } from '@react-three/fiber';
 
 import {
@@ -102,7 +102,6 @@ const ModeWrapper = memo(function ModeWrapper({
 }: ModeWrapperProps) {
   const ref = useRef<THREE.Mesh>(null!);
   const buffer = useFBO();
-  const { viewport: vp } = useThree();
   const [scene] = useState<THREE.Scene>(() => new THREE.Scene());
 
   useFrame((state, delta) => {

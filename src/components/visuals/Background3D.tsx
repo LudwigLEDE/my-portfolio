@@ -15,7 +15,7 @@ function StarField() {
   const ref = useRef<THREE.Points>(null!);
 
   // Rotate the stars slightly every frame for a dynamic feel
-  useFrame((state, delta) => {
+  useFrame((_state, delta) => {
     ref.current.rotation.x -= delta / 10;
     ref.current.rotation.y -= delta / 15;
   });
