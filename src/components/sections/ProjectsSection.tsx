@@ -7,7 +7,7 @@ export default function ProjectsSection() {
       <div className="max-w-6xl mx-auto">
         
         <SpaceItem className="mb-24 flex items-end gap-6">
-          <h2 className="text-5xl md:text-6xl font-bold">Projects</h2>
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold">Projects</h2>
           <div className="h-px bg-gradient-to-r from-blue-500/50 to-transparent flex-grow mb-4"></div>
         </SpaceItem>
 

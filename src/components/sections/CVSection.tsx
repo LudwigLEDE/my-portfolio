@@ -143,10 +143,10 @@ const CVSection: React.FC = () => {
             </div>
             
             <div className="flex-1">
-              <h2 className="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-500 mb-2">
+              <h2 className="text-3xl sm:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-500 mb-2">
                 Ludwig Engelhardt
               </h2>
-              <h3 className="text-xl text-blue-400 font-mono tracking-widest mb-4">FULL STACK DEVELOPER</h3>
+              <h3 className="text-sm sm:text-xl text-blue-400 font-mono tracking-widest mb-4">FULL STACK DEVELOPER</h3>
               
               <div className="flex flex-wrap gap-4 justify-center md:justify-start text-slate-400 text-sm mb-6">
                 <span className="flex items-center gap-2">
@@ -157,7 +157,7 @@ const CVSection: React.FC = () => {
                 </span>
               </div>
 
-              <p className="text-slate-300 leading-relaxed max-w-2xl">
+              <p className="text-slate-300 leading-relaxed max-w-2xl text-sm sm:text-base">
                 As an emerging Full Stack Developer, I am deeply engaged in honing my skills in Python, Java, and web technologies. My goal is to blend front and back-end development expertise to innovate in the tech industry.
               </p>
             </div>
@@ -198,7 +198,7 @@ const CVSection: React.FC = () => {
             
             {/* Tech Stack Panel */}
             <SpaceItem delay={0.3}>
-              <div className="bg-white/[0.02] border border-white/10 rounded-3xl p-8 sticky top-32 backdrop-blur-sm">
+              <div className="bg-white/[0.02] border border-white/10 rounded-3xl p-6 md:p-8 sticky top-32 backdrop-blur-sm">
                 
                 <div className="flex items-center gap-3 mb-8">
                    <Code className="w-5 h-5 text-purple-400" />

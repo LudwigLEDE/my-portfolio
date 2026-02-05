@@ -17,13 +17,13 @@ export default function HeroSection({ scrollToSection }: HeroSectionProps) {
               SYSTEM ONLINE
             </span>
           </div>
-          <h1 className="text-7xl md:text-9xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-br from-white via-blue-100 to-slate-500 mb-6 drop-shadow-2xl">
+          <h1 className="text-5xl sm:text-7xl md:text-9xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-br from-white via-blue-100 to-slate-500 mb-6 drop-shadow-2xl">
             LUDWIG.
           </h1>
         </SpaceItem>
         
         <SpaceItem delay={0.2}>
-          <h2 className="text-2xl md:text-4xl text-slate-400 max-w-3xl font-light leading-snug mb-12">
+          <h2 className="text-xl sm:text-2xl md:text-4xl text-slate-400 max-w-3xl font-light leading-snug mb-12">
             Driven <span className="text-white font-semibold">Full Stack Developer</span> shaping the future of web technologies. Innovator at heart.
           </h2>
         </SpaceItem>

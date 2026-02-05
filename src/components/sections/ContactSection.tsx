@@ -8,7 +8,7 @@ export default function ContactSection() {
       <SpaceItem>
         <div className="max-w-4xl mx-auto relative">
           
-          <h2 className="text-6xl md:text-8xl font-black text-white mb-8 tracking-tighter">
+          <h2 className="text-4xl sm:text-6xl md:text-8xl font-black text-white mb-8 tracking-tighter">
             READY TO <br /> <span className="text-blue-500">LAUNCH?</span>
           </h2>
           <p className="text-slate-400 text-xl mb-12 max-w-2xl mx-auto leading-relaxed">
@@ -21,7 +21,7 @@ export default function ContactSection() {
             onClick={() => window.location.href = 'mailto:hello@example.com'}
           >
              <GlassSurface 
-                width={280}
+                width="min(280px, 80vw)"
                 height={80}
                 borderRadius={100}
                 backgroundOpacity={0.2}

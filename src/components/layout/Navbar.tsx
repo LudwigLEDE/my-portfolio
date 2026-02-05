@@ -6,10 +6,10 @@ interface NavbarProps {
 
 export default function Navbar({ scrollToSection }: NavbarProps) {
   return (
-    <nav className="fixed top-6 left-0 w-full z-50 flex justify-center pointer-events-none">
+    <nav className="fixed top-6 left-0 w-full z-50 flex justify-center pointer-events-none px-4">
       <div className="pointer-events-auto transition-transform hover:scale-[1.02] duration-300">
         <GlassSurface 
-          width="400px" 
+          width="min(400px, 90vw)" 
           height="60px"
           borderRadius={30}
           backgroundOpacity={0.1}
@@ -17,7 +17,7 @@ export default function Navbar({ scrollToSection }: NavbarProps) {
           borderWidth={0.1}
           className="shadow-lg shadow-blue-500/10"
         >
-          <div className="flex gap-8 items-center text-xs font-bold tracking-widest text-white/90">
+          <div className="flex gap-3 sm:gap-8 items-center text-[10px] sm:text-xs font-bold tracking-widest text-white/90 px-2">
             <button onClick={() => scrollToSection('about')} className="hover:text-blue-400 transition-colors uppercase">About</button>
             <button onClick={() => scrollToSection('cv')} className="hover:text-blue-400 transition-colors uppercase">CV</button>
             <button onClick={() => scrollToSection('projects')} className="hover:text-blue-400 transition-colors uppercase">Projects</button>
