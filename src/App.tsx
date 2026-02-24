@@ -1,44 +1,34 @@
-import WarpBackground from "./components/visuals/WarpBackground";
-import Navbar from "./components/layout/Navbar";
-import HeroSection from "./components/sections/HeroSection";
-import CVSection from "./components/sections/CVSection";
-import ProjectsSection from "./components/sections/ProjectsSection";
-import ContactSection from "./components/sections/ContactSection";
-import Footer from "./components/layout/Footer";
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { useLayoutEffect } from 'react';
+import { LanguageProvider } from "./context/LanguageContext";
+import HomePage from "./pages/HomePage";
+import ProjectPage from "./pages/ProjectPage";
+import ImprintPage from "./pages/ImprintPage";
+import PrivacyPage from "./pages/PrivacyPage";
+
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+};
 
 function App() {
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
-    <div className="min-h-screen text-white font-sans relative overflow-x-hidden bg-black selection:bg-blue-500 selection:text-white">
-      
-      {/* 1. Global 3D Background */}
-      <WarpBackground />
-
-      {/* 2. Glass Navigation Bar */}
-      <Navbar scrollToSection={scrollToSection} />
-
-      {/* 3. Hero Section */}
-      <HeroSection scrollToSection={scrollToSection} />
-
-      {/* 3.5. CV Section */}
-      <CVSection />
-
-      {/* 4. Projects Section */}
-      <ProjectsSection />
-
-      {/* 5. Contact Section */}
-      <ContactSection />
-
-      {/* Footer */}
-      <Footer />
-
-    </div>
+    <LanguageProvider>
+      <Router>
+        <ScrollToTop />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/project/:id" element={<ProjectPage />} />
+          <Route path="/imprint" element={<ImprintPage />} />
+          <Route path="/privacy" element={<PrivacyPage />} />
+        </Routes>
+      </Router>
+    </LanguageProvider>
   );
 }
 

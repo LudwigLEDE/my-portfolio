@@ -1,47 +1,13 @@
-import React from 'react';
-import { Briefcase, GraduationCap, MapPin, Code, Download, Compass } from 'lucide-react';
+import React, { useRef, useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Briefcase, GraduationCap, MapPin, Download, Calendar, ArrowUpRight, Cpu, ScanLine } from 'lucide-react';
 import { FaJava, FaPython, FaReact, FaCss3Alt } from 'react-icons/fa';
 import { SiJavascript, SiAdobephotoshop, SiAdobeillustrator } from 'react-icons/si';
-import SpaceItem from '../ui/SpaceItem';
+import { useLanguage } from "../../context/LanguageContext";
+import { content, historyEn, historyDe } from "../../data/content";
+import SpotlightCard from "../ui/SpotlightCard";
 
 // --- Data ---
-// Unified History Data
-// type: 'work' | 'education'
-const history = [
-  {
-    type: 'work',
-    role: "IT Specialist",
-    company: "Bundeswehr (IT Battalion)",
-    period: "Nov 2025 – Present",
-    tags: ["Full-time", "System Support"],
-    description: "Supporting daily IT operations and maintaining hardware connectivity for the unit."
-  },
-  {
-    type: 'work',
-    role: "Software Developer",
-    company: "AssistMe",
-    period: "July 2024 – Feb 2025",
-    tags: ["Part-time", "Internship"],
-    description: "Contributed to software development, gaining hands-on experience in a professional environment."
-  },
-  {
-    type: 'education',
-    role: "Media Informatics",
-    company: "Lette Verein Berlin",
-    period: "Aug 2022 – July 2025",
-    tags: ["Vocational Training", "State Certified"],
-    description: "Intensive training in media informatics, covering Java, Adobe Creative Suite, and web technologies."
-  },
-  {
-    type: 'education',
-    role: "Schüler",
-    company: "OSZ Informations- und Medizintechnik",
-    period: "June 2020 – Jan 2022",
-    tags: ["High School"],
-    description: "Secondary education with a focus on information and medical technology."
-  }
-];
-
 const skills = [
   { name: "JavaScript", icon: SiJavascript, color: "text-yellow-400" },
   { name: "React.js", icon: FaReact, color: "text-blue-400" },
@@ -49,9 +15,11 @@ const skills = [
   { name: "Python", icon: FaPython, color: "text-blue-300" },
   { name: "CSS", icon: FaCss3Alt, color: "text-blue-500" },
   { name: "React Native", icon: FaReact, color: "text-purple-400" },
-  { name: "Adobe Photoshop", icon: SiAdobephotoshop, color: "text-blue-300" },
-  { name: "Adobe Illustrator", icon: SiAdobeillustrator, color: "text-orange-400" },
+  { name: "Photoshop", icon: SiAdobephotoshop, color: "text-blue-300" },
+  { name: "Illustrator", icon: SiAdobeillustrator, color: "text-orange-400" },
 ];
+
+// --- Utilities ---
 
 // --- Components ---
 
@@ -59,183 +27,287 @@ const HistoryItem = ({
   item, 
   isLast 
 }: { 
-  item: typeof history[0], 
+  item: typeof historyEn[0], 
   isLast: boolean 
 }) => {
-  
   const isWork = item.type === 'work';
-  const colorClass = isWork ? 'blue' : 'emerald';
-
-  const colors = {
-    blue: { 
-        border: "border-blue-500/30", 
-        bg: "bg-blue-500/10", 
-        text: "text-blue-400", 
-        icon: <Briefcase className="w-4 h-4 text-blue-400" />,
-        gradient: "from-blue-500" 
-    },
-    emerald: { 
-        border: "border-emerald-500/30", 
-        bg: "bg-emerald-500/10", 
-        text: "text-emerald-400", 
-        icon: <GraduationCap className="w-4 h-4 text-emerald-400" />,
-        gradient: "from-emerald-500" 
-    },
-  };
+  const [isHovered, setIsHovered] = useState(false);
   
-  const c = colors[colorClass];
+  const theme = isWork ? {
+    border: "border-blue-500/30",
+    text: "text-blue-400",
+    icon: <Briefcase className="w-4 h-4 text-blue-400" />,
+    glow: "rgba(59, 130, 246, 0.2)"
+  } : {
+    border: "border-emerald-500/30",
+    text: "text-emerald-400",
+    icon: <GraduationCap className="w-4 h-4 text-emerald-400" />,
+    glow: "rgba(16, 185, 129, 0.2)"
+  };
 
   return (
-    <div className={`relative pl-8 md:pl-12 pb-12 ${!isLast ? 'border-l border-white/10' : ''}`}>
+    <div 
+      className="relative pl-8 md:pl-0"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
       
-      {/* Timeline Icon Marker */}
-      <div className={`absolute left-[-20px] top-0 w-10 h-10 rounded-full bg-black border ${c.border} shadow-[0_0_15px_rgba(0,0,0,0.8)] flex items-center justify-center z-10 group`}>
-        <div className={`absolute inset-0 rounded-full ${c.bg} opacity-20 group-hover:opacity-40 transition-opacity`}></div>
-        {c.icon}
-      </div>
-      
-      {/* Content Card */}
-      <div className="group relative p-6 rounded-2xl bg-white/5 border border-white/5 hover:border-white/10 transition-all duration-300 hover:bg-white/[0.07] hover:-translate-y-1">
-         {/* Hover Gradient Effect */}
-        <div className={`absolute top-0 left-0 w-1 h-full bg-gradient-to-b ${c.gradient} to-transparent rounded-l-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
+      {/* Desktop Layout */}
+      <div className="hidden md:grid md:grid-cols-[140px_auto] gap-8 relative group">
         
-        <div className="flex flex-col sm:flex-row justify-between items-start gap-2 mb-3">
-          <div>
-             <h4 className="text-xl font-bold text-white group-hover:text-blue-100 transition-colors">{item.role}</h4>
-             <p className={`text-lg ${c.text} font-medium`}>{item.company}</p>
-          </div>
-          <span className="text-xs font-mono text-slate-400 bg-black/50 px-3 py-1 rounded-full border border-white/10 whitespace-nowrap">
-            {item.period}
-          </span>
-        </div>
-        
-        <div className="flex gap-2 mb-4 flex-wrap">
-            {item.tags.map((tag, i) => (
-                <span key={i} className="text-[10px] font-bold uppercase tracking-wider text-slate-500 bg-white/5 px-2 py-0.5 rounded border border-white/5">
-                    {tag}
+        {/* Date Column with Tech Styling */}
+        <div className="text-right pt-6 relative">
+             <div className="inline-block relative">
+                <span className="relative z-10 text-xs font-mono text-blue-300/80 font-bold tracking-widest uppercase block border-r-2 border-blue-500/20 pr-4 mr-4 group-hover:border-blue-500/60 transition-colors">
+                    {item.period.split('–')[0]}
                 </span>
-            ))}
+                <span className="relative z-10 text-[10px] font-mono text-slate-500 block mt-1 pr-8">
+                    {item.period.split('–')[1] || 'NOW'}
+                </span>
+             </div>
         </div>
-        
-        <p className="text-slate-400 text-sm leading-relaxed">
-          {item.description}
-        </p>
+
+        {/* Timeline Beam */}
+        <div className="absolute left-[140px] top-0 bottom-0 flex justify-center w-8">
+            <div className={`h-full w-[2px] ${!isLast ? 'bg-gradient-to-b from-blue-500/50 via-blue-500/10 to-transparent' : 'bg-gradient-to-b from-blue-500/50 to-transparent flex-grow-0 h-12'}`}></div>
+            <div className={`absolute top-6 w-4 h-4 rounded-full border border-black bg-slate-900 z-10 flex items-center justify-center shadow-[0_0_15px_rgba(59,130,246,0.4)] group-hover:scale-110 transition-transform`}>
+                <div className={`w-1.5 h-1.5 rounded-full ${isWork ? 'bg-blue-400' : 'bg-emerald-400'} animate-pulse`}></div>
+            </div>
+        </div>
+
+        {/* Content Card */}
+        <div className="pb-16">
+            <SpotlightCard className="rounded-2xl p-6" spotlightColor={theme.glow}>
+                <div className="flex justify-between items-start mb-4">
+                    <div>
+                        <h3 className="text-xl font-bold text-white group-hover:text-blue-200 transition-colors tracking-tight">{item.role}</h3>
+                        <div className="flex items-center gap-2 mt-1">
+                            <span className="w-1 h-1 rounded-full bg-slate-500"></span>
+                            <p className={`text-sm ${theme.text} font-mono tracking-wide`}>
+                                {item.company}
+                            </p>
+                        </div>
+                    </div>
+                    <div className="p-2 rounded-lg bg-white/5 border border-white/5 group-hover:border-white/20 transition-colors">
+                        {theme.icon}
+                    </div>
+                </div>
+                
+                <p className="text-slate-400 text-sm leading-relaxed mb-6 border-l-2 border-white/5 pl-4">
+                    {item.description}
+                </p>
+
+                <div className="flex flex-wrap gap-2 mb-4">
+                    {item.tags.map((tag, i) => (
+                        <span key={i} className="text-[10px] font-bold uppercase tracking-wider text-slate-400 bg-white/5 px-2 py-1 rounded border border-white/5 group-hover:border-white/10 transition-colors">
+                            {tag}
+                        </span>
+                    ))}
+                </div>
+
+                <AnimatePresence>
+                  {isHovered && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3, ease: "easeInOut" }}
+                      className="overflow-hidden"
+                    >
+                      <div className="pt-4 border-t border-white/10 mt-4 space-y-4">
+                        {item.technologies && (
+                          <div>
+                            <h4 className="text-[10px] font-bold uppercase tracking-widest text-slate-500 mb-2">Technologies</h4>
+                            <div className="flex flex-wrap gap-2">
+                              {item.technologies.map((tech, i) => (
+                                <span key={i} className="text-xs text-blue-300 font-mono bg-blue-500/10 px-2 py-1 rounded border border-blue-500/20">
+                                  {tech}
+                                </span>
+                              ))}
+                            </div>
+                          </div>
+                        )}
+                        
+                        {item.achievements && (
+                          <div>
+                            <h4 className="text-[10px] font-bold uppercase tracking-widest text-slate-500 mb-2">Key Achievements</h4>
+                            <ul className="list-disc list-inside space-y-1">
+                              {item.achievements.map((achievement, i) => (
+                                <li key={i} className="text-xs text-slate-400 leading-relaxed">
+                                  {achievement}
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+
+            </SpotlightCard>
+        </div>
       </div>
+
+      {/* Mobile Layout (simplified but keeps spotlight) */}
+      <div className="md:hidden relative pb-12 border-l border-white/10 ml-2 pl-6">
+         <div className={`absolute -left-[5px] top-0 w-2.5 h-2.5 rounded-full border border-black ${isWork ? 'bg-blue-500' : 'bg-emerald-500'} z-10`}></div>
+         
+         <span className="text-xs font-mono text-blue-400 mb-2 block tracking-widest">{item.period}</span>
+         <SpotlightCard className="rounded-xl p-5" spotlightColor={theme.glow}>
+            <h3 className="text-lg font-bold text-white">{item.role}</h3>
+            <p className={`text-sm ${theme.text} mb-3`}>{item.company}</p>
+            <p className="text-slate-400 text-sm mb-4">{item.description}</p>
+             <div className="flex flex-wrap gap-2">
+                {item.tags.map((tag, i) => (
+                    <span key={i} className="text-[10px] text-slate-500 bg-white/5 px-2 py-0.5 rounded">
+                        {tag}
+                    </span>
+                ))}
+            </div>
+         </SpotlightCard>
+      </div>
+
     </div>
   );
 };
 
 const CVSection: React.FC = () => {
+  const { language } = useLanguage();
+  const t = content[language].cv;
+  const history = language === 'en' ? historyEn : historyDe;
+
   return (
-    <section id="cv" className="py-32 px-6 relative z-10">
-      <div className="max-w-6xl mx-auto">
+    <section id="cv" className="min-h-screen py-12 px-6 relative z-10">
+      <div className="max-w-7xl mx-auto">
         
-        {/* --- Header --- */}
-        <SpaceItem className="mb-20 text-center md:text-left">
-          <div className="flex flex-col md:flex-row gap-8 items-center md:items-start">
-            <div className="relative group">
-              <div className="w-32 h-32 rounded-full overflow-hidden border-2 border-blue-500/50 shadow-[0_0_30px_rgba(59,130,246,0.3)] transition-transform duration-500 group-hover:scale-105">
-                 <img src="/img/profile.png" alt="Ludwig Engelhardt" className="w-full h-full object-cover" />
-              </div>
-              <div className="absolute -bottom-2 -right-2 bg-black rounded-full p-2 border border-blue-500/30">
-                <Code className="w-5 h-5 text-blue-400" />
-              </div>
-            </div>
+        <div className="grid lg:grid-cols-[400px_1fr] gap-8 lg:gap-10 items-start">
             
-            <div className="flex-1">
-              <h2 className="text-3xl sm:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-500 mb-2">
-                Ludwig Engelhardt
-              </h2>
-              <h3 className="text-sm sm:text-xl text-blue-400 font-mono tracking-widest mb-4">FULL STACK DEVELOPER</h3>
-              
-              <div className="flex flex-wrap gap-4 justify-center md:justify-start text-slate-400 text-sm mb-6">
-                <span className="flex items-center gap-2">
-                  <MapPin className="w-4 h-4 text-blue-500" /> Berlin, Germany
-                </span>
-                <span className="flex items-center gap-2">
-                  <Briefcase className="w-4 h-4 text-emerald-500" /> Open for Opportunities
-                </span>
-              </div>
-
-              <p className="text-slate-300 leading-relaxed max-w-2xl text-sm sm:text-base">
-                As an emerging Full Stack Developer, I am deeply engaged in honing my skills in Python, Java, and web technologies. My goal is to blend front and back-end development expertise to innovate in the tech industry.
-              </p>
-            </div>
-          </div>
-        </SpaceItem>
-
-
-        {/* --- Main Content Grid --- */}
-        <div className="grid lg:grid-cols-[1fr_350px] gap-16">
-          
-          {/* Left Column: Unified Timeline */}
-          <div className="pl-4"> {/* Added padding left for the timeline markers overlap */}
-            
-            <SpaceItem delay={0.1}>
-              <div className="flex items-center gap-4 mb-12">
-                <div className="p-3 rounded-2xl bg-white/5 border border-white/10 shadow-[0_0_20px_rgba(255,255,255,0.05)]">
-                  <Compass className="w-6 h-6 text-white" />
-                </div>
-                <h3 className="text-3xl font-bold text-white tracking-tight">The Journey</h3>
-              </div>
-
-              <div>
-                {history.map((item, index) => (
-                  <HistoryItem 
-                    key={index}
-                    item={item}
-                    isLast={index === history.length - 1}
-                  />
-                ))}
-              </div>
-            </SpaceItem>
-
-          </div>
-
-
-          {/* Right Column: Skills & Download */}
-          <div className="space-y-10">
-            
-            {/* Tech Stack Panel */}
-            <SpaceItem delay={0.3}>
-              <div className="bg-white/[0.02] border border-white/10 rounded-3xl p-6 md:p-8 sticky top-32 backdrop-blur-sm">
+            {/* --- Left Column: HUD Profile --- */}
+            <div className="lg:sticky lg:top-32 space-y-6">
                 
-                <div className="flex items-center gap-3 mb-8">
-                   <Code className="w-5 h-5 text-purple-400" />
-                   <h3 className="text-xl font-bold text-white">Tech Stack</h3>
-                </div>
+                {/* Profile Scanner Card */}
+                <SpotlightCard className="rounded-3xl p-8 backdrop-blur-xl border-white/10" spotlightColor="rgba(59, 130, 246, 0.1)">
+                    
+                    {/* Header with Status */}
+                    <div className="flex items-start justify-between mb-8 relative z-10">
+                        <div className="relative group/profile cursor-pointer">
+                             {/* Rotating Rings */}
+                             <div className="absolute inset-0 rounded-full border border-blue-500/30 border-dashed animate-[spin_10s_linear_infinite]"></div>
+                             <div className="absolute -inset-1 rounded-full border border-white/10 animate-[spin_15s_linear_infinite_reverse]"></div>
+                             
+                             <div className="w-24 h-24 rounded-full overflow-hidden border-2 border-black relative z-10">
+                                <img src="/img/profile.png" alt="Profile" className="w-full h-full object-cover" />
+                                {/* Scanning line */}
+                                <div className="absolute top-0 left-0 w-full h-1 bg-blue-400/50 shadow-[0_0_15px_rgba(59,130,246,1)] animate-[scan_3s_ease-in-out_infinite]"></div>
+                             </div>
+                        </div>
 
-                <div className="flex flex-wrap gap-2">
-                  {skills.map((skill, index) => (
-                    <div 
-                        key={index}
-                        className="flex items-center gap-2 px-3 py-1.5 bg-white/5 hover:bg-white/10 border border-white/5 rounded-lg transition-colors cursor-default"
-                    >
-                        <skill.icon className={`w-4 h-4 ${skill.color}`} />
-                        <span className="text-xs font-medium text-slate-300">{skill.name}</span>
+                        <div className="flex flex-col items-end gap-2">
+                            <div className="px-3 py-1 rounded-full border border-emerald-500/30 bg-emerald-500/5 flex items-center gap-2 shadow-[0_0_10px_rgba(16,185,129,0.1)]">
+                                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                                <span className="text-[10px] font-bold text-emerald-400 tracking-wider uppercase">Online</span>
+                            </div>
+                        </div>
                     </div>
-                  ))}
+
+                    <div className="relative z-10">
+                        <h2 className="text-4xl font-black text-white mb-2 tracking-tight">{t.title}</h2>
+                        <div className="flex items-center gap-2 mb-6">
+                             <Cpu className="w-4 h-4 text-blue-500 animate-pulse" />
+                             <p className="text-blue-400 font-mono text-sm tracking-widest uppercase">{t.role}</p>
+                        </div>
+
+                        <div className="space-y-4 mb-8">
+                            <div className="flex items-center gap-3 text-slate-400 text-sm group/loc">
+                                <div className="p-2 rounded bg-white/5 group-hover/loc:bg-blue-500/20 transition-colors">
+                                    <MapPin className="w-4 h-4 text-slate-400 group-hover/loc:text-blue-400" />
+                                </div>
+                                <span className="font-mono text-xs tracking-wide">{t.location}</span>
+                            </div>
+                            <div className="flex items-center gap-3 text-slate-400 text-sm group/stat">
+                                <div className="p-2 rounded bg-white/5 group-hover/stat:bg-emerald-500/20 transition-colors">
+                                    <ScanLine className="w-4 h-4 text-slate-400 group-hover/stat:text-emerald-400" />
+                                </div>
+                                <span className="font-mono text-xs tracking-wide">{t.status}</span>
+                            </div>
+                        </div>
+
+                        <p className="text-slate-400 text-sm leading-relaxed mb-8 font-light">
+                            {t.about}
+                        </p>
+
+                        <button className="w-full group relative overflow-hidden rounded-xl bg-white text-black font-bold py-3.5 transition-all hover:scale-[1.02] active:scale-[0.98]">
+                            <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-emerald-400 opacity-0 group-hover:opacity-10 transition-opacity"></div>
+                            <span className="relative z-10 flex items-center justify-center gap-2 text-sm uppercase tracking-wider">
+                                {t.downloadResume} <Download className="w-4 h-4" />
+                            </span>
+                        </button>
+                    </div>
+                </SpotlightCard>
+
+                {/* Skills Matrix */}
+                <SpotlightCard className="rounded-3xl p-6 border-white/10" spotlightColor="rgba(255, 255, 255, 0.05)">
+                    <div className="flex items-center justify-between mb-6">
+                        <h3 className="text-xs font-bold text-slate-500 uppercase tracking-widest flex items-center gap-2">
+                            <span className="w-2 h-2 bg-blue-500 rounded-sm"></span>
+                            {t.techStackTitle}
+                        </h3>
+                    </div>
+                    
+                    <div className="grid grid-cols-2 gap-2">
+                        {skills.map((skill, i) => (
+                            <div key={i} className="group/skill flex items-center gap-3 p-2.5 rounded-lg bg-white/5 hover:bg-white/10 border border-transparent hover:border-white/10 transition-all cursor-default relative overflow-hidden">
+                                <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/5 to-white/0 translate-x-[-100%] group-hover/skill:translate-x-[100%] transition-transform duration-700"></div>
+                                <skill.icon className={`w-4 h-4 ${skill.color} relative z-10`} />
+                                <span className="text-xs font-medium text-slate-400 group-hover/skill:text-white transition-colors relative z-10">{skill.name}</span>
+                            </div>
+                        ))}
+                    </div>
+                </SpotlightCard>
+
+            </div>
+
+
+            {/* --- Right Column: Timeline Stream --- */}
+            <div className="pt-4">
+                <div className="flex items-center gap-4 mb-16">
+                     <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-500/20 to-purple-500/20 border border-white/10 flex items-center justify-center shadow-[0_0_30px_rgba(59,130,246,0.2)]">
+                        <Calendar className="w-6 h-6 text-blue-400" />
+                     </div>
+                     <div>
+                        <h3 className="text-3xl font-black text-white tracking-tight uppercase">{t.journeyTitle}</h3>
+                        <p className="text-slate-500 font-mono text-xs tracking-widest mt-1">CHRONOLOGICAL_DATA_STREAM_V4</p>
+                     </div>
                 </div>
 
-                <div className="my-8 h-px bg-white/10"></div>
-
-                {/* Resume Download CTA */}
-                <div className="text-center">
-                    <p className="text-slate-500 text-sm mb-4">Want the full details?</p>
-                    <button className="w-full group relative inline-flex items-center justify-center gap-3 px-6 py-3 bg-white text-black font-bold rounded-xl overflow-hidden transition-transform hover:scale-[1.02] active:scale-[0.98]">
-                    <span className="relative z-10">Download Resume</span>
-                    <Download className="w-4 h-4 relative z-10 group-hover:translate-y-1 transition-transform" />
-                    <div className="absolute inset-0 bg-blue-400 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500"></div>
-                    </button>
+                <div className="space-y-0">
+                    {history.map((item, index) => (
+                        <motion.div
+                            key={index}
+                            initial={{ opacity: 0, x: 20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true, margin: "-100px" }}
+                            transition={{ duration: 0.5, delay: index * 0.1 }}
+                        >
+                            <HistoryItem item={item} isLast={index === history.length - 1} />
+                        </motion.div>
+                    ))}
                 </div>
 
-              </div>
-            </SpaceItem>
-
-          </div>
+            </div>
 
         </div>
       </div>
+      
+      {/* Background Decorative Grids (CSS only for performance) */}
+      <style>{`
+        @keyframes scan {
+            0%, 100% { top: 0%; opacity: 0; }
+            50% { opacity: 1; }
+            100% { top: 100%; opacity: 0; }
+        }
+      `}</style>
     </section>
   );
 };

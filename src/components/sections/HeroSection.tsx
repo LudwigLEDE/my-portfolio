@@ -1,75 +1,78 @@
 import { ChevronDown } from "lucide-react";
 import SpaceItem from "../ui/SpaceItem";
-import GlassSurface from "../ui/GlassSurface";
+import { useLanguage } from "../../context/LanguageContext";
+import { content } from "../../data/content";
+import TextType from "../visuals/TextType";
 
 interface HeroSectionProps {
   scrollToSection: (id: string) => void;
 }
 
 export default function HeroSection({ scrollToSection }: HeroSectionProps) {
+  const { language } = useLanguage();
+  const t = content[language].hero;
+
+  const StatusBadge = () => (
+    <div className="flex justify-center md:justify-start">
+      <div className="inline-flex items-center gap-2 border border-emerald-500/30 rounded-full bg-emerald-500/10 backdrop-blur-sm shadow-[0_0_15px_rgba(16,185,129,0.2)] p-1">
+        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse ml-2"></span>
+        <span className="text-emerald-400 font-mono text-[10px] tracking-[0.2em] uppercase mr-2">
+          {t.status}
+        </span>
+      </div>
+    </div>
+  );
+
+  const Description = () => (
+    <h2 className="text-base sm:text-lg md:text-xl text-slate-300 max-w-xl font-normal leading-relaxed">
+      {language === 'en' ? (
+        <>
+          I'm a 22-year-old <span className="text-white font-semibold relative inline-block">
+            Full Stack Developer
+            <span className="absolute bottom-1 left-0 w-full h-2 bg-blue-500/20 -z-10 -rotate-1"></span>
+          </span> based in Berlin. I build fast, interactive things for the web and love turning complex problems into simple code.
+        </>
+      ) : (
+        <>
+          Ich bin ein 22-jähriger <span className="text-white font-semibold relative inline-block">
+            Full Stack Entwickler
+            <span className="absolute bottom-1 left-0 w-full h-2 bg-blue-500/20 -z-10 -rotate-1"></span>
+          </span> aus Berlin. Ich baue schnelle, interaktive Webseiten und liebe es, komplexe Probleme in einfachen Code zu verwandeln.
+        </>
+      )}
+    </h2>
+  );
+
   return (
-    <section id="about" className="h-screen flex flex-col justify-center px-6 relative z-10">
-      <div className="max-w-5xl mx-auto w-full text-center md:text-left">
+    <section id="about" className="min-h-screen flex flex-col justify-center relative z-10">
+      <div className="max-w-6xl mx-auto w-full text-center md:text-left">
         
-        <SpaceItem>
-          <div className="inline-block mb-4 px-3 py-1 border border-blue-500/30 rounded-full bg-blue-500/10 backdrop-blur-sm">
-            <span className="text-blue-400 font-mono text-xs tracking-[0.2em] animate-pulse">
-              SYSTEM ONLINE
-            </span>
+        <div>
+          <StatusBadge />
+
+          {/* LEDE Text Type Animation */}
+          <div className="flex items-center justify-center md:justify-start py-4">
+            <TextType
+                text={["LEDE", "Ludwig E.D. Engelhardt"]}
+                typingSpeed={100}
+                deletingSpeed={50}
+                pauseDuration={2000}
+                loop={true}
+                showCursor={true}
+                cursorCharacter="_"
+                cursorClassName="text-slate-500 animate-pulse"
+                className="pb-4 text-[6vw] md:text-[4rem] lg:text-[6rem] font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-br from-white via-white to-slate-500 leading-none drop-shadow-2xl selection:bg-blue-500/30"
+            />
           </div>
-          <h1 className="text-5xl sm:text-7xl md:text-9xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-br from-white via-blue-100 to-slate-500 mb-6 drop-shadow-2xl">
-            LUDWIG.
-          </h1>
-        </SpaceItem>
+        </div>
         
-        <SpaceItem delay={0.2}>
-          <h2 className="text-xl sm:text-2xl md:text-4xl text-slate-400 max-w-3xl font-light leading-snug mb-12">
-            Driven <span className="text-white font-semibold">Full Stack Developer</span> shaping the future of web technologies. Innovator at heart.
-          </h2>
-        </SpaceItem>
+        <div className="mt-4">
+          <Description />
+        </div>
 
-        <SpaceItem delay={0.4}>
-          <div className="flex flex-col md:flex-row gap-6 justify-center md:justify-start">
-            
-            <div 
-              className="cursor-pointer group"
-              onClick={() => scrollToSection('projects')}
-            >
-              <GlassSurface 
-                width={180}
-                height={60}
-                borderRadius={100}
-                opacity={0.5}
-                mixBlendMode="screen"
-                className="transition-transform duration-300 group-hover:scale-105"
-              >
-                <span className="font-bold tracking-wider text-blue-200 group-hover:text-white">PROJECTS</span>
-              </GlassSurface>
-            </div>
-
-            <div 
-              className="cursor-pointer group"
-              onClick={() => scrollToSection('contact')}
-            >
-              <GlassSurface 
-                width={180}
-                height={60}
-                borderRadius={100}
-                displace={1} 
-                redOffset={10} 
-                blueOffset={-10}
-                opacity={0.3}
-                className="transition-transform duration-300 group-hover:scale-105"
-              >
-                <span className="font-bold tracking-wider text-slate-200 group-hover:text-white">CONTACT</span>
-              </GlassSurface>
-            </div>
-
-          </div>
-        </SpaceItem>
       </div>
 
-      <div className="absolute bottom-12 left-1/2 -translate-x-1/2 text-slate-500/50 animate-bounce">
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-slate-500/50 animate-bounce cursor-pointer hover:text-white transition-colors" onClick={() => scrollToSection('cv')}>
         <ChevronDown className="w-8 h-8" />
       </div>
     </section>

@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState, useId, useMemo } from 'react';
 
-export interface GlassSurfaceProps {
+export interface GlassSurfaceProps extends React.HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
   width?: number | string;
   height?: number | string;
@@ -25,7 +25,7 @@ export interface GlassSurfaceProps {
    * If true, disables the heavy SVG distortion filter. 
    * Use this for small elements or when stacking glass on top of glass.
    */
-  lite?: boolean; // <--- FIX: This property is now properly defined
+  lite?: boolean;
 }
 
 const useDarkMode = () => {
@@ -62,7 +62,8 @@ const GlassSurface: React.FC<GlassSurfaceProps> = ({
   mixBlendMode = 'difference',
   className = '',
   style = {},
-  lite = false
+  lite = false,
+  ...props // Spread remaining props
 }) => {
   const uniqueId = useId().replace(/:/g, '-');
   const filterId = `glass-filter-${uniqueId}`;
@@ -163,6 +164,7 @@ const GlassSurface: React.FC<GlassSurfaceProps> = ({
       ref={containerRef}
       className={`relative flex items-center justify-center overflow-hidden transition-all duration-300 ease-out ${className}`}
       style={getContainerStyles}
+      {...props}
     >
       {!effectiveLite && (
         <svg className="w-full h-full pointer-events-none absolute inset-0 opacity-0 -z-10" xmlns="http://www.w3.org/2000/svg">
