@@ -1,35 +1,35 @@
-export type Language = 'en' | 'de';
+export type Language = "en" | "de";
 
-export interface Project {
+export type Project = {
   id: string;
   title: string;
-  description: Record<'en' | 'de', string>;
+  description: Record<"en" | "de", string>;
   tags: string[];
-  categories: ('frontend' | 'backend' | 'fullstack' | 'mobile' | 'systems')[];
+  categories: ("frontend" | "backend" | "fullstack" | "mobile" | "systems")[];
   link?: string;
   image?: string;
   githubUrl?: string;
   liveUrl?: string;
-}
+};
 
-export interface WorkExperience {
+export type WorkExperience = {
   role: string;
   company: string;
   period: string;
   tags: string[];
   description: string;
-  type: 'work' | 'education';
+  type: "work" | "education" | "internship";
   technologies?: string[];
   achievements?: string[];
-}
+};
 
-export interface Skill {
+export type Skill = {
   name: string;
   iconName: string; // We'll map string to icon component
   color: string;
-}
+};
 
-export interface Content {
+export type Content = {
   nav: {
     about: string;
     cv: string;
@@ -69,4 +69,8 @@ export interface Content {
     impressum: string;
     privacy: string;
   };
-}
+};
+
+export type NavbarProps = {
+  scrollToSection: (id: string) => void;
+};
