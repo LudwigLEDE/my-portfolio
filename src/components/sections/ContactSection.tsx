@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail, Radio, Signal, Wifi, ArrowRight } from "lucide-react";
+import { Github, Linkedin, Mail, ArrowRight } from "lucide-react";
 import SpaceItem from "../ui/SpaceItem";
 import SpotlightCard from "../ui/SpotlightCard";
 import { useLanguage } from "../../context/LanguageContext";

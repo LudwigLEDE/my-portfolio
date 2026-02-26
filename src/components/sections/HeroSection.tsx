@@ -1,5 +1,4 @@
 import { ChevronDown } from "lucide-react";
-import SpaceItem from "../ui/SpaceItem";
 import { useLanguage } from "../../context/LanguageContext";
 import { content } from "../../data/content";
 import TextType from "../visuals/TextType";

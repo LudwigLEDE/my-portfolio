@@ -5,14 +5,14 @@ import { useLanguage } from "../../context/LanguageContext";
 import { content, projects } from "../../data/content";
 import type { Project } from "../../types";
 import ProjectCard from "../ui/ProjectCard";
-import { Grid, Terminal } from 'lucide-react';
+import { Terminal } from 'lucide-react';
 
 export default function ProjectsSection() {
   const { language } = useLanguage();
   const t = content[language].projects;
-  const [filter, setFilter] = useState<'all' | Project['category']>('all');
+  const [filter, setFilter] = useState<'all' | Project['categories'][number]>('all');
 
-  const filteredProjects = projects.filter(p => filter === 'all' || p.category === filter);
+  const filteredProjects = projects.filter(p => filter === 'all' || p.categories?.includes(filter as any));
 
   const categories = [
     { id: 'all', label: t.filterAll },

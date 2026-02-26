@@ -1,7 +1,8 @@
 import { useNavigate } from 'react-router-dom';
-import { ArrowUpRight, Github, Code, Layers, Zap } from "lucide-react";
+import { ArrowUpRight, Code, Layers, Zap } from "lucide-react";
 import type { Project } from "../../types";
 import SpotlightCard from "./SpotlightCard";
+import { useLanguage } from "../../context/LanguageContext";
 
 interface ProjectCardProps {
   project: Project;
@@ -9,12 +10,14 @@ interface ProjectCardProps {
 
 export default function ProjectCard({ project }: ProjectCardProps) {
   const navigate = useNavigate();
+  const { language } = useLanguage();
   
   // Determine accent color based on category
   let accentColor = 'blue';
-  if (project.category === 'backend') accentColor = 'purple';
-  if (project.category === 'fullstack') accentColor = 'emerald';
-  if (project.category === 'mobile') accentColor = 'orange';
+  const category = project.categories?.[0] || 'frontend';
+  if (category === 'backend') accentColor = 'purple';
+  if (category === 'fullstack') accentColor = 'emerald';
+  if (category === 'mobile') accentColor = 'orange';
 
   const colors: any = {
     blue: { 
@@ -76,7 +79,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
 
             <div className="absolute bottom-4 left-4 z-10">
                 <span className={`text-[10px] font-mono font-bold uppercase tracking-widest ${c.text} bg-black/60 px-2 py-1 rounded border border-white/10`}>
-                    {project.category}
+                    {category}
                 </span>
             </div>
         </div>
@@ -85,18 +88,21 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         <div className="p-6 flex-grow flex flex-col">
             <div className="flex justify-between items-start mb-3">
                 <h3 className="text-xl font-bold text-white group-hover:text-white transition-colors tracking-tight">{project.title}</h3>
-                <a 
-                    href={project.link || "#"} 
-                    className="text-slate-500 hover:text-white transition-colors"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    <ArrowUpRight className="w-5 h-5" />
-                </a>
+                {(project.link || project.liveUrl || project.githubUrl) && (
+                    <a 
+                        href={project.link || project.liveUrl || project.githubUrl} 
+                        className="text-slate-500 hover:text-white transition-colors"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        <ArrowUpRight className="w-5 h-5" />
+                    </a>
+                )}
             </div>
             
             <p className="text-slate-400 text-sm leading-relaxed mb-6 flex-grow line-clamp-3">
-                {project.description}
+                {project.description[language]}
             </p>
 
             <div className="pt-4 border-t border-white/5">

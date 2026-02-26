@@ -87,25 +87,46 @@ export const content: Record<'en' | 'de', Content> = {
 
 export const projects: Project[] = [
   {
+    id: 'assist-me',
+    title: 'Assist Me Devtool',
+    description: {
+      en: 'Internal dashboard for managing IoT-enabled care facilities. I developed features for real-time monitoring of patient equipment and battery status, integrating with a custom REST API to streamline facility maintenance.',
+      de: 'Internes Dashboard zur Verwaltung von IoT-gestützten Pflegeeinrichtungen. Ich habe Funktionen zur Echtzeit-Überwachung von Patientengeräten und Batterieständen entwickelt und eine REST-API integriert, um die Wartung der Einrichtungen zu optimieren.'
+    },
+    tags: ['React', 'TypeScript', 'Tailwind', 'REST API'],
+    categories: ['frontend', 'mobile'],
+    githubUrl: '',
+    liveUrl: 'https://www.assistme.io/en/assistme-en/'
+  },
+  {
     id: 'nebula-dash',
     title: 'Nebula Dash',
-    description: 'Real-time telemetry for orbital stations. Processes 10k+ data points utilizing WebWorkers and localized state management.',
+    description: {
+      en: 'Real-time telemetry for orbital stations. Processes 10k+ data points utilizing WebWorkers and localized state management.',
+      de: 'Echtzeit-Telemetrie für Orbitalstationen. Verarbeitet über 10.000 Datenpunkte mithilfe von WebWorkern und lokalisiertem Zustandsmanagement.'
+    },
     tags: ['React 19', 'WebGL', 'Tailwind'],
-    category: 'frontend'
+    categories: ['frontend']
   },
   {
     id: 'dark-matter',
     title: 'Dark Matter',
-    description: 'A headless design system for deep space comms. Fully accessible and optimized for high-latency inter-planetary connections.',
+    description: {
+      en: 'A headless design system for deep space comms. Fully accessible and optimized for high-latency inter-planetary connections.',
+      de: 'Ein Headless-Design-System für die Tiefraumkommunikation. Vollständig barrierefrei und optimiert für interplanetare Verbindungen mit hoher Latenz.'
+    },
     tags: ['Java', 'Spring Boot'],
-    category: 'backend'
+    categories: ['backend']
   },
   {
     id: 'exo-market',
     title: 'Exo-Market',
-    description: 'Scalable marketplace infrastructure. Features secure transactions and automated inventory management.',
+    description: {
+      en: 'Scalable marketplace infrastructure. Features secure transactions and automated inventory management.',
+      de: 'Skalierbare Marktplatz-Infrastruktur. Bietet sichere Transaktionen und automatisierte Bestandsverwaltung.'
+    },
     tags: ['Python', 'React Native'],
-    category: 'fullstack'
+    categories: ['fullstack']
   }
 ];
 

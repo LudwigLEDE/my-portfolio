@@ -1,6 +1,6 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Briefcase, GraduationCap, MapPin, Download, Calendar, ArrowUpRight, Cpu, ScanLine } from 'lucide-react';
+import { Briefcase, GraduationCap, MapPin, Download, Calendar, Cpu, ScanLine } from 'lucide-react';
 import { FaJava, FaPython, FaReact, FaCss3Alt } from 'react-icons/fa';
 import { SiJavascript, SiAdobephotoshop, SiAdobeillustrator } from 'react-icons/si';
 import { useLanguage } from "../../context/LanguageContext";

@@ -3,11 +3,13 @@ export type Language = 'en' | 'de';
 export interface Project {
   id: string;
   title: string;
-  description: string;
+  description: Record<'en' | 'de', string>;
   tags: string[];
-  category: 'frontend' | 'backend' | 'fullstack' | 'mobile' | 'systems';
+  categories: ('frontend' | 'backend' | 'fullstack' | 'mobile' | 'systems')[];
   link?: string;
   image?: string;
+  githubUrl?: string;
+  liveUrl?: string;
 }
 
 export interface WorkExperience {
