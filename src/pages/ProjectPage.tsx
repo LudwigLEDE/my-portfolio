@@ -1,6 +1,6 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowLeft, Github, ExternalLink, Layers, Code, Globe, Sun, Moon, Database, Shield, Zap } from 'lucide-react';
+import { ArrowLeft, Github, ExternalLink, Layers, Globe, Sun, Moon, Database, Shield, Zap } from 'lucide-react';
 import { projects } from '../data/content';
 import SpotlightCard from '../components/ui/SpotlightCard';
 import GlassSurface from '../components/ui/GlassSurface';

@@ -28,7 +28,7 @@ export default function SpaceItem({ children, className = "", delay = 0 }: Space
       ref={ref}
       style={{ scale, opacity }}
       transition={{ duration: 0.8, delay: delay, ease: "easeOut" }}
-      className={className}
+      className={`relative ${className}`}
     >
       {children}
     </motion.div>

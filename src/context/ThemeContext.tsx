@@ -22,7 +22,6 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   const toggleTheme = (event?: React.MouseEvent) => {
     const newTheme = theme === 'dark' ? 'light' : 'dark';
 
-    // @ts-expect-error - startViewTransition is not yet in all TS types
     const supportsViewTransition = document.startViewTransition !== undefined;
 
     if (!supportsViewTransition || window.matchMedia('(prefers-reduced-motion: reduce)').matches || !event) {
@@ -39,7 +38,6 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
       Math.max(y, window.innerHeight - y)
     );
 
-    // @ts-expect-error - startViewTransition is not yet in all TS types
     const transition = document.startViewTransition(() => {
       setTheme(newTheme);
     });
