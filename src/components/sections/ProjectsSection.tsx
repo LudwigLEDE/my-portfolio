@@ -26,7 +26,7 @@ export default function ProjectsSection() {
   ];
 
   return (
-    <section id="projects" className="min-h-screen py-12 px-6 relative">
+    <section id="projects" className="min-h-screen py-24 px-6 relative">
       <div className="max-w-7xl mx-auto">
         
         {/* Section Header with HUD styling */}

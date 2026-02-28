@@ -253,14 +253,14 @@ const CVSection: React.FC = () => {
   const history = language === "en" ? historyEn : historyDe;
 
   return (
-    <section id="cv" className="min-h-screen py-12 px-6 relative z-10">
+    <section id="cv" className="min-h-screen py-24 px-6 relative z-10">
       <div className="max-w-7xl mx-auto">
-        <div className="grid lg:grid-cols-[400px_1fr] gap-8 lg:gap-10 items-start">
+        <div className="grid lg:grid-cols-[400px_1fr] gap-12 lg:gap-16 items-start">
           {/* --- Left Column: HUD Profile --- */}
-          <div className="lg:sticky lg:top-32 space-y-6">
+          <div className="lg:sticky lg:top-24 space-y-8">
             {/* Profile Scanner Card */}
             <SpotlightCard
-              className="rounded-3xl p-8 backdrop-blur-xl border-slate-200 dark:border-white/10 bg-white/80 dark:bg-black/40"
+              className="rounded-3xl p-8 backdrop-blur-xl border-slate-200 dark:border-white/10 bg-white/90 dark:bg-black/40 shadow-2xl shadow-slate-200/50 dark:shadow-none"
               spotlightColor="rgba(59, 130, 246, 0.1)"
             >
               {/* Header with Status */}
@@ -276,8 +276,6 @@ const CVSection: React.FC = () => {
                       alt="Profile"
                       className="w-full h-full object-cover"
                     />
-                    {/* Scanning line */}
-                    <div className="absolute top-0 left-0 w-full h-1 bg-blue-400/50 shadow-[0_0_15px_rgba(59,130,246,1)] animate-[scan_3s_ease-in-out_infinite]"></div>
                   </div>
                 </div>
 
@@ -336,12 +334,12 @@ const CVSection: React.FC = () => {
 
             {/* Skills Matrix */}
             <SpotlightCard
-              className="rounded-3xl p-6 border-slate-200 dark:border-white/10 bg-white/80 dark:bg-black/40"
+              className="rounded-3xl p-6 border-slate-200 dark:border-white/10 bg-white/90 dark:bg-black/40 shadow-xl shadow-slate-200/40 dark:shadow-none"
               spotlightColor="rgba(59, 130, 246, 0.05)"
             >
               <div className="flex items-center justify-between mb-6">
                 <div className="space-y-1">
-                  <h3 className="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest flex items-center gap-2">
+                  <h3 className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest flex items-center gap-2">
                     <span className="w-2 h-2 bg-blue-500 rounded-sm"></span>
                     {t.techStackTitle}
                   </h3>

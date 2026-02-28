@@ -8,6 +8,15 @@
 @theme {
   --font-sans: 'Inter', system-ui, sans-serif;
   --color-primary: #3b82f6;
+
+  /* Typographic System */
+  --font-size-hud-micro: 0.5rem;    /* 8px */
+  --font-size-hud-tiny: 0.5625rem;  /* 9px */
+  --font-size-hud-small: 0.625rem;  /* 10px */
+  
+  --font-size-display-2xl: 6rem;
+  --font-size-display-xl: 4rem;
+  --font-size-display-lg: 3rem;
 }
 
 /* View Transition Styles */

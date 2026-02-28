@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState, useId, useMemo, useCallback } from 'react';
-import { useTheme } from '../../context/ThemeContext';
+import { useTheme } from '../../hooks/useTheme';
 
 export type GlassSurfaceProps = React.HTMLAttributes<HTMLDivElement> & {
   children?: React.ReactNode;

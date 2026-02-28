@@ -1,7 +1,7 @@
 import { Globe, Moon, Sun } from "lucide-react";
 import GlassSurface from "../ui/GlassSurface";
 import { useLanguage } from "../../hooks/useLanguage";
-import { useTheme } from "../../context/ThemeContext";
+import { useTheme } from "../../hooks/useTheme";
 import { content } from "../../data/content";
 
 interface NavbarProps {

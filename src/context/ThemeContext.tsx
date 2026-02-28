@@ -1,13 +1,5 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
-
-type Theme = 'dark' | 'light';
-
-interface ThemeContextType {
-  theme: Theme;
-  toggleTheme: (event?: React.MouseEvent) => void;
-}
-
-const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
+import React, { useEffect, useState } from 'react';
+import { Theme, ThemeContext } from './ThemeContextInstance';
 
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [theme, setTheme] = useState<Theme>(() => {
@@ -30,7 +22,7 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   const toggleTheme = (event?: React.MouseEvent) => {
     const newTheme = theme === 'dark' ? 'light' : 'dark';
 
-    // @ts-ignore
+    // @ts-expect-error - startViewTransition is not yet in all TS types
     const supportsViewTransition = document.startViewTransition !== undefined;
 
     if (!supportsViewTransition || window.matchMedia('(prefers-reduced-motion: reduce)').matches || !event) {
@@ -47,7 +39,7 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
       Math.max(y, window.innerHeight - y)
     );
 
-    // @ts-ignore
+    // @ts-expect-error - startViewTransition is not yet in all TS types
     const transition = document.startViewTransition(() => {
       setTheme(newTheme);
     });
@@ -76,12 +68,4 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
       {children}
     </ThemeContext.Provider>
   );
-};
-
-export const useTheme = () => {
-  const context = useContext(ThemeContext);
-  if (!context) {
-    throw new Error('useTheme must be used within a ThemeProvider');
-  }
-  return context;
 };
