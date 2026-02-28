@@ -52,6 +52,10 @@ export type Content = {
     about: string;
     journeyTitle: string;
     techStackTitle: string;
+    technologiesTitle: string;
+    achievementsTitle: string;
+    hoverDetails: string;
+    skillDurations: Record<string, string>;
     downloadResume: string;
     wantDetails: string;
   };
