@@ -45,7 +45,7 @@ export default function ContactSection() {
                 {/* Primary CTA */}
                 <div className="mb-16">
                     <a 
-                        href="mailto:hello@example.com"
+                        href="mailto:ludwig.engelhardt@protonmail.com"
                         className="group relative inline-flex items-center justify-center gap-4 px-8 py-4 bg-white text-black rounded-xl overflow-hidden hover:scale-[1.02] active:scale-[0.98] transition-all duration-300"
                     >
                         {/* Hover Gradient */}
@@ -62,7 +62,7 @@ export default function ContactSection() {
                     <p className="text-xs font-mono text-slate-600 uppercase tracking-[0.2em] mb-6">Connect</p>
                     
                     <div className="flex flex-wrap justify-center gap-4 md:gap-8">
-                        <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-3 px-5 py-3 rounded-lg bg-white/5 hover:bg-white/10 border border-white/5 hover:border-white/20 transition-all">
+                        <a href="https://github.com/LudwigLEDE" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-3 px-5 py-3 rounded-lg bg-white/5 hover:bg-white/10 border border-white/5 hover:border-white/20 transition-all">
                             <Github className="w-5 h-5 text-slate-400 group-hover:text-white transition-colors" />
                             <span className="text-sm font-mono text-slate-400 group-hover:text-white">GitHub</span>
                         </a>
@@ -70,7 +70,7 @@ export default function ContactSection() {
                             <Linkedin className="w-5 h-5 text-slate-400 group-hover:text-blue-400 transition-colors" />
                             <span className="text-sm font-mono text-slate-400 group-hover:text-blue-400">LinkedIn</span>
                         </a>
-                        <a href="mailto:hello@example.com" className="group flex items-center gap-3 px-5 py-3 rounded-lg bg-white/5 hover:bg-white/10 border border-white/5 hover:border-white/20 transition-all">
+                        <a href="mailto:ludwig.engelhardt@protonmail.com" className="group flex items-center gap-3 px-5 py-3 rounded-lg bg-white/5 hover:bg-white/10 border border-white/5 hover:border-white/20 transition-all">
                             <Mail className="w-5 h-5 text-slate-400 group-hover:text-emerald-400 transition-colors" />
                             <span className="text-sm font-mono text-slate-400 group-hover:text-emerald-400">Email</span>
                         </a>

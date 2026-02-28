@@ -49,7 +49,7 @@ export default function PrivacyPage() {
                 Musterstraße 1<br />
                 12345 Berlin
               </p>
-              <p>E-Mail: hello@example.com</p>
+              <p>E-Mail: ludwig.engelhardt@protonmail.com</p>
 
               <h3>Widerruf Ihrer Einwilligung zur Datenverarbeitung</h3>
               <p>Viele Datenverarbeitungsvorgänge sind nur mit Ihrer ausdrücklichen Einwilligung möglich. Sie können eine bereits erteilte Einwilligung jederzeit widerrufen. Dazu reicht eine formlose Mitteilung per E-Mail an uns.</p>
@@ -88,7 +88,7 @@ export default function PrivacyPage() {
                 Musterstraße 1<br />
                 12345 Berlin
               </p>
-              <p>Email: hello@example.com</p>
+              <p>Email: ludwig.engelhardt@protonmail.com</p>
 
               <h3>Revocation of your Consent to the Processing of your Data</h3>
               <p>Many data processing operations are only possible with your express consent. You may revoke your consent at any time with future effect. An informal email making this request is sufficient.</p>

@@ -44,7 +44,7 @@ export default function ImprintPage() {
 
               <h2>Kontakt</h2>
               <p>
-                E-Mail: hello@example.com<br />
+                E-Mail: ludwig.engelhardt@protonmail.com<br />
                 Telefon: +49 (0) 123 456789
               </p>
 
@@ -80,7 +80,7 @@ export default function ImprintPage() {
 
               <h2>Contact</h2>
               <p>
-                Email: hello@example.com<br />
+                Email: ludwig.engelhardt@protonmail.com<br />
                 Phone: +49 (0) 123 456789
               </p>
 
