@@ -22,6 +22,7 @@ export type GlassSurfaceProps = React.HTMLAttributes<HTMLDivElement> & {
   mixBlendMode?: React.CSSProperties['mixBlendMode'];
   className?: string;
   style?: React.CSSProperties;
+  noPadding?: boolean;
   /**
    * If true, disables the heavy SVG distortion filter. 
    * Use this for small elements or when stacking glass on top of glass.
@@ -51,6 +52,7 @@ const GlassSurface: React.FC<GlassSurfaceProps> = ({
   className = '',
   style = {},
   lite = false,
+  noPadding = false,
   ...props // Spread remaining props
 }) => {
   const { theme } = useTheme();
@@ -180,7 +182,7 @@ const GlassSurface: React.FC<GlassSurfaceProps> = ({
           </defs>
         </svg>
       )}
-      <div className="w-full h-full flex items-center justify-center p-2 rounded-[inherit] relative z-10">
+      <div className={`w-full h-full flex items-center justify-center rounded-[inherit] relative z-10 ${noPadding ? '' : 'p-2'}`}>
         {children}
       </div>
     </div>

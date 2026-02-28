@@ -30,6 +30,7 @@ import {
   SiAdobeaftereffects,
 } from "react-icons/si";
 import { useLanguage } from "../../hooks/useLanguage";
+import { useTheme } from "../../hooks/useTheme";
 import { content, historyEn, historyDe } from "../../data/content";
 import SpotlightCard from "../ui/SpotlightCard";
 
@@ -126,7 +127,7 @@ const HistoryItem = ({
         {/* Content Card */}
         <div className="pb-8">
           <SpotlightCard
-            className="rounded-2xl p-6 bg-white dark:bg-black/40 border-slate-200 dark:border-white/5"
+            className="rounded-2xl p-6 border-slate-200 dark:border-white/5"
             spotlightColor={themeColors.glow}
           >
             <div className="flex justify-between items-start mb-4">
@@ -227,7 +228,7 @@ const HistoryItem = ({
         <span className="text-xs font-mono text-blue-600 dark:text-blue-400 mb-2 block tracking-widest">
           {item.period}
         </span>
-        <SpotlightCard className="rounded-xl p-5 bg-white dark:bg-black/40 border-slate-200 dark:border-white/5" spotlightColor={themeColors.glow}>
+        <SpotlightCard className="rounded-xl p-5 border-slate-200 dark:border-white/5" spotlightColor={themeColors.glow}>
           <h3 className="text-lg font-bold text-slate-900 dark:text-white">{item.role}</h3>
           <p className={`text-sm ${themeColors.text} mb-3`}>{item.company}</p>
           <p className="text-slate-600 dark:text-slate-400 text-sm mb-4">{item.description}</p>
@@ -249,6 +250,7 @@ const HistoryItem = ({
 
 const CVSection: React.FC = () => {
   const { language } = useLanguage();
+  const { theme } = useTheme();
   const t = content[language].cv;
   const history = language === "en" ? historyEn : historyDe;
 
@@ -260,7 +262,7 @@ const CVSection: React.FC = () => {
           <div className="lg:sticky lg:top-24 space-y-8">
             {/* Profile Scanner Card */}
             <SpotlightCard
-              className="rounded-3xl p-8 backdrop-blur-xl border-slate-200 dark:border-white/10 bg-white/90 dark:bg-black/40 shadow-2xl shadow-slate-200/50 dark:shadow-none"
+              className="rounded-3xl p-8 backdrop-blur-xl border-slate-200 dark:border-white/10 shadow-2xl shadow-slate-200/50 dark:shadow-none"
               spotlightColor="rgba(59, 130, 246, 0.1)"
             >
               {/* Header with Status */}
@@ -302,18 +304,18 @@ const CVSection: React.FC = () => {
 
                 <div className="space-y-4 mb-8">
                   <div className="flex items-center gap-3 text-slate-600 dark:text-slate-400 text-sm group/loc">
-                    <div className="p-2 rounded bg-slate-50 dark:bg-white/5 group-hover/loc:bg-blue-100 dark:group-hover/loc:bg-blue-500/20 transition-colors">
+                    <div className="p-2 rounded bg-slate-50 dark:bg-white/5 group-hover/loc:bg-blue-100 dark:group-hover/loc:bg-blue-500/20 transition-colors border border-slate-100 dark:border-white/5">
                       <MapPin className="w-4 h-4 text-slate-500 dark:text-slate-400 group-hover/loc:text-blue-600 dark:group-hover/loc:text-blue-400" />
                     </div>
-                    <span className="font-mono text-xs tracking-wide">
+                    <span className="font-mono text-xs tracking-wide text-slate-600 dark:text-slate-400">
                       {t.location}
                     </span>
                   </div>
                   <div className="flex items-center gap-3 text-slate-600 dark:text-slate-400 text-sm group/stat">
-                    <div className="p-2 rounded bg-slate-50 dark:bg-white/5 group-hover/stat:bg-emerald-100 dark:group-hover/stat:bg-emerald-500/20 transition-colors">
+                    <div className="p-2 rounded bg-slate-50 dark:bg-white/5 group-hover/stat:bg-emerald-100 dark:group-hover/stat:bg-emerald-500/20 transition-colors border border-slate-100 dark:border-white/5">
                       <ScanLine className="w-4 h-4 text-slate-500 dark:text-slate-400 group-hover/stat:text-emerald-600 dark:group-hover/stat:text-emerald-400" />
                     </div>
-                    <span className="font-mono text-xs tracking-wide">
+                    <span className="font-mono text-xs tracking-wide text-slate-600 dark:text-slate-400">
                       {t.status}
                     </span>
                   </div>
@@ -334,7 +336,7 @@ const CVSection: React.FC = () => {
 
             {/* Skills Matrix */}
             <SpotlightCard
-              className="rounded-3xl p-6 border-slate-200 dark:border-white/10 bg-white/90 dark:bg-black/40 shadow-xl shadow-slate-200/40 dark:shadow-none"
+              className="rounded-3xl p-6 border-slate-200 dark:border-white/10 shadow-xl shadow-slate-200/40 dark:shadow-none"
               spotlightColor="rgba(59, 130, 246, 0.05)"
             >
               <div className="flex items-center justify-between mb-6">

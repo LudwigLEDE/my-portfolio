@@ -1,6 +1,6 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowLeft, Github, ExternalLink, Layers, Code, Globe, Sun, Moon } from 'lucide-react';
+import { ArrowLeft, Github, ExternalLink, Layers, Code, Globe, Sun, Moon, Database, Shield, Zap } from 'lucide-react';
 import { projects } from '../data/content';
 import SpotlightCard from '../components/ui/SpotlightCard';
 import GlassSurface from '../components/ui/GlassSurface';
@@ -18,18 +18,20 @@ export default function ProjectPage() {
 
   if (!project) {
     return (
-      <div className="min-h-screen flex items-center justify-center text-slate-900 dark:text-white bg-white dark:bg-black">
-        {language === 'en' ? 'Project not found' : 'Projekt nicht gefunden'}
+      <div className="min-h-screen flex items-center justify-center text-slate-900 dark:text-white bg-white dark:bg-black font-mono">
+        {language === 'en' ? '> ERROR: PROJECT_NOT_FOUND' : '> FEHLER: PROJEKT_NICHT_GEFUNDEN'}
       </div>
     );
   }
 
   const t = {
     back: language === 'en' ? 'Back to Base' : 'Zurück zur Basis',
-    overview: language === 'en' ? 'Project Overview' : 'Projektübersicht',
-    stack: language === 'en' ? 'Tech Stack' : 'Technologien',
-    demo: language === 'en' ? 'Live Demo' : 'Live Demo',
-    source: language === 'en' ? 'View Source' : 'Quellcode'
+    overview: language === 'en' ? 'Technical Specifications' : 'Technische Spezifikationen',
+    stack: language === 'en' ? 'Integrated Technologies' : 'Integrierte Technologien',
+    demo: language === 'en' ? 'Initialize Live Demo' : 'Live Demo starten',
+    source: language === 'en' ? 'Access Repository' : 'Quellcode öffnen',
+    details: language === 'en' ? 'System Details' : 'Systemdetails',
+    status: language === 'en' ? 'Project Status: Deployed' : 'Projektstatus: Veröffentlicht'
   };
 
   return (
@@ -37,24 +39,35 @@ export default function ProjectPage() {
       <WarpBackground />
       
       {/* Enhanced Navbar */}
-      <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-6 pointer-events-none">
+      <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-8 pointer-events-none">
         <div className="max-w-7xl mx-auto flex justify-between items-center pointer-events-auto">
-            {/* Back Button */}
-            <button 
+            {/* Back Button with Glass Effect */}
+            <div 
                 onClick={() => navigate(-1)}
-                className="flex items-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-slate-900 dark:bg-white/5 border border-slate-200 dark:border-white/10 hover:bg-slate-50 dark:hover:bg-white/10 transition-colors backdrop-blur-md text-sm font-mono uppercase tracking-wider text-slate-900 dark:text-white shadow-sm"
+                className="cursor-pointer transition-transform hover:scale-105 active:scale-95"
             >
-                <ArrowLeft className="w-4 h-4" /> {t.back}
-            </button>
+                <GlassSurface
+                    width="auto"
+                    height="44px"
+                    borderRadius={22}
+                    backgroundOpacity={0.1}
+                    blur={8}
+                    borderWidth={0.1}
+                    className="px-6 shadow-lg shadow-blue-500/5 hover:bg-white/5 transition-colors"
+                >
+                    <div className="flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-widest text-slate-600 dark:text-white">
+                        <ArrowLeft className="w-4 h-4" /> {t.back}
+                    </div>
+                </GlassSurface>
+            </div>
 
             {/* Right Controls */}
-            <div className="flex gap-2">
-                {/* Theme Toggle */}
+            <div className="flex gap-3">
                 <div onClick={(e) => toggleTheme(e)} className="cursor-pointer transition-transform hover:scale-105 active:scale-95">
                     <GlassSurface
-                        width="40px"
-                        height="40px"
-                        borderRadius={20}
+                        width="44px"
+                        height="44px"
+                        borderRadius={22}
                         backgroundOpacity={0.1}
                         blur={8}
                         borderWidth={0.1}
@@ -64,12 +77,11 @@ export default function ProjectPage() {
                     </GlassSurface>
                 </div>
 
-                {/* Language Toggle */}
                 <div onClick={toggleLanguage} className="cursor-pointer transition-transform hover:scale-105 active:scale-95">
                     <GlassSurface
-                        width="100px"
-                        height="40px"
-                        borderRadius={20}
+                        width="110px"
+                        height="44px"
+                        borderRadius={22}
                         backgroundOpacity={0.1}
                         blur={8}
                         borderWidth={0.1}
@@ -84,11 +96,10 @@ export default function ProjectPage() {
                             </div>
                         </div>
                     </GlassSurface>
-                    {/* Mobile Language Icon */}
                     <GlassSurface
-                        width="40px"
-                        height="40px"
-                        borderRadius={20}
+                        width="44px"
+                        height="44px"
+                        borderRadius={22}
                         backgroundOpacity={0.1}
                         blur={8}
                         borderWidth={0.1}
@@ -101,77 +112,98 @@ export default function ProjectPage() {
         </div>
       </nav>
 
-      <main className="pt-32 pb-20 px-6 relative z-10">
-        <div className="max-w-5xl mx-auto">
+      {/* Main Content with more vertical spacing to hide footer initially */}
+      <main className="pt-48 pb-40 px-6 relative z-10 min-h-[120vh]">
+        <div className="max-w-6xl mx-auto">
             
-            {/* Header */}
+            {/* Header Section */}
             <motion.div 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="mb-12"
+                className="mb-20"
             >
-                <div className="flex items-center gap-4 mb-4">
-                    <span className="px-3 py-1 rounded border border-blue-500/30 bg-blue-500/10 text-blue-600 dark:text-blue-400 text-xs font-mono uppercase tracking-widest">
-                        {project.categories?.join(', ')}
-                    </span>
-                    <span className="h-px bg-slate-200 dark:bg-white/10 flex-grow"></span>
-                    <span className="text-slate-500 font-mono text-xs">ID: {project.id}</span>
+                <div className="flex flex-col md:flex-row md:items-center gap-6 mb-8">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-600 dark:text-blue-400 text-[10px] font-mono font-bold uppercase tracking-widest">
+                        <Zap className="w-3 h-3" /> {t.status}
+                    </div>
+                    <div className="flex items-center gap-4 flex-grow">
+                        <span className="h-px bg-slate-200 dark:bg-white/10 flex-grow"></span>
+                        <span className="text-slate-400 dark:text-slate-500 font-mono text-[10px] tracking-tighter uppercase">Source_ID: {project.id}</span>
+                    </div>
                 </div>
-                <h1 className="text-5xl md:text-7xl font-black text-slate-900 dark:text-white tracking-tight mb-6">{project.title}</h1>
-                <p className="text-xl text-slate-600 dark:text-slate-400 max-w-3xl leading-relaxed font-light">{project.description[language]}</p>
+                
+                <h1 className="text-6xl md:text-8xl font-black text-slate-900 dark:text-white tracking-tighter mb-8 leading-[0.9]">
+                    {project.title}
+                </h1>
+                <p className="text-xl md:text-2xl text-slate-600 dark:text-slate-400 max-w-4xl leading-relaxed font-light">
+                    {project.description[language]}
+                </p>
             </motion.div>
 
 
-            {/* Main Content Grid */}
-            <div className="grid md:grid-cols-[2fr_1fr] gap-8">
+            {/* Content Architecture */}
+            <div className="grid lg:grid-cols-[1fr_350px] gap-12 items-start">
                 
-                {/* Left: Images/Demo */}
-                <div className="space-y-8">
-                    <SpotlightCard className="rounded-3xl aspect-video bg-slate-50 dark:bg-black/50 overflow-hidden border-slate-200 dark:border-white/10">
+                {/* Left: Media & Narrative */}
+                <div className="space-y-12">
+                    <SpotlightCard className="rounded-[2.5rem] aspect-video overflow-hidden border-slate-200 dark:border-white/10 shadow-2xl">
                          {project.image ? (
                             <img 
                                 src={project.image} 
                                 alt={project.title} 
-                                className="w-full h-full object-cover"
+                                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                             />
                          ) : (
-                            <div className="w-full h-full flex items-center justify-center opacity-20">
-                                <Layers className="w-12 h-12 text-slate-600 dark:text-slate-400" />
+                            <div className="w-full h-full flex flex-col items-center justify-center bg-slate-50 dark:bg-black/20 gap-4">
+                                <div className="w-20 h-20 rounded-3xl bg-blue-500/5 flex items-center justify-center border border-blue-500/10">
+                                    <Layers className="w-10 h-10 text-blue-500/40" />
+                                </div>
+                                <p className="text-slate-400 dark:text-slate-600 font-mono text-xs uppercase tracking-widest">Visual data stream unavailable</p>
                             </div>
                          )}
                     </SpotlightCard>
                     
-                    <div className="prose dark:prose-invert max-w-none">
-                        <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">{t.overview}</h3>
-                        <p className="text-slate-600 dark:text-slate-400 leading-relaxed font-light">
-                            {project.description[language]}
-                        </p>
+                    <div className="space-y-6">
+                        <h3 className="text-3xl font-black text-slate-900 dark:text-white tracking-tight flex items-center gap-3">
+                            <div className="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center border border-blue-500/20">
+                                <Database className="w-4 h-4 text-blue-500" />
+                            </div>
+                            {t.overview}
+                        </h3>
+                        <div className="prose prose-lg dark:prose-invert max-w-none text-slate-600 dark:text-slate-400 font-light leading-relaxed">
+                            <p>{project.description[language]}</p>
+                            <p>This project showcases a deep integration of {project.tags.join(', ')} to deliver a high-performance, scalable solution. The architecture focuses on modularity and user-centric design principles.</p>
+                        </div>
                     </div>
                 </div>
 
-                {/* Right: Meta Info */}
-                <div className="space-y-6">
-                    <SpotlightCard className="rounded-2xl p-6 bg-white dark:bg-black/40 border-slate-200 dark:border-white/10" spotlightColor="rgba(59, 130, 246, 0.1)">
-                        <h3 className="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-widest mb-6 flex items-center gap-2">
-                            <Code className="w-4 h-4 text-blue-600 dark:text-blue-500" /> {t.stack}
+                {/* Right: Technical Sidebar */}
+                <div className="space-y-8 lg:sticky lg:top-32">
+                    {/* Tech Stack Card */}
+                    <SpotlightCard className="rounded-3xl p-8 border-slate-200 dark:border-white/10" spotlightColor="rgba(59, 130, 246, 0.1)">
+                        <h3 className="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-widest mb-8 flex items-center gap-2 border-b border-slate-100 dark:border-white/5 pb-4">
+                            <Shield className="w-4 h-4 text-blue-500" /> {t.stack}
                         </h3>
-                        <div className="flex flex-wrap gap-2">
+                        <div className="grid grid-cols-1 gap-3">
                             {project.tags.map(tag => (
-                                <span key={tag} className="px-3 py-1.5 rounded bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/5 text-xs text-slate-600 dark:text-slate-300 font-mono">
-                                    {tag}
-                                </span>
+                                <div key={tag} className="flex items-center gap-3 p-3 rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/5 group/tag transition-colors hover:border-blue-500/20">
+                                    <div className="w-1.5 h-1.5 rounded-full bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.5)]" />
+                                    <span className="text-sm font-mono font-medium text-slate-600 dark:text-slate-300">{tag}</span>
+                                </div>
                             ))}
                         </div>
                     </SpotlightCard>
 
+                    {/* Actions */}
                     <div className="grid gap-4">
                         {project.liveUrl && (
-                            <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-3 w-full py-4 rounded-xl bg-slate-900 dark:bg-white text-white dark:text-black font-bold hover:scale-[1.02] active:scale-[0.98] transition-transform shadow-xl shadow-blue-500/10">
+                            <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="group relative flex items-center justify-center gap-3 w-full py-5 rounded-2xl bg-slate-900 dark:bg-white text-white dark:text-black font-black uppercase tracking-widest text-sm hover:scale-[1.02] active:scale-[0.98] transition-all shadow-2xl shadow-blue-500/20">
+                                <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-emerald-400 opacity-0 group-hover:opacity-10 transition-opacity" />
                                 <ExternalLink className="w-4 h-4" /> {t.demo}
                             </a>
                         )}
                         {project.githubUrl && (
-                            <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-3 w-full py-4 rounded-xl bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white hover:bg-slate-50 dark:hover:bg-white/10 transition-colors shadow-sm">
+                            <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-3 w-full py-5 rounded-2xl bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white font-black uppercase tracking-widest text-sm hover:bg-slate-50 dark:hover:bg-white/10 transition-colors shadow-sm">
                                 <Github className="w-4 h-4" /> {t.source}
                             </a>
                         )}
