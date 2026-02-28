@@ -25,7 +25,7 @@ export default function SpotlightCard({
 
   return (
     <div
-      className={`group relative border ${borderColor} bg-white/[0.02] overflow-hidden ${className}`}
+      className={`group relative border ${borderColor} bg-white dark:bg-white/[0.02] overflow-hidden ${className}`}
       onMouseMove={handleMouseMove}
     >
       <motion.div
@@ -43,10 +43,10 @@ export default function SpotlightCard({
       <div className="relative h-full">{children}</div>
       
       {/* Tech Decoration Corners */}
-      <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-white/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-      <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-white/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-      <div className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-white/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-      <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-white/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+      <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-slate-200 dark:border-white/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+      <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-slate-200 dark:border-white/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+      <div className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-slate-200 dark:border-white/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+      <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-slate-200 dark:border-white/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
     </div>
   );
 }

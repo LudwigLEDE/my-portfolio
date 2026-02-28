@@ -69,17 +69,17 @@ const HistoryItem = ({
   const isWork = item.type === "work";
   const [isHovered, setIsHovered] = useState(false);
 
-  const theme = isWork
+  const themeColors = isWork
     ? {
         border: "border-blue-500/30",
-        text: "text-blue-400",
-        icon: <Briefcase className="w-4 h-4 text-blue-400" />,
+        text: "text-blue-600 dark:text-blue-400",
+        icon: <Briefcase className="w-4 h-4 text-blue-600 dark:text-blue-400" />,
         glow: "rgba(59, 130, 246, 0.2)",
       }
     : {
         border: "border-emerald-500/30",
-        text: "text-emerald-400",
-        icon: <GraduationCap className="w-4 h-4 text-emerald-400" />,
+        text: "text-emerald-600 dark:text-emerald-400",
+        icon: <GraduationCap className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />,
         glow: "rgba(16, 185, 129, 0.2)",
       };
 
@@ -94,10 +94,10 @@ const HistoryItem = ({
         {/* Date Column with Tech Styling */}
         <div className="text-right pt-6 relative">
           <div className="inline-block relative">
-            <span className="relative z-10 text-xs font-mono text-blue-300/80 font-bold tracking-widest uppercase block border-r-2 border-blue-500/20 pr-4 mr-4 group-hover:border-blue-500/60 transition-colors">
+            <span className="relative z-10 text-xs font-mono text-blue-600 dark:text-blue-300/80 font-bold tracking-widest uppercase block border-r-2 border-blue-500/20 pr-4 mr-4 group-hover:border-blue-500/60 transition-colors">
               {item.period.split("–")[0]}
             </span>
-            <span className="relative z-10 text-[10px] font-mono text-slate-500 block mt-1 pr-8">
+            <span className="relative z-10 text-[10px] font-mono text-slate-400 dark:text-slate-500 block mt-1 pr-8">
               {item.period.split("–")[1] || "NOW"}
             </span>
           </div>
@@ -108,16 +108,16 @@ const HistoryItem = ({
           <div
             className={`h-full w-[2px] ${
               !isLast
-                ? "bg-gradient-to-b from-blue-500/50 via-blue-500/10 to-transparent"
+                ? "bg-gradient-to-b from-blue-500/50 via-blue-500/20 dark:via-blue-500/10 to-transparent"
                 : "bg-gradient-to-b from-blue-500/50 to-transparent flex-grow-0 h-12"
             }`}
           ></div>
           <div
-            className={`absolute top-6 w-4 h-4 rounded-full border border-black bg-slate-900 z-10 flex items-center justify-center shadow-[0_0_15px_rgba(59,130,246,0.4)] group-hover:scale-110 transition-transform`}
+            className={`absolute top-6 w-4 h-4 rounded-full border border-slate-200 dark:border-black bg-white dark:bg-slate-900 z-10 flex items-center justify-center shadow-[0_0_15px_rgba(59,130,246,0.4)] group-hover:scale-110 transition-transform`}
           >
             <div
               className={`w-1.5 h-1.5 rounded-full ${
-                isWork ? "bg-blue-400" : "bg-emerald-400"
+                isWork ? "bg-blue-500 dark:bg-blue-400" : "bg-emerald-500 dark:bg-emerald-400"
               } animate-pulse`}
             ></div>
           </div>
@@ -126,29 +126,29 @@ const HistoryItem = ({
         {/* Content Card */}
         <div className="pb-8">
           <SpotlightCard
-            className="rounded-2xl p-6"
-            spotlightColor={theme.glow}
+            className="rounded-2xl p-6 bg-white dark:bg-black/40 border-slate-200 dark:border-white/5"
+            spotlightColor={themeColors.glow}
           >
             <div className="flex justify-between items-start mb-4">
               <div>
-                <h3 className="text-xl font-bold text-white group-hover:text-blue-200 transition-colors tracking-tight">
+                <h3 className="text-xl font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-200 transition-colors tracking-tight">
                   {item.role}
                 </h3>
                 <div className="flex items-center gap-2 mt-1">
-                  <span className="w-1 h-1 rounded-full bg-slate-500"></span>
+                  <span className="w-1 h-1 rounded-full bg-slate-300 dark:bg-slate-500"></span>
                   <p
-                    className={`text-sm ${theme.text} font-mono tracking-wide`}
+                    className={`text-sm ${themeColors.text} font-mono tracking-wide`}
                   >
                     {item.company}
                   </p>
                 </div>
               </div>
-              <div className="p-2 rounded-lg bg-white/5 border border-white/5 group-hover:border-white/20 transition-colors">
-                {theme.icon}
+              <div className="p-2 rounded-lg bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/5 group-hover:border-blue-200 dark:group-hover:border-white/20 transition-colors">
+                {themeColors.icon}
               </div>
             </div>
 
-            <p className="text-slate-400 text-sm leading-relaxed mb-6 border-l-2 border-white/5 pl-4">
+            <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-6 border-l-2 border-slate-100 dark:border-white/5 pl-4">
               {item.description}
             </p>
 
@@ -156,7 +156,7 @@ const HistoryItem = ({
               {item.tags.map((tag, i) => (
                 <span
                   key={i}
-                  className="text-[10px] font-bold uppercase tracking-wider text-slate-400 bg-white/5 px-2 py-1 rounded border border-white/5 group-hover:border-white/10 transition-colors"
+                  className="text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 bg-slate-50 dark:bg-white/5 px-2 py-1 rounded border border-slate-100 dark:border-white/5 group-hover:border-blue-100 dark:group-hover:border-white/10 transition-colors"
                 >
                   {tag}
                 </span>
@@ -172,17 +172,17 @@ const HistoryItem = ({
                   transition={{ duration: 0.3, ease: "easeInOut" }}
                   className="overflow-hidden"
                 >
-                  <div className="pt-4 border-t border-white/10 mt-4 space-y-4">
+                  <div className="pt-4 border-t border-slate-100 dark:border-white/10 mt-4 space-y-4">
                     {item.technologies && (
                       <div>
-                        <h4 className="text-[10px] font-bold uppercase tracking-widest text-slate-500 mb-2">
+                        <h4 className="text-[10px] font-bold uppercase tracking-widest text-slate-400 dark:text-slate-500 mb-2">
                           {t.technologiesTitle}
                         </h4>
                         <div className="flex flex-wrap gap-2">
                           {item.technologies.map((tech, i) => (
                             <span
                               key={i}
-                              className="text-xs text-blue-300 font-mono bg-blue-500/10 px-2 py-1 rounded border border-blue-500/20"
+                              className="text-xs text-blue-600 dark:text-blue-300 font-mono bg-blue-50 dark:bg-blue-500/10 px-2 py-1 rounded border border-blue-100 dark:border-blue-500/20"
                             >
                               {tech}
                             </span>
@@ -193,14 +193,14 @@ const HistoryItem = ({
 
                     {item.achievements && (
                       <div>
-                        <h4 className="text-[10px] font-bold uppercase tracking-widest text-slate-500 mb-2">
+                        <h4 className="text-[10px] font-bold uppercase tracking-widest text-slate-400 dark:text-slate-500 mb-2">
                           {t.achievementsTitle}
                         </h4>
                         <ul className="list-disc list-inside space-y-1">
                           {item.achievements.map((achievement, i) => (
                             <li
                               key={i}
-                              className="text-xs text-slate-400 leading-relaxed"
+                              className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed"
                             >
                               {achievement}
                             </li>
@@ -217,25 +217,25 @@ const HistoryItem = ({
       </div>
 
       {/* Mobile Layout (simplified but keeps spotlight) */}
-      <div className="md:hidden relative pb-6 border-l border-white/10 ml-2 pl-6">
+      <div className="md:hidden relative pb-6 border-l border-slate-200 dark:border-white/10 ml-2 pl-6">
         <div
-          className={`absolute -left-[5px] top-0 w-2.5 h-2.5 rounded-full border border-black ${
+          className={`absolute -left-[5px] top-0 w-2.5 h-2.5 rounded-full border border-white dark:border-black ${
             isWork ? "bg-blue-500" : "bg-emerald-500"
           } z-10`}
         ></div>
 
-        <span className="text-xs font-mono text-blue-400 mb-2 block tracking-widest">
+        <span className="text-xs font-mono text-blue-600 dark:text-blue-400 mb-2 block tracking-widest">
           {item.period}
         </span>
-        <SpotlightCard className="rounded-xl p-5" spotlightColor={theme.glow}>
-          <h3 className="text-lg font-bold text-white">{item.role}</h3>
-          <p className={`text-sm ${theme.text} mb-3`}>{item.company}</p>
-          <p className="text-slate-400 text-sm mb-4">{item.description}</p>
+        <SpotlightCard className="rounded-xl p-5 bg-white dark:bg-black/40 border-slate-200 dark:border-white/5" spotlightColor={themeColors.glow}>
+          <h3 className="text-lg font-bold text-slate-900 dark:text-white">{item.role}</h3>
+          <p className={`text-sm ${themeColors.text} mb-3`}>{item.company}</p>
+          <p className="text-slate-600 dark:text-slate-400 text-sm mb-4">{item.description}</p>
           <div className="flex flex-wrap gap-2">
             {item.tags.map((tag, i) => (
               <span
                 key={i}
-                className="text-[10px] text-slate-500 bg-white/5 px-2 py-0.5 rounded"
+                className="text-[10px] text-slate-500 dark:text-slate-500 bg-slate-50 dark:bg-white/5 px-2 py-0.5 rounded"
               >
                 {tag}
               </span>
@@ -260,7 +260,7 @@ const CVSection: React.FC = () => {
           <div className="lg:sticky lg:top-32 space-y-6">
             {/* Profile Scanner Card */}
             <SpotlightCard
-              className="rounded-3xl p-8 backdrop-blur-xl border-white/10"
+              className="rounded-3xl p-8 backdrop-blur-xl border-slate-200 dark:border-white/10 bg-white/80 dark:bg-black/40"
               spotlightColor="rgba(59, 130, 246, 0.1)"
             >
               {/* Header with Status */}
@@ -268,9 +268,9 @@ const CVSection: React.FC = () => {
                 <div className="relative group/profile cursor-pointer">
                   {/* Rotating Rings */}
                   <div className="absolute inset-0 rounded-full border border-blue-500/30 border-dashed animate-[spin_10s_linear_infinite]"></div>
-                  <div className="absolute -inset-1 rounded-full border border-white/10 animate-[spin_15s_linear_infinite_reverse]"></div>
+                  <div className="absolute -inset-1 rounded-full border border-slate-200 dark:border-white/10 animate-[spin_15s_linear_infinite_reverse]"></div>
 
-                  <div className="w-24 h-24 rounded-full overflow-hidden border-2 border-black relative z-10">
+                  <div className="w-24 h-24 rounded-full overflow-hidden border-2 border-slate-100 dark:border-black relative z-10">
                     <img
                       src="/img/profile.png"
                       alt="Profile"
@@ -283,8 +283,8 @@ const CVSection: React.FC = () => {
 
                 <div className="flex flex-col items-end gap-2">
                   <div className="px-3 py-1 rounded-full border border-emerald-500/30 bg-emerald-500/5 flex items-center gap-2 shadow-[0_0_10px_rgba(16,185,129,0.1)]">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                    <span className="text-[10px] font-bold text-emerald-400 tracking-wider uppercase">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 dark:bg-emerald-400 animate-pulse"></span>
+                    <span className="text-[10px] font-bold text-emerald-600 dark:text-emerald-400 tracking-wider uppercase">
                       Online
                     </span>
                   </div>
@@ -292,28 +292,28 @@ const CVSection: React.FC = () => {
               </div>
 
               <div className="relative z-10">
-                <h2 className="text-4xl font-black text-white mb-2 tracking-tight">
+                <h2 className="text-4xl font-black text-slate-900 dark:text-white mb-2 tracking-tight">
                   {t.title}
                 </h2>
                 <div className="flex items-center gap-2 mb-6">
-                  <Cpu className="w-4 h-4 text-blue-500 animate-pulse" />
-                  <p className="text-blue-400 font-mono text-sm tracking-widest uppercase">
+                  <Cpu className="w-4 h-4 text-blue-600 dark:text-blue-500 animate-pulse" />
+                  <p className="text-blue-600 dark:text-blue-400 font-mono text-sm tracking-widest uppercase">
                     {t.role}
                   </p>
                 </div>
 
                 <div className="space-y-4 mb-8">
-                  <div className="flex items-center gap-3 text-slate-400 text-sm group/loc">
-                    <div className="p-2 rounded bg-white/5 group-hover/loc:bg-blue-500/20 transition-colors">
-                      <MapPin className="w-4 h-4 text-slate-400 group-hover/loc:text-blue-400" />
+                  <div className="flex items-center gap-3 text-slate-600 dark:text-slate-400 text-sm group/loc">
+                    <div className="p-2 rounded bg-slate-50 dark:bg-white/5 group-hover/loc:bg-blue-100 dark:group-hover/loc:bg-blue-500/20 transition-colors">
+                      <MapPin className="w-4 h-4 text-slate-500 dark:text-slate-400 group-hover/loc:text-blue-600 dark:group-hover/loc:text-blue-400" />
                     </div>
                     <span className="font-mono text-xs tracking-wide">
                       {t.location}
                     </span>
                   </div>
-                  <div className="flex items-center gap-3 text-slate-400 text-sm group/stat">
-                    <div className="p-2 rounded bg-white/5 group-hover/stat:bg-emerald-500/20 transition-colors">
-                      <ScanLine className="w-4 h-4 text-slate-400 group-hover/stat:text-emerald-400" />
+                  <div className="flex items-center gap-3 text-slate-600 dark:text-slate-400 text-sm group/stat">
+                    <div className="p-2 rounded bg-slate-50 dark:bg-white/5 group-hover/stat:bg-emerald-100 dark:group-hover/stat:bg-emerald-500/20 transition-colors">
+                      <ScanLine className="w-4 h-4 text-slate-500 dark:text-slate-400 group-hover/stat:text-emerald-600 dark:group-hover/stat:text-emerald-400" />
                     </div>
                     <span className="font-mono text-xs tracking-wide">
                       {t.status}
@@ -321,11 +321,11 @@ const CVSection: React.FC = () => {
                   </div>
                 </div>
 
-                <p className="text-slate-400 text-sm leading-relaxed mb-8 font-light">
+                <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-8 font-light">
                   {t.about}
                 </p>
 
-                <button className="w-full group relative overflow-hidden rounded-xl bg-white text-black font-bold py-3.5 transition-all hover:scale-[1.02] active:scale-[0.98]">
+                <button className="w-full group relative overflow-hidden rounded-xl bg-slate-900 dark:bg-white text-white dark:text-black font-bold py-3.5 transition-all hover:scale-[1.02] active:scale-[0.98]">
                   <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-emerald-400 opacity-0 group-hover:opacity-10 transition-opacity"></div>
                   <span className="relative z-10 flex items-center justify-center gap-2 text-sm uppercase tracking-wider">
                     {t.downloadResume} <Download className="w-4 h-4" />
@@ -336,17 +336,17 @@ const CVSection: React.FC = () => {
 
             {/* Skills Matrix */}
             <SpotlightCard
-              className="rounded-3xl p-6 border-white/10"
-              spotlightColor="rgba(255, 255, 255, 0.05)"
+              className="rounded-3xl p-6 border-slate-200 dark:border-white/10 bg-white/80 dark:bg-black/40"
+              spotlightColor="rgba(59, 130, 246, 0.05)"
             >
               <div className="flex items-center justify-between mb-6">
                 <div className="space-y-1">
-                  <h3 className="text-xs font-bold text-slate-500 uppercase tracking-widest flex items-center gap-2">
+                  <h3 className="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest flex items-center gap-2">
                     <span className="w-2 h-2 bg-blue-500 rounded-sm"></span>
                     {t.techStackTitle}
                   </h3>
-                  <p className="text-xs font-mono text-slate-500 flex items-center gap-1.5 mt-0.5">
-                    <Info className="w-3.5 h-3.5 text-blue-400/70" />
+                  <p className="text-xs font-mono text-slate-400 dark:text-slate-500 flex items-center gap-1.5 mt-0.5">
+                    <Info className="w-3.5 h-3.5 text-blue-500 dark:text-blue-400/70" />
                     {t.hoverDetails}
                   </p>
                 </div>
@@ -356,18 +356,18 @@ const CVSection: React.FC = () => {
                 {skills.map((skill, i) => (
                   <div
                     key={i}
-                    className="group/skill p-1.5 rounded-xl bg-white/5 border border-white/5 hover:border-blue-500/30 transition-all duration-300 relative overflow-hidden flex flex-col items-center justify-center min-h-[44px] cursor-default"
+                    className="group/skill p-1.5 rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/5 hover:border-blue-500/30 transition-all duration-300 relative overflow-hidden flex flex-col items-center justify-center min-h-[44px] cursor-default"
                   >
                     {/* Default View: Icon + Name */}
                     <div className="flex items-center gap-2 group-hover/skill:opacity-0 group-hover/skill:scale-75 transition-all duration-300 px-1">
                         <skill.icon className={`w-3.5 h-3.5 ${skill.color} shrink-0`} />
-                        <span className="text-[8px] font-bold text-slate-400 uppercase tracking-widest leading-tight">{skill.name}</span>
+                        <span className="text-[8px] font-bold text-slate-600 dark:text-slate-400 uppercase tracking-widest leading-tight">{skill.name}</span>
                     </div>
                     
                     {/* Hover Reveal: Holographic Time Badge */}
-                    <div className="absolute inset-0 flex flex-col items-center justify-center bg-slate-900/40 opacity-0 group-hover/skill:opacity-100 transition-all duration-300 backdrop-blur-[2px]">
+                    <div className="absolute inset-0 flex flex-col items-center justify-center bg-white/90 dark:bg-slate-900/40 opacity-0 group-hover/skill:opacity-100 transition-all duration-300 backdrop-blur-[2px]">
                         <div className="flex flex-col items-center gap-0.5 px-2 w-full">
-                            <span className="text-[10px] font-black font-mono text-white tracking-tighter drop-shadow-[0_0_8px_rgba(59,130,246,1)]">
+                            <span className="text-[10px] font-black font-mono text-blue-600 dark:text-white tracking-tighter drop-shadow-[0_0_8px_rgba(59,130,246,1)]">
                                 {t.skillDurations[skill.name] || "..."}
                             </span>
                             {/* Segmented HUD Bar */}
@@ -375,7 +375,7 @@ const CVSection: React.FC = () => {
                                 {[...Array(6)].map((_, idx) => (
                                     <div 
                                         key={idx} 
-                                        className={`h-0.5 w-1.5 rounded-[1px] ${idx < Math.ceil(skill.level / 17) ? 'bg-blue-500 shadow-[0_0_5px_rgba(59,130,246,0.8)]' : 'bg-white/10'}`} 
+                                        className={`h-0.5 w-1.5 rounded-[1px] ${idx < Math.ceil(skill.level / 17) ? 'bg-blue-500 shadow-[0_0_5px_rgba(59,130,246,0.8)]' : 'bg-slate-200 dark:bg-white/10'}`} 
                                     />
                                 ))}
                             </div>
@@ -393,15 +393,15 @@ const CVSection: React.FC = () => {
           {/* --- Right Column: Timeline Stream --- */}
           <div className="pt-4">
             <div className="flex items-center gap-4 mb-16">
-              <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-500/20 to-purple-500/20 border border-white/10 flex items-center justify-center shadow-[0_0_30px_rgba(59,130,246,0.2)]">
-                <Calendar className="w-6 h-6 text-blue-400" />
+              <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-500/20 to-purple-500/20 border border-slate-200 dark:border-white/10 flex items-center justify-center shadow-[0_0_30px_rgba(59,130,246,0.2)]">
+                <Calendar className="w-6 h-6 text-blue-600 dark:text-blue-400" />
               </div>
               <div>
-                <h3 className="text-3xl font-black text-white tracking-tight uppercase">
+                <h3 className="text-3xl font-black text-slate-900 dark:text-white tracking-tight uppercase">
                   {t.journeyTitle}
                 </h3>
-                <p className="text-slate-400 font-mono text-sm tracking-widest mt-2 flex items-center gap-2">
-                   <Info className="w-4 h-4 text-blue-400/80" />
+                <p className="text-slate-500 dark:text-slate-400 font-mono text-sm tracking-widest mt-2 flex items-center gap-2">
+                   <Info className="w-4 h-4 text-blue-600 dark:text-blue-400/80" />
                    {t.hoverDetails}
                 </p>
               </div>

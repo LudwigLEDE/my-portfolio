@@ -1,9 +1,42 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 /* Optional: If you want to customize fonts or theme variables, 
   you do it right here in CSS now (CSS-first config).
 */
 @theme {
   --font-sans: 'Inter', system-ui, sans-serif;
   --color-primary: #3b82f6;
+}
+
+/* View Transition Styles */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(root) {
+  z-index: 1;
+}
+
+::view-transition-new(root) {
+  z-index: 2147483646; /* Max z-index to be on top */
+}
+
+/* Ensure the transition doesn't have a default fade */
+::view-transition-image-pair(root) {
+  isolation: isolate;
+}
+
+/* Light mode overrides */
+:root.light {
+  background-color: #f8fafc;
+  color: #0f172a;
+}
+
+:root.dark {
+  background-color: #000000;
+  color: #ffffff;
 }

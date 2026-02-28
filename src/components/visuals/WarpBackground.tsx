@@ -2,6 +2,7 @@ import { useRef } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Points, PointMaterial } from '@react-three/drei';
 import * as THREE from 'three';
+import { useTheme } from '../../context/ThemeContext';
 
 const STAR_COUNT = 6000;
 const STAR_POSITIONS = new Float32Array(STAR_COUNT * 3);
@@ -15,6 +16,7 @@ for (let i = 0; i < STAR_COUNT; i++) {
 
 function StarField() {
   const ref = useRef<THREE.Points>(null!);
+  const { theme } = useTheme();
   
   useFrame((state) => {
     // 2. Rotate the tube of stars slightly for a "churning" effect
@@ -40,22 +42,24 @@ function StarField() {
     <Points ref={ref} positions={STAR_POSITIONS} stride={3} frustumCulled={false}>
       <PointMaterial
         transparent
-        color="#60a5fa" // Tailwind blue-400
+        color={theme === 'dark' ? "#60a5fa" : "#3b82f6"} 
         size={0.05}     // Size of stars
         sizeAttenuation={true}
         depthWrite={false}
-        opacity={0.8}
+        opacity={theme === 'dark' ? 0.8 : 0.1}
       />
     </Points>
   );
 }
 
 export default function WarpBackground() {
+  const { theme } = useTheme();
+
   return (
-    <div className="fixed inset-0 -z-10 bg-black">
+    <div className={`fixed inset-0 -z-10 transition-colors duration-500 ${theme === 'dark' ? 'bg-black' : 'bg-slate-50'}`}>
       {/* Fog creates depth fading, so stars fade out in the distance */}
       <Canvas camera={{ position: [0, 0, 5], fov: 60 }}>
-        <fog attach="fog" args={['#000000', 5, 40]} /> 
+        <fog attach="fog" args={[theme === 'dark' ? '#000000' : '#f8fafc', 5, 40]} /> 
         <StarField />
       </Canvas>
     </div>

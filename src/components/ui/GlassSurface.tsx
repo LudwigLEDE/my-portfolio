@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState, useId, useMemo, useCallback } from 'react';
+import { useTheme } from '../../context/ThemeContext';
 
 export type GlassSurfaceProps = React.HTMLAttributes<HTMLDivElement> & {
   children?: React.ReactNode;
@@ -28,22 +29,6 @@ export type GlassSurfaceProps = React.HTMLAttributes<HTMLDivElement> & {
   lite?: boolean;
 };
 
-const useDarkMode = () => {
-  const [isDark, setIsDark] = useState(() => {
-    if (typeof window === 'undefined') return false;
-    return window.matchMedia('(prefers-color-scheme: dark)').matches;
-  });
-
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-    const mq = window.matchMedia('(prefers-color-scheme: dark)');
-    const handler = (e: MediaQueryListEvent) => setIsDark(e.matches);
-    mq.addEventListener('change', handler);
-    return () => mq.removeEventListener('change', handler);
-  }, []);
-  return isDark;
-};
-
 const GlassSurface: React.FC<GlassSurfaceProps> = ({
   children,
   width = 200,
@@ -68,6 +53,9 @@ const GlassSurface: React.FC<GlassSurfaceProps> = ({
   lite = false,
   ...props // Spread remaining props
 }) => {
+  const { theme } = useTheme();
+  const isDarkMode = theme === 'dark';
+  
   const uniqueId = useId().replace(/:/g, '-');
   const filterId = `glass-filter-${uniqueId}`;
   const redGradId = `red-grad-${uniqueId}`;
@@ -90,7 +78,6 @@ const GlassSurface: React.FC<GlassSurfaceProps> = ({
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const isDarkMode = useDarkMode();
   const effectiveLite = lite || isLowPower; 
 
   const generateDisplacementMap = useCallback(() => {
@@ -157,8 +144,8 @@ const GlassSurface: React.FC<GlassSurfaceProps> = ({
         background: isDarkMode ? `rgba(0,0,0, ${backgroundOpacity || 0.5})` : `rgba(255,255,255, ${backgroundOpacity || 0.2})`,
         backdropFilter: `blur(${blur}px) saturate(${saturation})`,
         WebkitBackdropFilter: `blur(${blur}px) saturate(${saturation})`,
-        border: '1px solid rgba(255, 255, 255, 0.1)',
-        boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)'
+        border: isDarkMode ? '1px solid rgba(255, 255, 255, 0.1)' : '1px solid rgba(0, 0, 0, 0.1)',
+        boxShadow: isDarkMode ? '0 4px 30px rgba(0, 0, 0, 0.1)' : '0 4px 30px rgba(0, 0, 0, 0.05)'
       } : {
         background: isDarkMode ? `hsl(0 0% 0% / ${backgroundOpacity})` : `hsl(0 0% 100% / ${backgroundOpacity})`,
         backdropFilter: `url(#${filterId}) saturate(${saturation})`,

@@ -18,31 +18,31 @@ export default function PrivacyPage() {
   };
 
   return (
-    <div className="min-h-screen text-white font-sans relative overflow-x-hidden bg-black selection:bg-blue-500 selection:text-white">
+    <div className="min-h-screen font-sans relative overflow-x-hidden transition-colors duration-500 bg-white dark:bg-black text-slate-900 dark:text-white selection:bg-blue-500 selection:text-white">
       <WarpBackground />
       <Navbar scrollToSection={scrollToSection} />
 
       <main className="pt-32 pb-20 px-6 relative z-10 max-w-4xl mx-auto">
         <button 
             onClick={() => navigate(-1)}
-            className="mb-8 flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition-colors backdrop-blur-md text-sm font-mono uppercase tracking-wider"
+            className="mb-8 flex items-center gap-2 px-4 py-2 rounded-full bg-slate-900 dark:bg-white/5 border border-slate-800 dark:border-white/10 hover:bg-slate-800 dark:hover:bg-white/10 transition-colors backdrop-blur-md text-sm font-mono uppercase tracking-wider text-white dark:text-white"
         >
             <ArrowLeft className="w-4 h-4" /> {language === 'en' ? 'Back' : 'Zurück'}
         </button>
 
-        <div className="prose prose-invert max-w-none bg-black/50 p-8 rounded-3xl border border-white/10 backdrop-blur-xl">
+        <div className="prose dark:prose-invert max-w-none bg-white/80 dark:bg-black/50 p-8 rounded-3xl border border-slate-200 dark:border-white/10 backdrop-blur-xl text-slate-600 dark:text-slate-300 shadow-xl">
           {language === 'de' ? (
             <>
-              <h1>Datenschutzerklärung</h1>
-              <h2>1. Datenschutz auf einen Blick</h2>
-              <h3>Allgemeine Hinweise</h3>
+              <h1 className="text-slate-900 dark:text-white">Datenschutzerklärung</h1>
+              <h2 className="text-slate-800 dark:text-slate-200">1. Datenschutz auf einen Blick</h2>
+              <h3 className="text-slate-700 dark:text-slate-300">Allgemeine Hinweise</h3>
               <p>Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie diese Website besuchen. Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert werden können.</p>
               
-              <h2>2. Allgemeine Hinweise und Pflichtinformationen</h2>
-              <h3>Datenschutz</h3>
+              <h2 className="text-slate-800 dark:text-slate-200">2. Allgemeine Hinweise und Pflichtinformationen</h2>
+              <h3 className="text-slate-700 dark:text-slate-300">Datenschutz</h3>
               <p>Die Betreiber dieser Seiten nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend der gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung.</p>
               
-              <h3>Hinweis zur verantwortlichen Stelle</h3>
+              <h3 className="text-slate-700 dark:text-slate-300">Hinweis zur verantwortlichen Stelle</h3>
               <p>Die verantwortliche Stelle für die Datenverarbeitung auf dieser Website ist:</p>
               <p>
                 Ludwig Engelhardt<br />
@@ -51,14 +51,14 @@ export default function PrivacyPage() {
               </p>
               <p>E-Mail: ludwig.engelhardt@protonmail.com</p>
 
-              <h3>Widerruf Ihrer Einwilligung zur Datenverarbeitung</h3>
+              <h3 className="text-slate-700 dark:text-slate-300">Widerruf Ihrer Einwilligung zur Datenverarbeitung</h3>
               <p>Viele Datenverarbeitungsvorgänge sind nur mit Ihrer ausdrücklichen Einwilligung möglich. Sie können eine bereits erteilte Einwilligung jederzeit widerrufen. Dazu reicht eine formlose Mitteilung per E-Mail an uns.</p>
 
-              <h2>3. Datenerfassung auf dieser Website</h2>
-              <h3>Cookies</h3>
+              <h2 className="text-slate-800 dark:text-slate-200">3. Datenerfassung auf dieser Website</h2>
+              <h3 className="text-slate-700 dark:text-slate-300">Cookies</h3>
               <p>Unsere Internetseiten verwenden so genannte „Cookies“. Cookies sind kleine Textdateien und richten auf Ihrem Endgerät keinen Schaden an.</p>
               
-              <h3>Server-Log-Dateien</h3>
+              <h3 className="text-slate-700 dark:text-slate-300">Server-Log-Dateien</h3>
               <p>Der Provider der Seiten erhebt und speichert automatisch Informationen in so genannten Server-Log-Dateien, die Ihr Browser automatisch an uns übermittelt.</p>
               <ul>
                 <li>Browsertyp und Browserversion</li>
@@ -72,16 +72,16 @@ export default function PrivacyPage() {
             </>
           ) : (
             <>
-              <h1>Privacy Policy</h1>
-              <h2>1. An Overview of Data Protection</h2>
-              <h3>General Information</h3>
+              <h1 className="text-slate-900 dark:text-white">Privacy Policy</h1>
+              <h2 className="text-slate-800 dark:text-slate-200">1. An Overview of Data Protection</h2>
+              <h3 className="text-slate-700 dark:text-slate-300">General Information</h3>
               <p>The following gives a simple overview of what happens to your personal information when you visit our website. Personal information is any data with which you could be personally identified.</p>
 
-              <h2>2. General Information and Mandatory Information</h2>
-              <h3>Data Protection</h3>
+              <h2 className="text-slate-800 dark:text-slate-200">2. General Information and Mandatory Information</h2>
+              <h3 className="text-slate-700 dark:text-slate-300">Data Protection</h3>
               <p>The operators of this website take the protection of your personal data very seriously. We treat your personal data as confidential and in accordance with the statutory data protection regulations and this privacy policy.</p>
 
-              <h3>Notice Concerning the Party Responsible for this Website</h3>
+              <h3 className="text-slate-700 dark:text-slate-300">Notice Concerning the Party Responsible for this Website</h3>
               <p>The party responsible for processing data on this website is:</p>
               <p>
                 Ludwig Engelhardt<br />
@@ -90,14 +90,14 @@ export default function PrivacyPage() {
               </p>
               <p>Email: ludwig.engelhardt@protonmail.com</p>
 
-              <h3>Revocation of your Consent to the Processing of your Data</h3>
+              <h3 className="text-slate-700 dark:text-slate-300">Revocation of your Consent to the Processing of your Data</h3>
               <p>Many data processing operations are only possible with your express consent. You may revoke your consent at any time with future effect. An informal email making this request is sufficient.</p>
 
-              <h2>3. Data Collection on our Website</h2>
-              <h3>Cookies</h3>
+              <h2 className="text-slate-800 dark:text-slate-200">3. Data Collection on our Website</h2>
+              <h3 className="text-slate-700 dark:text-slate-300">Cookies</h3>
               <p>Our website uses cookies. Cookies are text files that are stored in a computer system via an Internet browser.</p>
 
-              <h3>Server Log Files</h3>
+              <h3 className="text-slate-700 dark:text-slate-300">Server Log Files</h3>
               <p>The provider of this website and its pages automatically collects and stores information in so-called server log files, which your browser communicates to us automatically.</p>
               <ul>
                 <li>Browser type and browser version</li>

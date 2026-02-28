@@ -35,29 +35,29 @@ export default function ProjectsSection() {
             <div>
                  <div className="flex items-center gap-3 mb-2">
                     <div className="p-2 rounded bg-blue-500/10 border border-blue-500/20">
-                        <Terminal className="w-5 h-5 text-blue-400" />
+                        <Terminal className="w-5 h-5 text-blue-600 dark:text-blue-400" />
                     </div>
-                    <span className="text-xs font-mono text-blue-400 tracking-widest uppercase">/Modules/Deployed</span>
+                    <span className="text-xs font-mono text-blue-600 dark:text-blue-400 tracking-widest uppercase">/Modules/Deployed</span>
                  </div>
-                 <h2 className="text-4xl sm:text-5xl md:text-6xl font-black text-white tracking-tight">{t.title}</h2>
+                 <h2 className="text-4xl sm:text-5xl md:text-6xl font-black text-slate-900 dark:text-white tracking-tight">{t.title}</h2>
             </div>
             
             {/* HUD Filter Switch */}
-            <div className="flex p-1 bg-white/5 border border-white/10 rounded-xl overflow-x-auto max-w-full no-scrollbar">
+            <div className="flex p-1 bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-xl overflow-x-auto max-w-full no-scrollbar">
                 {categories.map(cat => (
                     <button
                         key={cat.id}
                         onClick={() => setFilter(cat.id)}
                         className={`relative px-4 py-2 rounded-lg text-xs font-mono font-bold uppercase tracking-wider transition-all duration-300 whitespace-nowrap ${
                             filter === cat.id 
-                            ? 'text-black shadow-lg' 
-                            : 'text-slate-500 hover:text-slate-300 hover:bg-white/5'
+                            ? 'text-white dark:text-black shadow-lg' 
+                            : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300 hover:bg-slate-200/50 dark:hover:bg-white/5'
                         }`}
                     >
                         {filter === cat.id && (
                             <motion.div 
                                 layoutId="activeFilter"
-                                className="absolute inset-0 bg-white rounded-lg"
+                                className="absolute inset-0 bg-slate-900 dark:bg-white rounded-lg"
                                 transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                             />
                         )}

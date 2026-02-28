@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { useLayoutEffect } from 'react';
 import { LanguageProvider } from "./context/LanguageContext";
+import { ThemeProvider } from "./context/ThemeContext";
 import HomePage from "./pages/HomePage";
 import ProjectPage from "./pages/ProjectPage";
 import ImprintPage from "./pages/ImprintPage";
@@ -18,17 +19,19 @@ const ScrollToTop = () => {
 
 function App() {
   return (
-    <LanguageProvider>
-      <Router>
-        <ScrollToTop />
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/project/:id" element={<ProjectPage />} />
-          <Route path="/imprint" element={<ImprintPage />} />
-          <Route path="/privacy" element={<PrivacyPage />} />
-        </Routes>
-      </Router>
-    </LanguageProvider>
+    <ThemeProvider>
+      <LanguageProvider>
+        <Router>
+          <ScrollToTop />
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/project/:id" element={<ProjectPage />} />
+            <Route path="/imprint" element={<ImprintPage />} />
+            <Route path="/privacy" element={<PrivacyPage />} />
+          </Routes>
+        </Router>
+      </LanguageProvider>
+    </ThemeProvider>
   );
 }
 

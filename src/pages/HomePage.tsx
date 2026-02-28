@@ -15,7 +15,7 @@ export default function HomePage() {
   };
 
   return (
-    <div className="min-h-screen text-white font-sans relative overflow-x-hidden bg-black selection:bg-blue-500 selection:text-white">
+    <div className="min-h-screen font-sans relative overflow-x-hidden transition-colors duration-500 bg-white dark:bg-black text-slate-900 dark:text-white selection:bg-blue-500 selection:text-white">
       
       {/* 1. Global 3D Background */}
       <WarpBackground />
