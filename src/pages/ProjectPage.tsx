@@ -5,7 +5,7 @@ import { projects } from '../data/content';
 import SpotlightCard from '../components/ui/SpotlightCard';
 import Footer from '../components/layout/Footer';
 import WarpBackground from '../components/visuals/WarpBackground';
-import { useLanguage } from '../context/LanguageContext';
+import { useLanguage } from '../hooks/useLanguage';
 
 export default function ProjectPage() {
   const { id } = useParams();

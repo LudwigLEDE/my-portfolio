@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { ArrowUpRight, Code, Layers, Zap } from "lucide-react";
 import type { Project } from "../../types";
 import SpotlightCard from "./SpotlightCard";
-import { useLanguage } from "../../context/LanguageContext";
+import { useLanguage } from "../../hooks/useLanguage";
 
 interface ProjectCardProps {
   project: Project;
@@ -13,13 +13,19 @@ export default function ProjectCard({ project }: ProjectCardProps) {
   const { language } = useLanguage();
   
   // Determine accent color based on category
-  let accentColor = 'blue';
+  let accentColor: 'blue' | 'purple' | 'emerald' | 'orange' = 'blue';
   const category = project.categories?.[0] || 'frontend';
   if (category === 'backend') accentColor = 'purple';
   if (category === 'fullstack') accentColor = 'emerald';
   if (category === 'mobile') accentColor = 'orange';
 
-  const colors: any = {
+  const colors: Record<typeof accentColor, { 
+    text: string; 
+    glow: string; 
+    border: string; 
+    bg: string; 
+    icon: React.ReactNode 
+  }> = {
     blue: { 
         text: 'text-blue-400', 
         glow: 'rgba(59, 130, 246, 0.2)',
@@ -50,7 +56,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
     }
   };
 
-  const c = colors[accentColor] || colors.blue;
+  const c = colors[accentColor];
 
   return (
     <div onClick={() => navigate(`/project/${project.id}`)} className="h-full cursor-pointer">

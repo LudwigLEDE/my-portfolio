@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unknown-property */
 import * as THREE from 'three';
 // FIX 1: Split imports into value imports and type imports
 import { useRef, useState, memo } from 'react';

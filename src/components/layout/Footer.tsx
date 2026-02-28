@@ -1,4 +1,4 @@
-import { useLanguage } from "../../context/LanguageContext";
+import { useLanguage } from "../../hooks/useLanguage";
 import { content } from "../../data/content";
 import { Globe } from "lucide-react";
 import { Link } from "react-router-dom";

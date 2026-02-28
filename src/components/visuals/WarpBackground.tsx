@@ -1,39 +1,26 @@
-import { useRef, useMemo } from 'react';
+import { useRef } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Points, PointMaterial } from '@react-three/drei';
 import * as THREE from 'three';
 
+const STAR_COUNT = 6000;
+const STAR_POSITIONS = new Float32Array(STAR_COUNT * 3);
+
+// Generate stars once at module level
+for (let i = 0; i < STAR_COUNT; i++) {
+  STAR_POSITIONS[i * 3] = (Math.random() - 0.5) * 50; 
+  STAR_POSITIONS[i * 3 + 1] = (Math.random() - 0.5) * 50; 
+  STAR_POSITIONS[i * 3 + 2] = (Math.random() - 0.5) * 100 - 50; 
+}
+
 function StarField() {
   const ref = useRef<THREE.Points>(null!);
   
-  // 1. Generate 6000 stars
-  // We place them in a cylinder shape extending deep into the distance (Z-axis)
-  const positions = useMemo(() => {
-    const count = 6000;
-    const positions = new Float32Array(count * 3);
-    
-    for (let i = 0; i < count; i++) {
-      // X and Y coordinates (spread wide)
-      const x = (Math.random() - 0.5) * 50; 
-      const y = (Math.random() - 0.5) * 50; 
-      // Z coordinate: Place stars from close (0) to very far (-100)
-      const z = (Math.random() - 0.5) * 100 - 50; 
-      
-      positions[i * 3] = x;
-      positions[i * 3 + 1] = y;
-      positions[i * 3 + 2] = z;
-    }
-    return positions;
-  }, []);
-
   useFrame((state) => {
     // 2. Rotate the tube of stars slightly for a "churning" effect
     ref.current.rotation.z += 0.0005;
     
     // 3. Scroll Logic (The Warp Effect)
-    // We calculate a target Z position based on window.scrollY
-    // We start at Z=5. As you scroll down (scrollY increases), 
-    // we subtract from Z, moving the camera *forward* into the negative Z space.
     const scrollY = window.scrollY;
     
     // 0.02 controls the speed of the "warp" relative to scroll
@@ -50,7 +37,7 @@ function StarField() {
   });
 
   return (
-    <Points ref={ref} positions={positions} stride={3} frustumCulled={false}>
+    <Points ref={ref} positions={STAR_POSITIONS} stride={3} frustumCulled={false}>
       <PointMaterial
         transparent
         color="#60a5fa" // Tailwind blue-400

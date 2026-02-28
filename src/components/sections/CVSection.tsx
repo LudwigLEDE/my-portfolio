@@ -14,7 +14,6 @@ import {
   FaJava,
   FaPython,
   FaReact,
-  FaCss3Alt,
   FaNodeJs,
   FaLinux,
 } from "react-icons/fa";
@@ -30,7 +29,7 @@ import {
   SiAdobepremierepro,
   SiAdobeaftereffects,
 } from "react-icons/si";
-import { useLanguage } from "../../context/LanguageContext";
+import { useLanguage } from "../../hooks/useLanguage";
 import { content, historyEn, historyDe } from "../../data/content";
 import SpotlightCard from "../ui/SpotlightCard";
 
@@ -65,7 +64,7 @@ const HistoryItem = ({
 }: {
   item: (typeof historyEn)[0];
   isLast: boolean;
-  t: any;
+  t: (typeof content)["en"]["cv"];
 }) => {
   const isWork = item.type === "work";
   const [isHovered, setIsHovered] = useState(false);

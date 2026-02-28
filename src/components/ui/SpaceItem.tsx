@@ -23,13 +23,10 @@ export default function SpaceItem({ children, className = "", delay = 0 }: Space
   // 2. Opacity Effect: Fades in as it approaches
   const opacity = useTransform(scrollYProgress, [0, 0.3], [0, 1]);
 
-  // 3. Y Position: Moves slightly up to enhance the floating feeling
-  const y = useTransform(scrollYProgress, [0, 1], [100, -50]);
-
   return (
     <motion.div
       ref={ref}
-      style={{ scale, opacity, y }}
+      style={{ scale, opacity }}
       transition={{ duration: 0.8, delay: delay, ease: "easeOut" }}
       className={className}
     >

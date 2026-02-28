@@ -1,24 +1,28 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import SpaceItem from "../ui/SpaceItem";
-import { useLanguage } from "../../context/LanguageContext";
+import { useLanguage } from "../../hooks/useLanguage";
 import { content, projects } from "../../data/content";
 import type { Project } from "../../types";
 import ProjectCard from "../ui/ProjectCard";
 import { Terminal } from 'lucide-react';
 
+type ProjectCategory = Project['categories'][number];
+type FilterType = 'all' | ProjectCategory;
+
 export default function ProjectsSection() {
   const { language } = useLanguage();
   const t = content[language].projects;
-  const [filter, setFilter] = useState<'all' | Project['categories'][number]>('all');
+  const [filter, setFilter] = useState<FilterType>('all');
 
-  const filteredProjects = projects.filter(p => filter === 'all' || p.categories?.includes(filter as any));
+  const filteredProjects = projects.filter(p => filter === 'all' || p.categories?.includes(filter as ProjectCategory));
 
-  const categories = [
+  const categories: { id: FilterType; label: string }[] = [
     { id: 'all', label: t.filterAll },
     { id: 'frontend', label: 'Frontend' },
     { id: 'backend', label: 'Backend' },
-    { id: 'fullstack', label: 'Full Stack' }
+    { id: 'fullstack', label: 'Full Stack' },
+    { id: 'mobile', label: 'Mobile' }
   ];
 
   return (
@@ -43,7 +47,7 @@ export default function ProjectsSection() {
                 {categories.map(cat => (
                     <button
                         key={cat.id}
-                        onClick={() => setFilter(cat.id as any)}
+                        onClick={() => setFilter(cat.id)}
                         className={`relative px-4 py-2 rounded-lg text-xs font-mono font-bold uppercase tracking-wider transition-all duration-300 whitespace-nowrap ${
                             filter === cat.id 
                             ? 'text-black shadow-lg' 
@@ -64,7 +68,7 @@ export default function ProjectsSection() {
           </div>
         </SpaceItem>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
           {filteredProjects.map((project, index) => (
             <SpaceItem key={project.id} delay={index * 0.1} className="h-full">
                 <ProjectCard project={project} />

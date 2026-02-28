@@ -1,7 +1,7 @@
 import { Github, Linkedin, Mail, ArrowRight } from "lucide-react";
 import SpaceItem from "../ui/SpaceItem";
 import SpotlightCard from "../ui/SpotlightCard";
-import { useLanguage } from "../../context/LanguageContext";
+import { useLanguage } from "../../hooks/useLanguage";
 import { content } from "../../data/content";
 
 export default function ContactSection() {

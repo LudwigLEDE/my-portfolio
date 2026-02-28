@@ -1,6 +1,6 @@
-import React, { useEffect, useRef, useState, useId, useMemo } from 'react';
+import React, { useEffect, useRef, useState, useId, useMemo, useCallback } from 'react';
 
-export interface GlassSurfaceProps extends React.HTMLAttributes<HTMLDivElement> {
+export type GlassSurfaceProps = React.HTMLAttributes<HTMLDivElement> & {
   children?: React.ReactNode;
   width?: number | string;
   height?: number | string;
@@ -26,14 +26,17 @@ export interface GlassSurfaceProps extends React.HTMLAttributes<HTMLDivElement> 
    * Use this for small elements or when stacking glass on top of glass.
    */
   lite?: boolean;
-}
+};
 
 const useDarkMode = () => {
-  const [isDark, setIsDark] = useState(false);
+  const [isDark, setIsDark] = useState(() => {
+    if (typeof window === 'undefined') return false;
+    return window.matchMedia('(prefers-color-scheme: dark)').matches;
+  });
+
   useEffect(() => {
     if (typeof window === 'undefined') return;
     const mq = window.matchMedia('(prefers-color-scheme: dark)');
-    setIsDark(mq.matches);
     const handler = (e: MediaQueryListEvent) => setIsDark(e.matches);
     mq.addEventListener('change', handler);
     return () => mq.removeEventListener('change', handler);
@@ -73,18 +76,24 @@ const GlassSurface: React.FC<GlassSurfaceProps> = ({
   const containerRef = useRef<HTMLDivElement>(null);
   const feImageRef = useRef<SVGFEImageElement>(null);
   
-  const [isLowPower, setIsLowPower] = useState(false);
+  const [isLowPower, setIsLowPower] = useState(() => {
+    if (typeof window === 'undefined') return false;
+    return window.innerWidth < 768;
+  });
   
   useEffect(() => {
-    if (typeof window !== 'undefined' && window.innerWidth < 768) {
-      setIsLowPower(true);
-    }
+    if (typeof window === 'undefined') return;
+    const handleResize = () => {
+        setIsLowPower(window.innerWidth < 768);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   const isDarkMode = useDarkMode();
   const effectiveLite = lite || isLowPower; 
 
-  const generateDisplacementMap = () => {
+  const generateDisplacementMap = useCallback(() => {
     if (effectiveLite) return '';
     
     const rect = containerRef.current?.getBoundingClientRect();
@@ -111,7 +120,7 @@ const GlassSurface: React.FC<GlassSurfaceProps> = ({
       </svg>
     `;
     return `data:image/svg+xml,${encodeURIComponent(svgContent)}`;
-  };
+  }, [effectiveLite, borderWidth, redGradId, blueGradId, borderRadius, mixBlendMode, brightness, opacity, blur]);
 
   useEffect(() => {
     if (effectiveLite || !containerRef.current) return;
@@ -135,7 +144,7 @@ const GlassSurface: React.FC<GlassSurfaceProps> = ({
       resizeObserver.disconnect();
       clearTimeout(timeoutId);
     };
-  }, [effectiveLite, width, height, borderRadius, borderWidth, brightness, opacity, blur, mixBlendMode]);
+  }, [effectiveLite, generateDisplacementMap]);
 
   const getContainerStyles = useMemo((): React.CSSProperties => {
     const baseStyles: React.CSSProperties = {

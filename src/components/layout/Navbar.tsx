@@ -1,6 +1,6 @@
 import { Globe } from "lucide-react";
 import GlassSurface from "../ui/GlassSurface";
-import { useLanguage } from "../../context/LanguageContext";
+import { useLanguage } from "../../hooks/useLanguage";
 import { content } from "../../data/content";
 
 interface NavbarProps {
