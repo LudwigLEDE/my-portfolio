@@ -280,7 +280,7 @@ const CVSection: React.FC = () => {
                 </div>
 
                 <div className="flex flex-col items-end gap-2">
-                  <div className="px-3 py-1 rounded-full border border-emerald-500/30 bg-emerald-500/5 flex items-center gap-2 shadow-[0_0_10px_rgba(16,185,129,0.1)]">
+                  <div className="px-3 py-1 rounded-full border border-emerald-100 dark:border-emerald-500/30 bg-emerald-50 dark:bg-emerald-500/5 flex items-center gap-2 shadow-[0_0_10px_rgba(16,185,129,0.05)] dark:shadow-[0_0_10px_rgba(16,185,129,0.1)]">
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 dark:bg-emerald-400 animate-pulse"></span>
                     <span className="text-[10px] font-bold text-emerald-600 dark:text-emerald-400 tracking-wider uppercase">
                       Online

@@ -18,9 +18,9 @@ export default function HeroSection({ scrollToSection }: HeroSectionProps) {
         <div>
           {/* Status Badge */}
           <div className="flex justify-center md:justify-start">
-            <div className="inline-flex items-center gap-2 border border-emerald-500/30 rounded-full bg-emerald-500/10 backdrop-blur-sm shadow-[0_0_15px_rgba(16,185,129,0.2)] p-1">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse ml-2"></span>
-              <span className="text-emerald-400 font-mono text-[10px] tracking-[0.2em] uppercase mr-2">
+            <div className="inline-flex items-center gap-2 border border-emerald-100 dark:border-emerald-500/30 rounded-full bg-emerald-50 dark:bg-emerald-500/10 backdrop-blur-sm shadow-[0_0_15px_rgba(16,185,129,0.1)] dark:shadow-[0_0_15px_rgba(16,185,129,0.2)] p-1">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 dark:bg-emerald-400 animate-pulse ml-2"></span>
+              <span className="text-emerald-600 dark:text-emerald-400 font-mono text-[10px] tracking-[0.2em] uppercase mr-2">
                 {t.status}
               </span>
             </div>
