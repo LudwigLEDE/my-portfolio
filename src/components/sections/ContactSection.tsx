@@ -17,7 +17,7 @@ export default function ContactSection() {
       <div className="max-w-4xl mx-auto w-full relative z-10">
         <SpaceItem>
             
-            <SpotlightCard className="rounded-3xl p-8 md:p-12 border-slate-200 dark:border-white/10 text-center" spotlightColor="rgba(16, 185, 129, 0.15)">
+            <SpotlightCard className="rounded-lg p-8 md:p-12 border-slate-200 dark:border-white/10 text-center" spotlightColor="rgba(16, 185, 129, 0.15)">
                 
                 {/* Status Header */}
                 <div className="flex justify-center mb-8">

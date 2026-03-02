@@ -146,7 +146,7 @@ export default function ProjectPage() {
                 
                 {/* Left: Media & Narrative */}
                 <div className="space-y-12">
-                    <SpotlightCard className="rounded-[2.5rem] aspect-video overflow-hidden border-slate-200 dark:border-white/10 shadow-2xl">
+                    <SpotlightCard className="rounded-lg aspect-video overflow-hidden border-slate-200 dark:border-white/10 shadow-2xl">
                          {project.image ? (
                             <img 
                                 src={project.image} 
@@ -180,7 +180,7 @@ export default function ProjectPage() {
                 {/* Right: Technical Sidebar */}
                 <div className="space-y-8 lg:sticky lg:top-32">
                     {/* Tech Stack Card */}
-                    <SpotlightCard className="rounded-3xl p-8 border-slate-200 dark:border-white/10" spotlightColor="rgba(59, 130, 246, 0.1)">
+                    <SpotlightCard className="rounded-lg p-8 border-slate-200 dark:border-white/10" spotlightColor="rgba(59, 130, 246, 0.1)">
                         <h3 className="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-widest mb-8 flex items-center gap-2 border-b border-slate-100 dark:border-white/5 pb-4">
                             <Shield className="w-4 h-4 text-blue-500" /> {t.stack}
                         </h3>

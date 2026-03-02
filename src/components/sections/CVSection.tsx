@@ -30,8 +30,10 @@ import {
   SiAdobeaftereffects,
 } from "react-icons/si";
 import { useLanguage } from "../../hooks/useLanguage";
+import { useTheme } from "../../hooks/useTheme";
 import { content, historyEn, historyDe } from "../../data/content";
 import SpotlightCard from "../ui/SpotlightCard";
+import ProfileCard from "../ui/ProfileCard";
 
 // --- Data ---
 const skills = [
@@ -90,7 +92,7 @@ const HistoryItem = ({
       onMouseLeave={() => setIsHovered(false)}
     >
       {/* Desktop Layout */}
-      <div className="hidden md:grid md:grid-cols-[140px_auto] gap-8 relative group">
+      <div className="hidden md:grid md:grid-cols-[140px_auto] gap-8 relative group text-left">
         {/* Date Column with Tech Styling */}
         <div className="text-right pt-6 relative">
           <div className="inline-block relative">
@@ -126,7 +128,7 @@ const HistoryItem = ({
         {/* Content Card */}
         <div className="pb-8">
           <SpotlightCard
-            className="rounded-2xl p-6 border-slate-200 dark:border-white/5"
+            className="rounded-lg p-6 border-slate-200 dark:border-white/5"
             spotlightColor={themeColors.glow}
           >
             <div className="flex justify-between items-start mb-4">
@@ -217,7 +219,7 @@ const HistoryItem = ({
       </div>
 
       {/* Mobile Layout (simplified but keeps spotlight) */}
-      <div className="md:hidden relative pb-6 border-l border-slate-200 dark:border-white/10 ml-2 pl-6">
+      <div className="md:hidden relative pb-6 border-l border-slate-200 dark:border-white/10 ml-2 pl-6 text-left">
         <div
           className={`absolute -left-[5px] top-0 w-2.5 h-2.5 rounded-full border border-white dark:border-black ${
             isWork ? "bg-blue-500" : "bg-emerald-500"
@@ -227,7 +229,7 @@ const HistoryItem = ({
         <span className="text-xs font-mono text-blue-600 dark:text-blue-400 mb-2 block tracking-widest">
           {item.period}
         </span>
-        <SpotlightCard className="rounded-xl p-5 border-slate-200 dark:border-white/5" spotlightColor={themeColors.glow}>
+        <SpotlightCard className="rounded-lg p-5 border-slate-200 dark:border-white/5" spotlightColor={themeColors.glow}>
           <h3 className="text-lg font-bold text-slate-900 dark:text-white">{item.role}</h3>
           <p className={`text-sm ${themeColors.text} mb-3`}>{item.company}</p>
           <p className="text-slate-600 dark:text-slate-400 text-sm mb-4">{item.description}</p>
@@ -249,6 +251,7 @@ const HistoryItem = ({
 
 const CVSection: React.FC = () => {
   const { language } = useLanguage();
+  const { theme } = useTheme();
   const t = content[language].cv;
   const history = language === "en" ? historyEn : historyDe;
 
@@ -258,38 +261,37 @@ const CVSection: React.FC = () => {
         <div className="grid lg:grid-cols-[400px_1fr] gap-12 lg:gap-16 items-start">
           {/* --- Left Column: HUD Profile --- */}
           <div className="lg:sticky lg:top-24 space-y-8">
-            {/* Profile Scanner Card */}
             <SpotlightCard
-              className="rounded-3xl p-8 backdrop-blur-xl border-slate-200 dark:border-white/10 shadow-2xl shadow-slate-200/50 dark:shadow-none"
+              className="rounded-lg p-8 backdrop-blur-xl border-slate-200 dark:border-white/10"
               spotlightColor="rgba(59, 130, 246, 0.1)"
             >
               {/* Header with Status */}
               <div className="flex items-start justify-between mb-8 relative z-10">
                 <div className="relative group/profile cursor-pointer">
-                  {/* Rotating Rings */}
-                  <div className="absolute inset-0 rounded-full border border-blue-500/30 border-dashed animate-[spin_10s_linear_infinite]"></div>
-                  <div className="absolute -inset-1 rounded-full border border-slate-200 dark:border-white/10 animate-[spin_15s_linear_infinite_reverse]"></div>
+                    {/* Rotating Rings */}
+                    <div className="absolute inset-0 rounded-full border border-blue-500/30 border-dashed animate-[spin_10s_linear_infinite]"></div>
+                    <div className="absolute -inset-1 rounded-full border border-slate-200 dark:border-white/10 animate-[spin_15s_linear_infinite_reverse]"></div>
 
-                  <div className="w-24 h-24 rounded-full overflow-hidden border-2 border-slate-100 dark:border-black relative z-10">
-                    <img
-                      src="/img/profile.png"
-                      alt="Profile"
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
+                    <div className="w-24 h-24 rounded-full overflow-hidden border-2 border-slate-100 dark:border-black relative z-10">
+                        <img
+                        src="/img/profile.png"
+                        alt="Profile"
+                        className="w-full h-full object-cover"
+                        />
+                    </div>
                 </div>
 
                 <div className="flex flex-col items-end gap-2">
-                  <div className="px-3 py-1 rounded-full border border-emerald-100 dark:border-emerald-500/30 bg-emerald-50 dark:bg-emerald-500/5 flex items-center gap-2 shadow-[0_0_10px_rgba(16,185,129,0.05)] dark:shadow-[0_0_10px_rgba(16,185,129,0.1)]">
+                  <div className="px-3 py-1 rounded-full border border-emerald-100 dark:border-emerald-500/30 bg-white/80 dark:bg-emerald-500/10 backdrop-blur-md flex items-center gap-2 shadow-xl shadow-emerald-500/10">
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 dark:bg-emerald-400 animate-pulse"></span>
                     <span className="text-[10px] font-bold text-emerald-600 dark:text-emerald-400 tracking-wider uppercase">
-                      Online
+                      {language === 'en' ? 'Active' : 'Aktiv'}
                     </span>
                   </div>
                 </div>
               </div>
 
-              <div className="relative z-10">
+              <div className="relative z-10 text-left">
                 <h2 className="text-4xl font-black text-slate-900 dark:text-white mb-2 tracking-tight">
                   {t.title}
                 </h2>
@@ -319,11 +321,14 @@ const CVSection: React.FC = () => {
                   </div>
                 </div>
 
-                <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-8 font-light">
-                  {t.about}
+                <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-8 font-light italic">
+                  "{t.about}"
                 </p>
 
-                <button className="w-full group relative overflow-hidden rounded-xl bg-slate-900 dark:bg-white text-white dark:text-black font-bold py-3.5 transition-all hover:scale-[1.02] active:scale-[0.98]">
+                <button 
+                    onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                    className="w-full group relative overflow-hidden rounded-lg bg-slate-900 dark:bg-white text-white dark:text-black font-bold py-3.5 transition-all hover:scale-[1.02] active:scale-[0.98]"
+                >
                   <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-emerald-400 opacity-0 group-hover:opacity-10 transition-opacity"></div>
                   <span className="relative z-10 flex items-center justify-center gap-2 text-sm uppercase tracking-wider">
                     {t.downloadResume} <Download className="w-4 h-4" />
@@ -334,11 +339,11 @@ const CVSection: React.FC = () => {
 
             {/* Skills Matrix */}
             <SpotlightCard
-              className="rounded-3xl p-6 border-slate-200 dark:border-white/10 shadow-xl shadow-slate-200/40 dark:shadow-none"
+              className="rounded-lg p-6 border-slate-200 dark:border-white/10 shadow-xl shadow-slate-200/40 dark:shadow-none"
               spotlightColor="rgba(59, 130, 246, 0.05)"
             >
               <div className="flex items-center justify-between mb-6">
-                <div className="space-y-1">
+                <div className="space-y-1 text-left">
                   <h3 className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest flex items-center gap-2">
                     <span className="w-2 h-2 bg-blue-500 rounded-sm"></span>
                     {t.techStackTitle}
@@ -350,25 +355,24 @@ const CVSection: React.FC = () => {
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-2">
+              <div className="grid grid-cols-2 gap-3">
                 {skills.map((skill, i) => (
                   <div
                     key={i}
-                    className="group/skill p-1.5 rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/5 hover:border-blue-500/30 transition-all duration-300 relative overflow-hidden flex flex-col items-center justify-center min-h-[44px] cursor-default"
+                    className="group/skill p-2.5 rounded-md bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 hover:border-blue-500/50 transition-all duration-300 relative overflow-hidden flex items-center gap-3 min-h-[52px] cursor-default shadow-sm"
                   >
                     {/* Default View: Icon + Name */}
-                    <div className="flex items-center gap-2 group-hover/skill:opacity-0 group-hover/skill:scale-75 transition-all duration-300 px-1">
-                        <skill.icon className={`w-3.5 h-3.5 ${skill.color} shrink-0`} />
-                        <span className="text-[8px] font-bold text-slate-600 dark:text-slate-400 uppercase tracking-widest leading-tight">{skill.name}</span>
+                    <div className="flex items-center gap-2.5 group-hover/skill:opacity-0 transition-all duration-300">
+                        <skill.icon className={`w-5 h-5 ${skill.color} shrink-0`} />
+                        <span className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest leading-none">{skill.name}</span>
                     </div>
                     
-                    {/* Hover Reveal: Holographic Time Badge */}
-                    <div className="absolute inset-0 flex flex-col items-center justify-center bg-white/90 dark:bg-slate-900/40 opacity-0 group-hover/skill:opacity-100 transition-all duration-300 backdrop-blur-[2px]">
+                    {/* Hover Reveal */}
+                    <div className="absolute inset-0 flex flex-col items-center justify-center bg-white/90 dark:bg-slate-900/40 opacity-0 group-hover/skill:opacity-100 transition-all duration-300 backdrop-blur-[2px] rounded-[inherit]">
                         <div className="flex flex-col items-center gap-0.5 px-2 w-full">
                             <span className="text-[10px] font-black font-mono text-blue-600 dark:text-white tracking-tighter drop-shadow-[0_0_8px_rgba(59,130,246,1)]">
                                 {t.skillDurations[skill.name] || "..."}
                             </span>
-                            {/* Segmented HUD Bar */}
                             <div className="flex gap-0.5 mt-0.5">
                                 {[...Array(6)].map((_, idx) => (
                                     <div 
@@ -380,7 +384,7 @@ const CVSection: React.FC = () => {
                         </div>
                     </div>
 
-                    {/* Scanline Background Effect */}
+                    {/* Scanline */}
                     <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-500/5 to-transparent -translate-y-full group-hover/skill:translate-y-full transition-transform duration-1000 ease-in-out pointer-events-none" />
                   </div>
                 ))}
@@ -390,12 +394,12 @@ const CVSection: React.FC = () => {
 
           {/* --- Right Column: Timeline Stream --- */}
           <div className="pt-4">
-            <div className="flex items-center gap-4 mb-16">
+            <div className="flex items-center gap-4 mb-16 text-left">
               <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-500/20 to-purple-500/20 border border-slate-200 dark:border-white/10 flex items-center justify-center shadow-[0_0_30px_rgba(59,130,246,0.2)]">
                 <Calendar className="w-6 h-6 text-blue-600 dark:text-blue-400" />
               </div>
               <div>
-                <h3 className="text-3xl font-black text-slate-900 dark:text-white tracking-tight uppercase">
+                <h3 className="text-3xl font-black text-slate-900 dark:text-white tracking-tight uppercase leading-none">
                   {t.journeyTitle}
                 </h3>
                 <p className="text-slate-500 dark:text-slate-400 font-mono text-sm tracking-widest mt-2 flex items-center gap-2">

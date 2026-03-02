@@ -17,6 +17,13 @@
   --font-size-display-2xl: 6rem;
   --font-size-display-xl: 4rem;
   --font-size-display-lg: 3rem;
+
+  /* Border Radius System */
+  --radius-xs: 0.5rem;    /* 8px - Buttons, Inputs */
+  --radius-sm: 0.75rem;   /* 12px - Small Tags, Pills */
+  --radius-md: 1rem;      /* 16px - Standard Cards */
+  --radius-lg: 1.5rem;    /* 24px - Large Section Cards */
+  --radius-xl: 2.5rem;    /* 40px - Feature Headers, Hero Elements */
 }
 
 /* View Transition Styles */

@@ -232,7 +232,7 @@ export const historyEn: WorkExperience[] = [
     ],
     achievements: [
       "Learning how to contribute to a production codebase and collaborate in an agile team",
-      "Assisting the company in different areas, like hardware support and testing and creating documentation for companzy processes",
+      "Assisting the company in different areas, like hardware support and testing and creating documentation for company processes",
     ],
   },
   {

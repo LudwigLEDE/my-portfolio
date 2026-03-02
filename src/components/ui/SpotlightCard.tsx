@@ -39,8 +39,8 @@ export default function SpotlightCard({
   
   // Professional Default Colors
   const defaultSpotlight = isLight 
-    ? "rgba(59, 130, 246, 0.12)" // Soft blue for light mode
-    : "rgba(59, 130, 246, 0.15)"; // Classic tech blue for dark mode
+    ? "rgba(59, 130, 246, 0.12)" 
+    : "rgba(59, 130, 246, 0.15)";
 
   const defaultBorder = isLight
     ? "border-slate-200/60" 
@@ -52,7 +52,7 @@ export default function SpotlightCard({
       className={`
         group relative overflow-hidden transition-all duration-300
         /* Base Shape & Border */
-        rounded-2xl border ${borderColor || defaultBorder}
+        rounded-lg border ${borderColor || defaultBorder}
         
         /* Light Mode: Professional Glass */
         ${isLight && glassy ? 'bg-white/40 backdrop-blur-xl shadow-xl shadow-slate-200/50' : ''}
