@@ -49,14 +49,14 @@ export default function HeroSection({ scrollToSection }: HeroSectionProps) {
                 I'm a 22-year-old <span className="text-slate-900 dark:text-white font-semibold relative inline-block">
                   Full Stack Developer
                   <span className="absolute bottom-1 left-0 w-full h-2 bg-blue-500/10 dark:bg-blue-500/20 -z-10 -rotate-1"></span>
-                </span> based in Berlin. I build fast, interactive things for the web and love turning complex problems into simple code.
+                </span> from Berlin. I like building things for the web — ideally fast, well-made ones that don't break the moment someone actually uses them.
               </>
             ) : (
               <>
                 Ich bin ein 22-jähriger <span className="text-slate-900 dark:text-white font-semibold relative inline-block">
                   Full Stack Entwickler
                   <span className="absolute bottom-1 left-0 w-full h-2 bg-blue-500/10 dark:bg-blue-500/20 -z-10 -rotate-1"></span>
-                </span> aus Berlin. Ich baue schnelle, interaktive Webseiten und liebe es, komplexe Probleme in einfachen Code zu verwandeln.
+                </span> aus Berlin. Ich baue gerne Dinge fürs Web — am liebsten schnelle, sorgfältig gemachte, die nicht sofort kaputtgehen, wenn jemand sie benutzt.
               </>
             )}
           </h2>

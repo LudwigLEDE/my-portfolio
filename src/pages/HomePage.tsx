@@ -5,6 +5,7 @@ import CVSection from "../components/sections/CVSection";
 import ProjectsSection from "../components/sections/ProjectsSection";
 import ContactSection from "../components/sections/ContactSection";
 import Footer from "../components/layout/Footer";
+import ErrorBoundary from "../components/ui/ErrorBoundary";
 
 export default function HomePage() {
   const scrollToSection = (id: string) => {
@@ -18,7 +19,9 @@ export default function HomePage() {
     <div className="min-h-screen font-sans relative overflow-x-hidden transition-colors duration-500 bg-transparent text-slate-900 dark:text-white selection:bg-blue-500 selection:text-white">
       
       {/* 1. Global 3D Background */}
-      <WarpBackground />
+      <ErrorBoundary>
+        <WarpBackground />
+      </ErrorBoundary>
 
       {/* 2. Glass Navigation Bar */}
       <Navbar scrollToSection={scrollToSection} />

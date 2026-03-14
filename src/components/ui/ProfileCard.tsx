@@ -52,6 +52,10 @@ interface ProfileCardProps {
   onContactClick?: () => void;
 }
 
+const prefersReducedMotion = typeof window !== 'undefined'
+  ? window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  : false;
+
 const ProfileCardComponent: React.FC<ProfileCardProps> = ({
   avatarUrl = '/img/profile.png',
   iconUrl = '',
@@ -61,7 +65,7 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
   behindGlowColor,
   behindGlowSize,
   className = '',
-  enableTilt = true,
+  enableTilt = !prefersReducedMotion,
   enableMobileTilt = false,
   mobileTiltSensitivity = 5,
   miniAvatarUrl,

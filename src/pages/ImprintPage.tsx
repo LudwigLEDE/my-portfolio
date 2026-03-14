@@ -3,6 +3,7 @@ import { ArrowLeft } from 'lucide-react';
 import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
 import WarpBackground from '../components/visuals/WarpBackground';
+import ErrorBoundary from '../components/ui/ErrorBoundary';
 import { useLanguage } from '../hooks/useLanguage';
 
 export default function ImprintPage() {
@@ -19,7 +20,9 @@ export default function ImprintPage() {
 
   return (
     <div className="min-h-screen font-sans relative overflow-x-hidden transition-colors duration-500 bg-white dark:bg-black text-slate-900 dark:text-white selection:bg-blue-500 selection:text-white">
-      <WarpBackground />
+      <ErrorBoundary>
+        <WarpBackground />
+      </ErrorBoundary>
       <Navbar scrollToSection={scrollToSection} />
 
       <main className="pt-32 pb-20 px-6 relative z-10 max-w-4xl mx-auto">
@@ -37,22 +40,19 @@ export default function ImprintPage() {
               <h2 className="text-slate-800 dark:text-slate-200">Angaben gemäß § 5 TMG</h2>
               <p>
                 Ludwig Engelhardt<br />
-                Musterstraße 1<br />
-                12345 Berlin<br />
+                Berlin<br />
                 Deutschland
               </p>
 
               <h2 className="text-slate-800 dark:text-slate-200">Kontakt</h2>
               <p>
-                E-Mail: ludwig.engelhardt@protonmail.com<br />
-                Telefon: +49 (0) 123 456789
+                E-Mail: ludwig.engelhardt@protonmail.com
               </p>
 
               <h2 className="text-slate-800 dark:text-slate-200">Redaktionell verantwortlich</h2>
               <p>
                 Ludwig Engelhardt<br />
-                Musterstraße 1<br />
-                12345 Berlin
+                Berlin
               </p>
 
               <h2 className="text-slate-800 dark:text-slate-200">EU-Streitschlichtung</h2>
@@ -73,22 +73,19 @@ export default function ImprintPage() {
               <h2 className="text-slate-800 dark:text-slate-200">Information according to § 5 TMG</h2>
               <p>
                 Ludwig Engelhardt<br />
-                Musterstraße 1<br />
-                12345 Berlin<br />
+                Berlin<br />
                 Germany
               </p>
 
               <h2 className="text-slate-800 dark:text-slate-200">Contact</h2>
               <p>
-                Email: ludwig.engelhardt@protonmail.com<br />
-                Phone: +49 (0) 123 456789
+                Email: ludwig.engelhardt@protonmail.com
               </p>
 
               <h2 className="text-slate-800 dark:text-slate-200">Person responsible for editorial</h2>
               <p>
                 Ludwig Engelhardt<br />
-                Musterstraße 1<br />
-                12345 Berlin
+                Berlin
               </p>
 
               <h2 className="text-slate-800 dark:text-slate-200">EU Dispute Resolution</h2>
