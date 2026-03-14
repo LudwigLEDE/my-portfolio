@@ -30,10 +30,8 @@ import {
   SiAdobeaftereffects,
 } from "react-icons/si";
 import { useLanguage } from "../../hooks/useLanguage";
-import { useTheme } from "../../hooks/useTheme";
 import { content, historyEn, historyDe } from "../../data/content";
 import SpotlightCard from "../ui/SpotlightCard";
-import ProfileCard from "../ui/ProfileCard";
 
 // --- Data ---
 const skills = [
@@ -251,7 +249,6 @@ const HistoryItem = ({
 
 const CVSection: React.FC = () => {
   const { language } = useLanguage();
-  const { theme } = useTheme();
   const t = content[language].cv;
   const history = language === "en" ? historyEn : historyDe;
 

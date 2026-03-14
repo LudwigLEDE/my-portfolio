@@ -52,6 +52,7 @@ export default function HeroSection({ scrollToSection }: HeroSectionProps) {
                   <span className="absolute bottom-1 left-0 w-full h-2 bg-blue-500/10 dark:bg-blue-500/20 -z-10 -rotate-1"></span>
                 </span>
                 {' '}who gets a bit too excited about things loading fast and buttons feeling just right. I build the whole thing — front to back. This site alone has had six redesigns and I'm still not sure it's ready.
+                </span> from Berlin. I like building things for the web — ideally fast, well-made ones that don't break the moment someone actually uses them.
               </>
             ) : (
               <>
@@ -61,6 +62,7 @@ export default function HeroSection({ scrollToSection }: HeroSectionProps) {
                   <span className="absolute bottom-1 left-0 w-full h-2 bg-blue-500/10 dark:bg-blue-500/20 -z-10 -rotate-1"></span>
                 </span>
                 {' '}der etwas zu aufgeregt wird, wenn Sachen schnell laden und Buttons sich richtig anfühlen. Ich baue alles — von vorne bis hinten. Diese Seite hat übrigens schon sechs Redesigns hinter sich und ich bin immer noch nicht sicher, ob sie fertig ist.
+                </span> aus Berlin. Ich baue gerne Dinge fürs Web — am liebsten schnelle, sorgfältig gemachte, die nicht sofort kaputtgehen, wenn jemand sie benutzt.
               </>
             )}
           </h2>

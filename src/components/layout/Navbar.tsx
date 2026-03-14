@@ -17,7 +17,7 @@ export default function Navbar({ scrollToSection }: NavbarProps) {
     <nav className="fixed top-6 left-0 w-full z-50 flex justify-center pointer-events-none px-4">
       {/* Theme Toggle - Absolute Left */}
       <div className="absolute left-6 top-2 pointer-events-auto z-20 hidden md:block">
-        <div onClick={(e) => toggleTheme(e)} className="cursor-pointer transition-transform hover:scale-105 active:scale-95">
+        <button onClick={(e) => toggleTheme(e as any)} aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'} className="cursor-pointer transition-transform hover:scale-105 active:scale-95 bg-transparent border-0 p-0">
             <GlassSurface
                 width="40px"
                 height="40px"
@@ -29,7 +29,7 @@ export default function Navbar({ scrollToSection }: NavbarProps) {
             >
                 {theme === 'dark' ? <Sun className="w-4 h-4 text-yellow-400" /> : <Moon className="w-4 h-4 text-slate-600" />}
             </GlassSurface>
-        </div>
+        </button>
       </div>
 
       {/* Centered Navigation */}
@@ -54,7 +54,7 @@ export default function Navbar({ scrollToSection }: NavbarProps) {
 
       {/* Language Switcher - Absolute Right */}
       <div className="absolute right-6 top-2 pointer-events-auto z-20 hidden md:block">
-        <div onClick={toggleLanguage} className="cursor-pointer transition-transform hover:scale-105 active:scale-95">
+        <button onClick={toggleLanguage} aria-label={`Switch to ${language === 'en' ? 'German' : 'English'}`} className="cursor-pointer transition-transform hover:scale-105 active:scale-95 bg-transparent border-0 p-0">
             <GlassSurface
                 width="100px"
                 height="40px"
@@ -73,12 +73,12 @@ export default function Navbar({ scrollToSection }: NavbarProps) {
                     </div>
                 </div>
             </GlassSurface>
-        </div>
+        </button>
       </div>
-      
+
       {/* Mobile Controls (Language + Theme) */}
       <div className="absolute right-4 top-2 pointer-events-auto z-20 md:hidden flex gap-2">
-        <div onClick={(e) => toggleTheme(e)} className="cursor-pointer transition-transform active:scale-95">
+        <button onClick={(e) => toggleTheme(e as any)} aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'} className="cursor-pointer transition-transform active:scale-95 bg-transparent border-0 p-0">
              <GlassSurface
                 width="40px"
                 height="40px"
@@ -90,8 +90,8 @@ export default function Navbar({ scrollToSection }: NavbarProps) {
             >
                  {theme === 'dark' ? <Sun className="w-4 h-4 text-yellow-400" /> : <Moon className="w-4 h-4 text-slate-600" />}
             </GlassSurface>
-        </div>
-        <div onClick={toggleLanguage} className="cursor-pointer transition-transform active:scale-95">
+        </button>
+        <button onClick={toggleLanguage} aria-label={`Switch to ${language === 'en' ? 'German' : 'English'}`} className="cursor-pointer transition-transform active:scale-95 bg-transparent border-0 p-0">
              <GlassSurface
                 width="40px"
                 height="40px"
@@ -103,7 +103,7 @@ export default function Navbar({ scrollToSection }: NavbarProps) {
             >
                  <span className="text-[10px] font-bold text-white">{language.toUpperCase()}</span>
             </GlassSurface>
-        </div>
+        </button>
       </div>
 
     </nav>

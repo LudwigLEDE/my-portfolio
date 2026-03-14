@@ -1,4 +1,4 @@
-import type { Content, Project, WorkExperience } from "../types";
+simport type { Content, Project, WorkExperience } from "../types";
 
 export const content: Record<"en" | "de", Content> = {
   en: {
@@ -24,6 +24,7 @@ export const content: Record<"en" | "de", Content> = {
       status: "Open for Opportunities",
       about:
         "I've been coding since school and somewhere along the way I got genuinely hooked. I like building the whole thing — what you see and what's running behind it. Caring about both turns out to be pretty rare, and pretty useful.",
+        "Developer based in Berlin who likes the full picture — from API design to the last UI detail. I care about writing clean, maintainable code and building things that actually work well. Always working on something new.",
       journeyTitle: "The Journey",
       techStackTitle: "Tech Stack",
       technologiesTitle: "Technologies",
@@ -59,7 +60,10 @@ export const content: Record<"en" | "de", Content> = {
       title: "Get in Touch",
       subtitle:
         "Got something you're building? Big project, quick question, or just want to say hi — drop me a message, I actually reply.",
+        "Got a project in mind, an idea you want to explore, or just want to say hi? I'm always up for a good conversation.",
       cta: "Send Message",
+      email: "ludwig.engelhardt@protonmail.com",
+      statusLabel: "Status: Open to work",
     },
     footer: {
       text: "DESIGNED BY LUDWIG ENGELHARDT",
@@ -90,6 +94,7 @@ export const content: Record<"en" | "de", Content> = {
       status: "Offen für Angebote",
       about:
         "Ich programmiere seit der Schule und irgendwann hat es mich wirklich gepackt. Ich baue gerne das Ganze — was man sieht und was dahintersteckt. Beides gleichzeitig gut hinzukriegen ist selten, und ziemlich praktisch.",
+        "Entwickler aus Berlin, der gerne das große Ganze im Blick hat — von der API-Architektur bis zum letzten UI-Detail. Mir liegt sauberer, wartbarer Code am Herzen, und ich baue Dinge, die wirklich funktionieren. Immer am nächsten Projekt.",
       journeyTitle: "Der Werdegang",
       techStackTitle: "Tech Stack",
       technologiesTitle: "Technologien",
@@ -125,7 +130,10 @@ export const content: Record<"en" | "de", Content> = {
       title: "Kontakt aufnehmen",
       subtitle:
         "Du baust gerade was? Großes Projekt, schnelle Frage oder einfach Hallo — schreib mir, ich antworte wirklich.",
+        "Hast du ein Projekt im Kopf, eine Idee, die du umsetzen möchtest, oder willst einfach Hallo sagen? Ich bin immer für ein gutes Gespräch zu haben.",
       cta: "Nachricht Senden",
+      email: "ludwig.engelhardt@protonmail.com",
+      statusLabel: "Status: Offen für Arbeit",
     },
     footer: {
       text: "DESIGNED BY LUDWIG ENGELHARDT",
@@ -140,20 +148,19 @@ export const projects: Project[] = [
     id: "assist-me",
     title: "Assist Me Devtool",
     description: {
-      en: "Internal dashboard for managing IoT-enabled care facilities. I developed features for real-time monitoring of patient equipment and battery status, integrating with a custom REST API to streamline facility maintenance.",
-      de: "Internes Dashboard zur Verwaltung von IoT-gestützten Pflegeeinrichtungen. Ich habe Funktionen zur Echtzeit-Überwachung von Patientengeräten und Batterieständen entwickelt und eine REST-API integriert, um die Wartung der Einrichtungen zu optimieren.",
+      en: "An internal dashboard I built during my time at AssistMe — monitors IoT devices across care facilities in real time, tracking equipment status and battery levels via a custom REST API.",
+      de: "Ein internes Dashboard, das ich bei AssistMe entwickelt habe — überwacht IoT-Geräte in Pflegeeinrichtungen in Echtzeit und verfolgt Gerätestatus sowie Akkustände über eine eigene REST-API.",
     },
     tags: ["React", "TypeScript", "Tailwind", "REST API"],
     categories: ["frontend", "mobile"],
-    githubUrl: "",
     liveUrl: "https://www.assistme.io/en/assistme-en/",
   },
   {
     id: "nebula-dash",
     title: "Nebula Dash",
     description: {
-      en: "Real-time telemetry for orbital stations. Processes 10k+ data points utilizing WebWorkers and localized state management.",
-      de: "Echtzeit-Telemetrie für Orbitalstationen. Verarbeitet über 10.000 Datenpunkte mithilfe von WebWorkern und lokalisiertem Zustandsmanagement.",
+      en: "Real-time telemetry dashboard for orbital stations. Handles 10k+ live data points using WebWorkers and local state for smooth, lag-free rendering.",
+      de: "Echtzeit-Telemetrie-Dashboard für Orbitalstationen. Verarbeitet 10.000+ Live-Datenpunkte mit WebWorkern und lokalem State für flüssiges, ruckelfreies Rendering.",
     },
     tags: ["React 19", "WebGL", "Tailwind"],
     categories: ["frontend"],
@@ -162,8 +169,8 @@ export const projects: Project[] = [
     id: "dark-matter",
     title: "Dark Matter",
     description: {
-      en: "A headless design system for deep space comms. Fully accessible and optimized for high-latency inter-planetary connections.",
-      de: "Ein Headless-Design-System für die Tiefraumkommunikation. Vollständig barrierefrei und optimiert für interplanetare Verbindungen mit hoher Latenz.",
+      en: "A headless component library built for deep space communications — fully accessible, with performance tuned for high-latency environments.",
+      de: "Eine Headless-Komponentenbibliothek für Tiefraumkommunikation — vollständig barrierefrei, mit auf Hochlatenz-Umgebungen ausgelegter Performance.",
     },
     tags: ["Java", "Spring Boot"],
     categories: ["backend"],
@@ -172,8 +179,8 @@ export const projects: Project[] = [
     id: "exo-market",
     title: "Exo-Market",
     description: {
-      en: "Scalable marketplace infrastructure. Features secure transactions and automated inventory management.",
-      de: "Skalierbare Marktplatz-Infrastruktur. Bietet sichere Transaktionen und automatisierte Bestandsverwaltung.",
+      en: "A full-stack marketplace platform with secure payment flows and automated inventory management built in.",
+      de: "Eine Full-Stack-Marktplatzplattform mit sicheren Zahlungsabläufen und eingebautem automatisiertem Inventurmanagement.",
     },
     tags: ["Python", "React Native"],
     categories: ["fullstack"],
@@ -188,7 +195,7 @@ export const historyEn: WorkExperience[] = [
     period: "Nov 2025 – Present",
     tags: ["Full-time", "System Support"],
     description:
-      "Supporting daily IT operations and maintaining hardware connectivity for the unit.",
+      "Keeping IT systems running for a military unit — network infrastructure, hardware troubleshooting, and making sure critical communication systems stay online.",
     technologies: [
       "Windows Server",
       "Linux",
@@ -196,8 +203,8 @@ export const historyEn: WorkExperience[] = [
       "Hardware Troubleshooting",
     ],
     achievements: [
-      "Ensuring high availability of critical communication systems",
-      "Rapid response to hardware failures",
+      "Maintaining uptime for critical communication infrastructure",
+      "On-call for hardware failures and network issues",
     ],
   },
   {
@@ -207,11 +214,11 @@ export const historyEn: WorkExperience[] = [
     period: "Sep 2024 – Feb 2025",
     tags: ["Part-time"],
     description:
-      "Contributed to software development, gaining hands-on experience in a professional environment.",
+      "Continued working with the AssistMe team part-time while finishing my training, shipping features and fixing bugs on the care documentation platform.",
     technologies: ["React", "TypeScript", "Node.js", "Git", "Jira", "Rest API"],
     achievements: [
-      "Collaborated on key features for the care documentation platform",
-      "Improved frontend component performance",
+      "Built and shipped features for the care documentation platform",
+      "Optimized frontend components, cutting render times noticeably",
     ],
   },
   {
@@ -221,7 +228,7 @@ export const historyEn: WorkExperience[] = [
     period: "July 2024 – Sep 2024",
     tags: ["Internship"],
     description:
-      "Internship in line with my education, contributing to software development and gaining practical experience in a professional setting.",
+      "My first real taste of working in a product team — joined AssistMe as an intern and worked on their care platform alongside experienced developers.",
     technologies: [
       "React",
       "TypeScript",
@@ -231,8 +238,8 @@ export const historyEn: WorkExperience[] = [
       "Office 365",
     ],
     achievements: [
-      "Learning how to contribute to a production codebase and collaborate in an agile team",
-      "Assisting the company in different areas, like hardware support and testing and creating documentation for company processes",
+      "Got up to speed on contributing to a real production codebase in an agile team",
+      "Helped across the board — feature work, hardware support, testing, and writing process documentation",
     ],
   },
   {
@@ -242,7 +249,7 @@ export const historyEn: WorkExperience[] = [
     period: "Aug 2022 – July 2025",
     tags: ["Vocational Training", "State Certified"],
     description:
-      "State-certified program in Media Informatics and Interactive Animation. Specialized in bridging technical software engineering with creative design, covering application development, UI/UX design, and interactive media production.",
+      "A 3-year vocational training program covering both software development and creative design. Built applications from the ground up while also developing a strong eye for UI/UX and interactive media.",
     technologies: [
       "Java",
       "JavaScript",
@@ -253,9 +260,9 @@ export const historyEn: WorkExperience[] = [
       "Adobe Creative Suite",
     ],
     achievements: [
-      "Advanced training in Object-Oriented Programming and Software Design",
-      "Full Stack Web Development focusing on dynamic systems and databases",
-      "Implementation of interactive animations and game mechanics",
+      "Deep-dive into OOP, software architecture, and design patterns",
+      "Full stack web development — dynamic backends, databases, and polished frontends",
+      "Built interactive animations and game mechanics from scratch",
     ],
   },
   {
@@ -265,7 +272,7 @@ export const historyEn: WorkExperience[] = [
     period: "June 2020 – Jan 2022",
     tags: ["High School"],
     description:
-      "Berufliches Gymnasium specializing in Information Technology. Core studies included Software Engineering (Java/OOP), Database Systems (SQL), and Network Technology (Cisco Academy). Focused on integrating IT with medical data processing.",
+      "High school with a focus on IT, covering software engineering, databases, and networking. Got my first real exposure to programming through Java and SQL, with a specialization track in medical informatics.",
     technologies: [
       "Java",
       "SQL",
@@ -275,9 +282,9 @@ export const historyEn: WorkExperience[] = [
       "Linux",
     ],
     achievements: [
-      "Deep focus on Medical Informatics and Healthcare AI",
-      "Extensive training in object-oriented software design",
-      "Hands-on network infrastructure simulation and configuration",
+      "Specialization in medical informatics and healthcare data systems",
+      "Strong foundation in object-oriented software design",
+      "Built and configured simulated network infrastructures using Cisco tools",
     ],
   },
 ];
@@ -290,7 +297,7 @@ export const historyDe: WorkExperience[] = [
     period: "Nov 2025 – Aktuell",
     tags: ["Vollzeit", "System Support"],
     description:
-      "Unterstützung des täglichen IT-Betriebs und Sicherstellung der Hardware-Konnektivität der Einheit.",
+      "IT-Systeme für eine Bundeswehr-Einheit am Laufen halten — Netzwerkinfrastruktur, Hardware-Support und die Sicherstellung kritischer Kommunikationssysteme.",
     technologies: [
       "Windows Server",
       "Linux",
@@ -298,8 +305,8 @@ export const historyDe: WorkExperience[] = [
       "Hardware Support",
     ],
     achievements: [
-      "Sicherstellung der Hochverfügbarkeit kritischer Kommunikationssysteme",
-      "Schnelle Reaktion auf Hardwareausfälle",
+      "Verfügbarkeit kritischer Kommunikationssysteme aufrechterhalten",
+      "Schnelle Reaktion bei Hardware-Ausfällen und Netzwerkproblemen",
     ],
   },
   {
@@ -309,11 +316,11 @@ export const historyDe: WorkExperience[] = [
     period: "Sep 2024 – Feb 2025",
     tags: ["Teilzeit"],
     description:
-      "Mitwirkung an der Softwareentwicklung, praktische Erfahrung in einem professionellen Umfeld.",
+      "Parallel zur Ausbildung weiter bei AssistMe aktiv — Features entwickelt und Bugs gefixt auf der Pflegedokumentationsplattform.",
     technologies: ["React", "TypeScript", "Node.js", "Git", "Jira", "Rest API"],
     achievements: [
-      "Mitarbeit an Schlüsselfunktionen der Pflegedokumentationsplattform",
-      "Verbesserung der Frontend-Performance",
+      "Features für die Pflegedokumentationsplattform entwickelt und deployed",
+      "Frontend-Komponenten optimiert, Ladezeiten spürbar reduziert",
     ],
   },
   {
@@ -323,7 +330,7 @@ export const historyDe: WorkExperience[] = [
     period: "Juli 2024 – Sep 2024",
     tags: ["Praktikum"],
     description:
-      "Praktikum im Rahmen meiner Ausbildung, Mitwirkung an der Softwareentwicklung und praktische Erfahrung in einem professionellen Umfeld.",
+      "Mein erster echter Einblick in die Arbeit in einem Produktteam — als Praktikant bei AssistMe an der Pflegeplattform mitgearbeitet, zusammen mit erfahrenen Entwicklern.",
     technologies: [
       "React",
       "TypeScript",
@@ -333,8 +340,8 @@ export const historyDe: WorkExperience[] = [
       "Office 365",
     ],
     achievements: [
-      "Erlernen der Mitarbeit an einer Produktions-Codebase und Zusammenarbeit in einem agilen Team",
-      "Unterstützung des Unternehmens in verschiedenen Bereichen wie Hardware-Support, Testing und Erstellung von Prozessdokumentationen",
+      "Erste Erfahrungen mit echter Produktions-Codebase und agiler Zusammenarbeit gesammelt",
+      "Quer durch alle Bereiche geholfen — Feature-Arbeit, Hardware-Support, Testing und Prozessdoku",
     ],
   },
   {
@@ -344,7 +351,7 @@ export const historyDe: WorkExperience[] = [
     period: "Aug 2022 – Juli 2025",
     tags: ["Ausbildung", "Staatl. Gepr."],
     description:
-      "Staatlich geprüfte Ausbildung zum informationstechnischen Assistenten für Medieninformatik & Interaktive Animation. Fokus auf der Verzahnung von Software Engineering mit kreativem Design, Anwendungsentwicklung und UI/UX.",
+      "Dreijährige Ausbildung an der Schnittstelle von Softwareentwicklung und kreativem Design. Anwendungen von Grund auf entwickelt und dabei ein starkes Gespür für UI/UX und interaktive Medien aufgebaut.",
     technologies: [
       "Java",
       "JavaScript",
@@ -355,9 +362,9 @@ export const historyDe: WorkExperience[] = [
       "Adobe Creative Suite",
     ],
     achievements: [
-      "Vertiefte Ausbildung in objektorientierter Programmierung und Softwaredesign",
-      "Full-Stack-Webentwicklung mit Fokus auf dynamische Systeme und Datenbanken",
-      "Umsetzung interaktiver Animationen und Game-Mechaniken",
+      "Vertiefung in OOP, Softwarearchitektur und Designpatterns",
+      "Full-Stack-Webentwicklung — dynamische Backends, Datenbanken und saubere Frontends",
+      "Interaktive Animationen und Spielmechaniken von Grund auf entwickelt",
     ],
   },
   {
@@ -367,7 +374,7 @@ export const historyDe: WorkExperience[] = [
     period: "Juni 2020 – Jan 2022",
     tags: ["Abitur"],
     description:
-      "Berufliches Gymnasium mit Schwerpunkt Informationstechnik. Kernfächer umfassten Software Engineering (Java/OOP), Datenbanksysteme (SQL) und Netzwerktechnik (Cisco Academy). Fokus auf die Verzahnung von IT mit medizinischer Datenverarbeitung.",
+      "Berufliches Gymnasium mit IT-Schwerpunkt — Programmierung, Datenbanken und Netzwerktechnik. Erste echte Berührungspunkte mit Java und SQL, plus eine Spezialisierung in medizinischer Informatik.",
     technologies: [
       "Java",
       "SQL",
@@ -377,9 +384,9 @@ export const historyDe: WorkExperience[] = [
       "Linux",
     ],
     achievements: [
-      "Vertiefter Fokus auf Medizininformatik und KI im Gesundheitswesen",
-      "Fundierte Ausbildung in objektorientiertem Softwaredesign",
-      "Praxisnahe Netzwerkinfrastruktur-Simulation und Konfiguration",
+      "Spezialisierung in Medizininformatik und medizinischen Datensystemen",
+      "Solides Fundament in objektorientiertem Softwaredesign",
+      "Netzwerkinfrastrukturen mit Cisco-Tools simuliert und konfiguriert",
     ],
   },
 ];
