@@ -12,7 +12,7 @@ export const content: Record<"en" | "de", Content> = {
       status: "FREELANCE READY",
       title: "LEDE",
       subtitle: (highlight) =>
-        `I'm a 22-year-old ${highlight} based in Berlin. I build fast, interactive things for the web and love turning complex problems into simple code.`,
+        `Berlin-based ${highlight} who gets a bit too excited about things loading fast and buttons feeling just right. I build the whole thing — front to back. This site alone has had six redesigns and I'm still not sure it's ready.`,
       highlight: "Full Stack Developer",
       ctaProject: "PROJECTS",
       ctaContact: "CONTACT",
@@ -78,7 +78,7 @@ export const content: Record<"en" | "de", Content> = {
       status: "FREELANCE BEREIT",
       title: "LEDE",
       subtitle: (highlight) =>
-        `Ich bin ein 22-jähriger ${highlight} aus Berlin. Ich baue schnelle, interaktive Webseiten und liebe es, komplexe Probleme in einfachen Code zu verwandeln.`,
+        `Berliner ${highlight} der etwas zu aufgeregt wird, wenn Sachen schnell laden und Buttons sich richtig anfühlen. Ich baue alles — von vorne bis hinten. Diese Seite hat übrigens schon sechs Redesigns hinter sich und ich bin immer noch nicht sicher, ob sie fertig ist.`,
       highlight: "Full Stack Entwickler",
       ctaProject: "PROJEKTE",
       ctaContact: "KONTAKT",
