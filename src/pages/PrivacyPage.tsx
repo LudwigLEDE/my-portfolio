@@ -3,6 +3,7 @@ import { ArrowLeft } from 'lucide-react';
 import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
 import WarpBackground from '../components/visuals/WarpBackground';
+import ErrorBoundary from '../components/ui/ErrorBoundary';
 import { useLanguage } from '../hooks/useLanguage';
 
 export default function PrivacyPage() {
@@ -19,7 +20,9 @@ export default function PrivacyPage() {
 
   return (
     <div className="min-h-screen font-sans relative overflow-x-hidden transition-colors duration-500 bg-white dark:bg-black text-slate-900 dark:text-white selection:bg-blue-500 selection:text-white">
-      <WarpBackground />
+      <ErrorBoundary>
+        <WarpBackground />
+      </ErrorBoundary>
       <Navbar scrollToSection={scrollToSection} />
 
       <main className="pt-32 pb-20 px-6 relative z-10 max-w-4xl mx-auto">
@@ -46,8 +49,7 @@ export default function PrivacyPage() {
               <p>Die verantwortliche Stelle für die Datenverarbeitung auf dieser Website ist:</p>
               <p>
                 Ludwig Engelhardt<br />
-                Musterstraße 1<br />
-                12345 Berlin
+                Berlin
               </p>
               <p>E-Mail: ludwig.engelhardt@protonmail.com</p>
 
@@ -85,8 +87,7 @@ export default function PrivacyPage() {
               <p>The party responsible for processing data on this website is:</p>
               <p>
                 Ludwig Engelhardt<br />
-                Musterstraße 1<br />
-                12345 Berlin
+                Berlin
               </p>
               <p>Email: ludwig.engelhardt@protonmail.com</p>
 

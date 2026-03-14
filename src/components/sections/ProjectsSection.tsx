@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useCallback } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import SpaceItem from "../ui/SpaceItem";
 import { useLanguage } from "../../hooks/useLanguage";
@@ -10,10 +11,19 @@ import { Terminal } from 'lucide-react';
 type ProjectCategory = Project['categories'][number];
 type FilterType = 'all' | ProjectCategory;
 
+const VALID_FILTERS: FilterType[] = ['all', 'frontend', 'backend', 'fullstack', 'mobile'];
+
 export default function ProjectsSection() {
   const { language } = useLanguage();
   const t = content[language].projects;
-  const [filter, setFilter] = useState<FilterType>('all');
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const rawFilter = searchParams.get('category') as FilterType | null;
+  const filter: FilterType = rawFilter && VALID_FILTERS.includes(rawFilter) ? rawFilter : 'all';
+
+  const setFilter = useCallback((value: FilterType) => {
+    setSearchParams(value === 'all' ? {} : { category: value }, { replace: true });
+  }, [setSearchParams]);
 
   const filteredProjects = projects.filter(p => filter === 'all' || p.categories?.includes(filter as ProjectCategory));
 
@@ -48,6 +58,8 @@ export default function ProjectsSection() {
                     <button
                         key={cat.id}
                         onClick={() => setFilter(cat.id)}
+                        aria-pressed={filter === cat.id}
+                        aria-label={`Filter projects: ${cat.label}`}
                         className={`relative px-4 py-2 rounded-lg text-xs font-mono font-bold uppercase tracking-wider transition-all duration-300 whitespace-nowrap ${
                             filter === cat.id 
                             ? 'text-white dark:text-black shadow-lg' 

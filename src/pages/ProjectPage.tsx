@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Github, ExternalLink, Layers, Globe, Sun, Moon, Database, Shield, Zap } from 'lucide-react';
@@ -6,6 +7,7 @@ import SpotlightCard from '../components/ui/SpotlightCard';
 import GlassSurface from '../components/ui/GlassSurface';
 import Footer from '../components/layout/Footer';
 import WarpBackground from '../components/visuals/WarpBackground';
+import ErrorBoundary from '../components/ui/ErrorBoundary';
 import { useLanguage } from '../hooks/useLanguage';
 import { useTheme } from '../hooks/useTheme';
 
@@ -15,6 +17,7 @@ export default function ProjectPage() {
   const { language, toggleLanguage } = useLanguage();
   const { theme, toggleTheme } = useTheme();
   const project = projects.find(p => p.id === id);
+  const [imgLoaded, setImgLoaded] = useState(false);
 
   if (!project) {
     return (
@@ -36,8 +39,10 @@ export default function ProjectPage() {
 
   return (
     <div className="min-h-screen font-sans relative overflow-x-hidden transition-colors duration-500 bg-transparent text-slate-900 dark:text-white selection:bg-blue-500 selection:text-white">
-      <WarpBackground />
-      
+      <ErrorBoundary>
+        <WarpBackground />
+      </ErrorBoundary>
+
       {/* Enhanced Navbar */}
       <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-8 pointer-events-none">
         <div className="max-w-7xl mx-auto flex justify-between items-center pointer-events-auto">
@@ -148,10 +153,11 @@ export default function ProjectPage() {
                 <div className="space-y-12">
                     <SpotlightCard className="rounded-lg aspect-video overflow-hidden border-slate-200 dark:border-white/10 shadow-2xl">
                          {project.image ? (
-                            <img 
-                                src={project.image} 
-                                alt={project.title} 
-                                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                            <img
+                                src={project.image}
+                                alt={project.title}
+                                onLoad={() => setImgLoaded(true)}
+                                className={`w-full h-full object-cover group-hover:scale-105 transition-all duration-700 ${imgLoaded ? 'opacity-100' : 'opacity-0'}`}
                             />
                          ) : (
                             <div className="w-full h-full flex flex-col items-center justify-center bg-slate-50 dark:bg-black/20 gap-4">

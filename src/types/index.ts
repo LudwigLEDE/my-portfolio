@@ -67,6 +67,8 @@ export type Content = {
     title: string;
     subtitle: string;
     cta: string;
+    email: string;
+    statusLabel: string;
   };
   footer: {
     text: string;

@@ -26,7 +26,7 @@ export default function ContactSection() {
                           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                           <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
                         </span>
-                        <span className="text-xs font-mono font-bold text-emerald-600 dark:text-emerald-400 tracking-widest uppercase">{language === 'en' ? 'Status: Open to work' : 'Status: Offen für Arbeit'}</span>
+                        <span className="text-xs font-mono font-bold text-emerald-600 dark:text-emerald-400 tracking-widest uppercase">{t.statusLabel}</span>
                     </div>
                 </div>
 
@@ -44,7 +44,7 @@ export default function ContactSection() {
                 {/* Primary CTA */}
                 <div className="mb-16">
                     <a 
-                        href="mailto:ludwig.engelhardt@protonmail.com"
+                        href={`mailto:${t.email}`}
                         className="group relative inline-flex items-center justify-center gap-4 px-8 py-4 bg-slate-900 dark:bg-white text-white dark:text-black rounded-xl overflow-hidden hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 shadow-xl shadow-blue-500/10"
                     >
                         {/* Hover Gradient */}
@@ -69,7 +69,7 @@ export default function ContactSection() {
                             <Linkedin className="w-5 h-5 text-slate-500 dark:text-slate-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors" />
                             <span className="text-sm font-mono text-slate-500 dark:text-slate-400 group-hover:text-blue-600 dark:group-hover:text-blue-400">LinkedIn</span>
                         </a>
-                        <a href="mailto:ludwig.engelhardt@protonmail.com" className="group flex items-center gap-3 px-5 py-3 rounded-lg bg-slate-50 dark:bg-white/5 hover:bg-slate-100 dark:hover:bg-white/10 border border-slate-200 dark:border-white/5 hover:border-emerald-200 dark:hover:border-white/20 transition-all">
+                        <a href={`mailto:${t.email}`} className="group flex items-center gap-3 px-5 py-3 rounded-lg bg-slate-50 dark:bg-white/5 hover:bg-slate-100 dark:hover:bg-white/10 border border-slate-200 dark:border-white/5 hover:border-emerald-200 dark:hover:border-white/20 transition-all">
                             <Mail className="w-5 h-5 text-slate-500 dark:text-slate-400 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors" />
                             <span className="text-sm font-mono text-slate-500 dark:text-slate-400 group-hover:text-emerald-600 dark:group-hover:text-emerald-400">Email</span>
                         </a>
