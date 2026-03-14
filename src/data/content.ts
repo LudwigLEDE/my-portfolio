@@ -1,4 +1,4 @@
-import type { Content, Project, WorkExperience } from "../types";
+simport type { Content, Project, WorkExperience } from "../types";
 
 export const content: Record<"en" | "de", Content> = {
   en: {
