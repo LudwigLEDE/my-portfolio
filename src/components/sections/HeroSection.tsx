@@ -46,17 +46,21 @@ export default function HeroSection({ scrollToSection }: HeroSectionProps) {
           <h2 className="text-base sm:text-lg md:text-xl text-slate-600 dark:text-slate-300 max-w-xl font-normal leading-relaxed">
             {language === 'en' ? (
               <>
-                I'm a 22-year-old <span className="text-slate-900 dark:text-white font-semibold relative inline-block">
+                Berlin-based{' '}
+                <span className="text-slate-900 dark:text-white font-semibold relative inline-block">
                   Full Stack Developer
                   <span className="absolute bottom-1 left-0 w-full h-2 bg-blue-500/10 dark:bg-blue-500/20 -z-10 -rotate-1"></span>
-                </span> based in Berlin. I build fast, interactive things for the web and love turning complex problems into simple code.
+                </span>
+                {' '}who gets a bit too excited about things loading fast and buttons feeling just right. I build the whole thing — front to back. This site alone has had six redesigns and I'm still not sure it's ready.
               </>
             ) : (
               <>
-                Ich bin ein 22-jähriger <span className="text-slate-900 dark:text-white font-semibold relative inline-block">
+                Berliner{' '}
+                <span className="text-slate-900 dark:text-white font-semibold relative inline-block">
                   Full Stack Entwickler
                   <span className="absolute bottom-1 left-0 w-full h-2 bg-blue-500/10 dark:bg-blue-500/20 -z-10 -rotate-1"></span>
-                </span> aus Berlin. Ich baue schnelle, interaktive Webseiten und liebe es, komplexe Probleme in einfachen Code zu verwandeln.
+                </span>
+                {' '}der etwas zu aufgeregt wird, wenn Sachen schnell laden und Buttons sich richtig anfühlen. Ich baue alles — von vorne bis hinten. Diese Seite hat übrigens schon sechs Redesigns hinter sich und ich bin immer noch nicht sicher, ob sie fertig ist.
               </>
             )}
           </h2>

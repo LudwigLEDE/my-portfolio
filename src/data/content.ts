@@ -23,7 +23,7 @@ export const content: Record<"en" | "de", Content> = {
       location: "Berlin, Germany",
       status: "Open for Opportunities",
       about:
-        "As an emerging Full Stack Developer, I am deeply engaged in honing my skills in Python, Java, and web technologies. My goal is to blend front and back-end development expertise to innovate in the tech industry.",
+        "I've been coding since school and somewhere along the way I got genuinely hooked. I like building the whole thing — what you see and what's running behind it. Caring about both turns out to be pretty rare, and pretty useful.",
       journeyTitle: "The Journey",
       techStackTitle: "Tech Stack",
       technologiesTitle: "Technologies",
@@ -58,7 +58,7 @@ export const content: Record<"en" | "de", Content> = {
     contact: {
       title: "Get in Touch",
       subtitle:
-        "I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions.",
+        "Got something you're building? Big project, quick question, or just want to say hi — drop me a message, I actually reply.",
       cta: "Send Message",
     },
     footer: {
@@ -89,7 +89,7 @@ export const content: Record<"en" | "de", Content> = {
       location: "Berlin, Deutschland",
       status: "Offen für Angebote",
       about:
-        "Als aufstrebender Full Stack Entwickler vertiefe ich meine Fähigkeiten in Python, Java und Webtechnologien. Mein Ziel ist es, Front- und Back-End-Expertise zu verbinden, um Innovationen in der Tech-Industrie voranzutreiben.",
+        "Ich programmiere seit der Schule und irgendwann hat es mich wirklich gepackt. Ich baue gerne das Ganze — was man sieht und was dahintersteckt. Beides gleichzeitig gut hinzukriegen ist selten, und ziemlich praktisch.",
       journeyTitle: "Der Werdegang",
       techStackTitle: "Tech Stack",
       technologiesTitle: "Technologien",
@@ -124,7 +124,7 @@ export const content: Record<"en" | "de", Content> = {
     contact: {
       title: "Kontakt aufnehmen",
       subtitle:
-        "Ich bin immer offen für Gespräche über neue Projekte, kreative Ideen oder Möglichkeiten, Teil Ihrer Visionen zu werden.",
+        "Du baust gerade was? Großes Projekt, schnelle Frage oder einfach Hallo — schreib mir, ich antworte wirklich.",
       cta: "Nachricht Senden",
     },
     footer: {
