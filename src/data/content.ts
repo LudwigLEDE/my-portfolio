@@ -23,6 +23,7 @@ export const content: Record<"en" | "de", Content> = {
       location: "Berlin, Germany",
       status: "Open for Opportunities",
       about:
+        "I've been coding since school and somewhere along the way I got genuinely hooked. I like building the whole thing — what you see and what's running behind it. Caring about both turns out to be pretty rare, and pretty useful.",
         "Developer based in Berlin who likes the full picture — from API design to the last UI detail. I care about writing clean, maintainable code and building things that actually work well. Always working on something new.",
       journeyTitle: "The Journey",
       techStackTitle: "Tech Stack",
@@ -58,6 +59,7 @@ export const content: Record<"en" | "de", Content> = {
     contact: {
       title: "Get in Touch",
       subtitle:
+        "Got something you're building? Big project, quick question, or just want to say hi — drop me a message, I actually reply.",
         "Got a project in mind, an idea you want to explore, or just want to say hi? I'm always up for a good conversation.",
       cta: "Send Message",
       email: "ludwig.engelhardt@protonmail.com",
@@ -91,6 +93,7 @@ export const content: Record<"en" | "de", Content> = {
       location: "Berlin, Deutschland",
       status: "Offen für Angebote",
       about:
+        "Ich programmiere seit der Schule und irgendwann hat es mich wirklich gepackt. Ich baue gerne das Ganze — was man sieht und was dahintersteckt. Beides gleichzeitig gut hinzukriegen ist selten, und ziemlich praktisch.",
         "Entwickler aus Berlin, der gerne das große Ganze im Blick hat — von der API-Architektur bis zum letzten UI-Detail. Mir liegt sauberer, wartbarer Code am Herzen, und ich baue Dinge, die wirklich funktionieren. Immer am nächsten Projekt.",
       journeyTitle: "Der Werdegang",
       techStackTitle: "Tech Stack",
@@ -126,6 +129,7 @@ export const content: Record<"en" | "de", Content> = {
     contact: {
       title: "Kontakt aufnehmen",
       subtitle:
+        "Du baust gerade was? Großes Projekt, schnelle Frage oder einfach Hallo — schreib mir, ich antworte wirklich.",
         "Hast du ein Projekt im Kopf, eine Idee, die du umsetzen möchtest, oder willst einfach Hallo sagen? Ich bin immer für ein gutes Gespräch zu haben.",
       cta: "Nachricht Senden",
       email: "ludwig.engelhardt@protonmail.com",
