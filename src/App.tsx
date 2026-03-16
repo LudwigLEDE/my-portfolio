@@ -8,11 +8,18 @@ import ImprintPage from "./pages/ImprintPage";
 import PrivacyPage from "./pages/PrivacyPage";
 
 const ScrollToTop = () => {
-  const { pathname } = useLocation();
+  const { pathname, hash } = useLocation();
 
   useLayoutEffect(() => {
+    if (hash) {
+      const el = document.getElementById(hash.slice(1));
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+        return;
+      }
+    }
     window.scrollTo(0, 0);
-  }, [pathname]);
+  }, [pathname, hash]);
 
   return null;
 };
@@ -28,6 +35,7 @@ function App() {
             <Route path="/project/:id" element={<ProjectPage />} />
             <Route path="/imprint" element={<ImprintPage />} />
             <Route path="/privacy" element={<PrivacyPage />} />
+            <Route path="*" element={<HomePage />} />
           </Routes>
         </Router>
       </LanguageProvider>

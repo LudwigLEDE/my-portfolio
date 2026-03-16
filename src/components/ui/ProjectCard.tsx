@@ -9,7 +9,6 @@ import SpotlightCard from "./SpotlightCard";
 
 interface ProjectCardProps {
   project: Project;
-  index?: number;
 }
 
 const categoryConfig: Record<string, {
@@ -110,7 +109,7 @@ const categoryConfig: Record<string, {
   },
 };
 
-export default function ProjectCard({ project, index = 0 }: ProjectCardProps) {
+export default function ProjectCard({ project }: ProjectCardProps) {
   const navigate = useNavigate();
   const { language } = useLanguage();
   const { theme } = useTheme();

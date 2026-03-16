@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowLeft, Github, ExternalLink, Layers, Globe, Sun, Moon, Database, Shield, Zap } from 'lucide-react';
+import { ArrowLeft, Github, ExternalLink, Globe, Sun, Moon, Database, Shield, Zap } from 'lucide-react';
 import { projects } from '../data/content';
 import SpotlightCard from '../components/ui/SpotlightCard';
 import ProjectCard from '../components/ui/ProjectCard';
@@ -57,7 +57,7 @@ export default function ProjectPage() {
         <div className="max-w-7xl mx-auto flex justify-between items-center pointer-events-auto">
             {/* Back Button with Glass Effect */}
             <div 
-                onClick={() => navigate(-1)}
+                onClick={() => navigate('/#projects')}
                 className="cursor-pointer transition-transform hover:scale-105 active:scale-95"
             >
                 <GlassSurface
@@ -240,8 +240,8 @@ export default function ProjectPage() {
                         <span className="h-px bg-slate-200 dark:bg-white/10 flex-grow" />
                     </div>
                     <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-                        {relatedProjects.map((p, i) => (
-                            <ProjectCard key={p.id} project={p} index={i} />
+                        {relatedProjects.map((p) => (
+                            <ProjectCard key={p.id} project={p} />
                         ))}
                     </div>
                 </motion.div>

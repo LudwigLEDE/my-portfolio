@@ -93,7 +93,7 @@ export const content: Record<"en" | "de", Content> = {
       location: "Berlin, Deutschland",
       status: "Offen für Angebote",
       about:
-        "Ich programmiere seit der Schule und irgendwann hat es mich wirklich gepackt. Ich baue gerne das Ganze — was man sieht und was dahintersteckt. Das dazu zu nutzen, Dinge zu bauen, die ich in meinem eigenen Leben einsetzen kann, ist ein tolles Gefühl.",
+        "Ich programmiere seit der Schule und irgendwann hat es mich wirklich gepackt. Ich baue gerne das Ganze - was man sieht und was dahintersteckt. Das dazu zu nutzen, Dinge zu bauen, die ich in meinem eigenen Leben einsetzen kann, ist ein tolles Gefühl.",
       journeyTitle: "Der Werdegang",
       techStackTitle: "Tech Stack / Dinge, mit denen ich gearbeitet habe",
       technologiesTitle: "Technologien",

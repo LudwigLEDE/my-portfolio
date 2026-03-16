@@ -84,7 +84,7 @@ export default function ProjectsSection() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 mt-6 items-stretch">
           {filteredProjects.map((project, index) => (
             <SpaceItem key={project.id} delay={index * 0.1} className="h-full">
-                <ProjectCard project={project} index={index} />
+                <ProjectCard project={project} />
             </SpaceItem>
           ))}
         </div>
