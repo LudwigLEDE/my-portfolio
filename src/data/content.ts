@@ -1,4 +1,4 @@
-simport type { Content, Project, WorkExperience } from "../types";
+import type { Content, Project, WorkExperience } from "../types";
 
 export const content: Record<"en" | "de", Content> = {
   en: {
@@ -13,43 +13,44 @@ export const content: Record<"en" | "de", Content> = {
       title: "LEDE",
       subtitle: (highlight) =>
         `Berlin-based ${highlight} who gets a bit too excited about things loading fast and buttons feeling just right. I build the whole thing — front to back. This site alone has had six redesigns and I'm still not sure it's ready.`,
-      highlight: "Full Stack Developer",
+      highlight: "AI-Replaceable Developer",
       ctaProject: "PROJECTS",
       ctaContact: "CONTACT",
     },
     cv: {
       title: "Ludwig Engelhardt",
-      role: "FULL STACK DEVELOPER",
+      role: "DEVELOPER",
       location: "Berlin, Germany",
       status: "Open for Opportunities",
       about:
-        "I've been coding since school and somewhere along the way I got genuinely hooked. I like building the whole thing — what you see and what's running behind it. Caring about both turns out to be pretty rare, and pretty useful.",
-        "Developer based in Berlin who likes the full picture — from API design to the last UI detail. I care about writing clean, maintainable code and building things that actually work well. Always working on something new.",
+        "I've been coding since school and somewhere along the way I got genuinely hooked. I like building the whole thing - what you see and what's running behind it. Using this to build things that i can use in my life has been a great feeling.",
       journeyTitle: "The Journey",
-      techStackTitle: "Tech Stack",
+      techStackTitle: "Tech Stack / Things I have worked with",
       technologiesTitle: "Technologies",
       achievementsTitle: "Key Achievements",
       hoverDetails: "Hover for details",
       skillDurations: {
         TypeScript: "3+ Years",
         "React.js": "3+ Years",
-        "Node.js": "2+ Years",
-        JavaScript: "4+ Years",
-        Python: "2+ Years",
+        "Node.js": "3+ Years",
+        JavaScript: "3+ Years",
+        Python: "3+ Years",
         Java: "3+ Years",
         Linux: "2+ Years",
-        Tailwind: "2+ Years",
+        Tailwind: "3+ Years",
         "C++": "1+ Year",
-        SQL: "2+ Years",
+        SQL: "1+ Years",
         "React Native": "1+ Year",
-        PHP: "2+ Years",
+        PHP: "1+ Years",
         Figma: "2+ Years",
-        Photoshop: "5+ Years",
+        Photoshop: "4+ Years",
         Illustrator: "4+ Years",
         "Premiere Pro": "3+ Years",
         "After Effects": "2+ Years",
+        "Cinema4D": "3+ Years",
+        Microcontrollers: "2+ Years",
       },
-      downloadResume: "Download Resume",
+      downloadResume: "Email me for CV",
       wantDetails: "Want the full details?",
     },
     projects: {
@@ -59,8 +60,7 @@ export const content: Record<"en" | "de", Content> = {
     contact: {
       title: "Get in Touch",
       subtitle:
-        "Got something you're building? Big project, quick question, or just want to say hi — drop me a message, I actually reply.",
-        "Got a project in mind, an idea you want to explore, or just want to say hi? I'm always up for a good conversation.",
+"",
       cta: "Send Message",
       email: "ludwig.engelhardt@protonmail.com",
       statusLabel: "Status: Open to work",
@@ -83,22 +83,21 @@ export const content: Record<"en" | "de", Content> = {
       title: "LEDE",
       subtitle: (highlight) =>
         `Berliner ${highlight} der etwas zu aufgeregt wird, wenn Sachen schnell laden und Buttons sich richtig anfühlen. Ich baue alles — von vorne bis hinten. Diese Seite hat übrigens schon sechs Redesigns hinter sich und ich bin immer noch nicht sicher, ob sie fertig ist.`,
-      highlight: "Full Stack Entwickler",
+      highlight: "KI-ersetzbarer Entwickler",
       ctaProject: "PROJEKTE",
       ctaContact: "KONTAKT",
     },
     cv: {
       title: "Ludwig Engelhardt",
-      role: "FULL STACK ENTWICKLER",
+      role: "ENTWICKLER",
       location: "Berlin, Deutschland",
       status: "Offen für Angebote",
       about:
-        "Ich programmiere seit der Schule und irgendwann hat es mich wirklich gepackt. Ich baue gerne das Ganze — was man sieht und was dahintersteckt. Beides gleichzeitig gut hinzukriegen ist selten, und ziemlich praktisch.",
-        "Entwickler aus Berlin, der gerne das große Ganze im Blick hat — von der API-Architektur bis zum letzten UI-Detail. Mir liegt sauberer, wartbarer Code am Herzen, und ich baue Dinge, die wirklich funktionieren. Immer am nächsten Projekt.",
+        "Ich programmiere seit der Schule und irgendwann hat es mich wirklich gepackt. Ich baue gerne das Ganze — was man sieht und was dahintersteckt. Das dazu zu nutzen, Dinge zu bauen, die ich in meinem eigenen Leben einsetzen kann, ist ein tolles Gefühl.",
       journeyTitle: "Der Werdegang",
-      techStackTitle: "Tech Stack",
+      techStackTitle: "Tech Stack / Dinge, mit denen ich gearbeitet habe",
       technologiesTitle: "Technologien",
-      achievementsTitle: "Herausragende Erfolge",
+      achievementsTitle: "Wichtigste Erfolge",
       hoverDetails: "Hover für Details",
       skillDurations: {
         TypeScript: "3+ Jahre",
@@ -118,9 +117,11 @@ export const content: Record<"en" | "de", Content> = {
         Illustrator: "4+ Jahre",
         "Premiere Pro": "3+ Jahre",
         "After Effects": "2+ Jahre",
+        "Cinema4D": "3+ Jahre",
+        Microcontrollers: "2+ Jahre",
       },
-      downloadResume: "Lebenslauf laden",
-      wantDetails: "Alle Details benötigt?",
+      downloadResume: "CV per E-Mail anfragen",
+      wantDetails: "Alle Details gewünscht?",
     },
     projects: {
       title: "Projekte",
@@ -129,8 +130,7 @@ export const content: Record<"en" | "de", Content> = {
     contact: {
       title: "Kontakt aufnehmen",
       subtitle:
-        "Du baust gerade was? Großes Projekt, schnelle Frage oder einfach Hallo — schreib mir, ich antworte wirklich.",
-        "Hast du ein Projekt im Kopf, eine Idee, die du umsetzen möchtest, oder willst einfach Hallo sagen? Ich bin immer für ein gutes Gespräch zu haben.",
+        "",
       cta: "Nachricht Senden",
       email: "ludwig.engelhardt@protonmail.com",
       statusLabel: "Status: Offen für Arbeit",
@@ -190,12 +190,12 @@ export const projects: Project[] = [
 export const historyEn: WorkExperience[] = [
   {
     type: "work",
-    role: "IT Specialist",
+    role: "IT Soldier",
     company: "Bundeswehr (IT Battalion)",
     period: "Nov 2025 – Present",
     tags: ["Full-time", "System Support"],
     description:
-      "Keeping IT systems running for a military unit — network infrastructure, hardware troubleshooting, and making sure critical communication systems stay online.",
+      "While learning the ways of the army. Getting the education in military IT. Working in a Service Delivery Point, our mission was to provide communication for other troops.",
     technologies: [
       "Windows Server",
       "Linux",
@@ -203,8 +203,9 @@ export const historyEn: WorkExperience[] = [
       "Hardware Troubleshooting",
     ],
     achievements: [
-      "Maintaining uptime for critical communication infrastructure",
-      "On-call for hardware failures and network issues",
+      "Working on systems that get used battalion-wide.",
+      "Knowing how to operate different types of equipment of the army.",
+      "Being a part of a group and working under high pressure.",
     ],
   },
   {
@@ -214,11 +215,14 @@ export const historyEn: WorkExperience[] = [
     period: "Sep 2024 – Feb 2025",
     tags: ["Part-time"],
     description:
-      "Continued working with the AssistMe team part-time while finishing my training, shipping features and fixing bugs on the care documentation platform.",
+      "After getting my foot in the door with the internship, I continued working part-time at AssistMe while finishing my vocational training. I contributed to feature development and bug fixes.",
     technologies: ["React", "TypeScript", "Node.js", "Git", "Jira", "Rest API"],
     achievements: [
-      "Built and shipped features for the care documentation platform",
+      "Working on analysing big datasets and building features on top of that",
+      "Creating policies to optimize workflows in the company",
       "Optimized frontend components, cutting render times noticeably",
+      "Refining physical products to make them shippable to customers",
+      "Delivering and installing the product in care facilities",
     ],
   },
   {
@@ -240,6 +244,7 @@ export const historyEn: WorkExperience[] = [
     achievements: [
       "Got up to speed on contributing to a real production codebase in an agile team",
       "Helped across the board — feature work, hardware support, testing, and writing process documentation",
+      "Getting the opportunity to work on different projects across the company and learning about what it takes to ship a product in the healthcare industry",
     ],
   },
   {
@@ -249,7 +254,7 @@ export const historyEn: WorkExperience[] = [
     period: "Aug 2022 – July 2025",
     tags: ["Vocational Training", "State Certified"],
     description:
-      "A 3-year vocational training program covering both software development and creative design. Built applications from the ground up while also developing a strong eye for UI/UX and interactive media.",
+      "A 3-year vocational training program covering both software development, creative design and building hardware components. Built applications from the ground up while also developing a strong eye for UI/UX and interactive media.",
     technologies: [
       "Java",
       "JavaScript",
@@ -257,12 +262,16 @@ export const historyEn: WorkExperience[] = [
       "PHP",
       "C#",
       "HTML/CSS",
+      "Microcontrollers",
+      "Cinema4D",
       "Adobe Creative Suite",
     ],
     achievements: [
+      "Finishing my school and getting my Fachabitur",
       "Deep-dive into OOP, software architecture, and design patterns",
       "Full stack web development — dynamic backends, databases, and polished frontends",
       "Built interactive animations and game mechanics from scratch",
+      "Building applications with a team of classmates and learning how to work together in a team",
     ],
   },
   {
@@ -272,19 +281,18 @@ export const historyEn: WorkExperience[] = [
     period: "June 2020 – Jan 2022",
     tags: ["High School"],
     description:
-      "High school with a focus on IT, covering software engineering, databases, and networking. Got my first real exposure to programming through Java and SQL, with a specialization track in medical informatics.",
+      "High school with a focus on IT, covering software engineering, databases, and networking. Got my first real exposure to programming through Java and SQL.",
     technologies: [
       "Java",
       "SQL",
       "Cisco Networking",
-      "Python",
       "HTML/CSS",
       "Linux",
     ],
     achievements: [
-      "Specialization in medical informatics and healthcare data systems",
+      "Learning the basics of programming and computer science",
       "Strong foundation in object-oriented software design",
-      "Built and configured simulated network infrastructures using Cisco tools",
+      "Built and configured simulated network infrastructures",
     ],
   },
 ];
@@ -292,12 +300,12 @@ export const historyEn: WorkExperience[] = [
 export const historyDe: WorkExperience[] = [
   {
     type: "work",
-    role: "IT Spezialist",
+    role: "IT-Soldat",
     company: "Bundeswehr (IT Bataillon)",
     period: "Nov 2025 – Aktuell",
     tags: ["Vollzeit", "System Support"],
     description:
-      "IT-Systeme für eine Bundeswehr-Einheit am Laufen halten — Netzwerkinfrastruktur, Hardware-Support und die Sicherstellung kritischer Kommunikationssysteme.",
+      "Während ich die Abläufe der Bundeswehr kennenlernte, erhielt ich eine Ausbildung in militärischer IT. Im Service Delivery Point war es unsere Aufgabe, andere Truppen mit Kommunikation zu versorgen.",
     technologies: [
       "Windows Server",
       "Linux",
@@ -305,8 +313,9 @@ export const historyDe: WorkExperience[] = [
       "Hardware Support",
     ],
     achievements: [
-      "Verfügbarkeit kritischer Kommunikationssysteme aufrechterhalten",
-      "Schnelle Reaktion bei Hardware-Ausfällen und Netzwerkproblemen",
+      "An Systemen gearbeitet, die bataillonsweit eingesetzt werden.",
+      "Verschiedene Ausrüstungstypen der Bundeswehr bedienen können.",
+      "Teil einer Gruppe sein und unter hohem Druck arbeiten.",
     ],
   },
   {
@@ -316,11 +325,14 @@ export const historyDe: WorkExperience[] = [
     period: "Sep 2024 – Feb 2025",
     tags: ["Teilzeit"],
     description:
-      "Parallel zur Ausbildung weiter bei AssistMe aktiv — Features entwickelt und Bugs gefixt auf der Pflegedokumentationsplattform.",
+      "Nachdem ich durch das Praktikum Fuß gefasst hatte, arbeitete ich weiterhin in Teilzeit bei AssistMe, während ich meine Ausbildung abschloss. Ich trug zur Feature-Entwicklung und Fehlerbehebung bei.",
     technologies: ["React", "TypeScript", "Node.js", "Git", "Jira", "Rest API"],
     achievements: [
-      "Features für die Pflegedokumentationsplattform entwickelt und deployed",
+      "Große Datensätze analysiert und darauf aufbauende Features entwickelt",
+      "Richtlinien erstellt, um Arbeitsabläufe im Unternehmen zu optimieren",
       "Frontend-Komponenten optimiert, Ladezeiten spürbar reduziert",
+      "Physische Produkte verfeinert und versandfertig für Kunden gemacht",
+      "Produkt in Pflegeeinrichtungen geliefert und vor Ort installiert",
     ],
   },
   {
@@ -342,6 +354,7 @@ export const historyDe: WorkExperience[] = [
     achievements: [
       "Erste Erfahrungen mit echter Produktions-Codebase und agiler Zusammenarbeit gesammelt",
       "Quer durch alle Bereiche geholfen — Feature-Arbeit, Hardware-Support, Testing und Prozessdoku",
+      "Die Möglichkeit genutzt, an verschiedenen Projekten im Unternehmen zu arbeiten und zu lernen, was es braucht, ein Produkt in der Gesundheitsbranche auf den Markt zu bringen",
     ],
   },
   {
@@ -351,7 +364,7 @@ export const historyDe: WorkExperience[] = [
     period: "Aug 2022 – Juli 2025",
     tags: ["Ausbildung", "Staatl. Gepr."],
     description:
-      "Dreijährige Ausbildung an der Schnittstelle von Softwareentwicklung und kreativem Design. Anwendungen von Grund auf entwickelt und dabei ein starkes Gespür für UI/UX und interaktive Medien aufgebaut.",
+      "Ein dreijähriges Ausbildungsprogramm, das Softwareentwicklung, kreatives Design und den Aufbau von Hardware-Komponenten abdeckt. Anwendungen von Grund auf entwickelt und dabei ein starkes Gespür für UI/UX und interaktive Medien aufgebaut.",
     technologies: [
       "Java",
       "JavaScript",
@@ -359,12 +372,16 @@ export const historyDe: WorkExperience[] = [
       "PHP",
       "C#",
       "HTML/CSS",
+      "Microcontrollers",
+      "Cinema4D",
       "Adobe Creative Suite",
     ],
     achievements: [
+      "Schule erfolgreich abgeschlossen und Fachabitur erhalten",
       "Vertiefung in OOP, Softwarearchitektur und Designpatterns",
       "Full-Stack-Webentwicklung — dynamische Backends, Datenbanken und saubere Frontends",
       "Interaktive Animationen und Spielmechaniken von Grund auf entwickelt",
+      "Anwendungen gemeinsam mit Klassenkameraden entwickelt und gelernt, wie man effektiv im Team arbeitet",
     ],
   },
   {
@@ -374,19 +391,18 @@ export const historyDe: WorkExperience[] = [
     period: "Juni 2020 – Jan 2022",
     tags: ["Abitur"],
     description:
-      "Berufliches Gymnasium mit IT-Schwerpunkt — Programmierung, Datenbanken und Netzwerktechnik. Erste echte Berührungspunkte mit Java und SQL, plus eine Spezialisierung in medizinischer Informatik.",
+      "Gymnasium mit IT-Schwerpunkt, das Softwareentwicklung, Datenbanken und Netzwerktechnik abdeckt. Erste echte Programmiererfahrungen mit Java und SQL.",
     technologies: [
       "Java",
       "SQL",
       "Cisco Networking",
-      "Python",
       "HTML/CSS",
       "Linux",
     ],
     achievements: [
-      "Spezialisierung in Medizininformatik und medizinischen Datensystemen",
+      "Grundlagen der Programmierung und Informatik erlernt",
       "Solides Fundament in objektorientiertem Softwaredesign",
-      "Netzwerkinfrastrukturen mit Cisco-Tools simuliert und konfiguriert",
+      "Netzwerkinfrastrukturen simuliert und konfiguriert",
     ],
   },
 ];

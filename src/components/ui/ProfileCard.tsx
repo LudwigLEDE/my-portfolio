@@ -282,24 +282,24 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
     const pointerLeaveHandler = handlePointerLeave;
     const deviceOrientationHandler = handleDeviceOrientation;
 
-    shell.addEventListener('pointerenter', pointerEnterHandler as any);
-    shell.addEventListener('pointermove', pointerMoveHandler as any);
-    shell.addEventListener('pointerleave', pointerLeaveHandler as any);
+    shell.addEventListener('pointerenter', pointerEnterHandler as unknown as EventListener);
+    shell.addEventListener('pointermove', pointerMoveHandler as unknown as EventListener);
+    shell.addEventListener('pointerleave', pointerLeaveHandler as unknown as EventListener);
 
     const handleClick = () => {
       if (!enableMobileTilt || window.location.protocol !== 'https:') return;
-      const anyMotion = (window as any).DeviceMotionEvent;
+      const anyMotion = (window as unknown as { DeviceMotionEvent?: { requestPermission?: () => Promise<string> } }).DeviceMotionEvent;
       if (anyMotion && typeof anyMotion.requestPermission === 'function') {
         anyMotion
           .requestPermission()
           .then((state: string) => {
             if (state === 'granted') {
-              window.addEventListener('deviceorientation', deviceOrientationHandler);
+              window.addEventListener('deviceorientation', deviceOrientationHandler as unknown as EventListener);
             }
           })
           .catch(console.error);
       } else {
-        window.addEventListener('deviceorientation', deviceOrientationHandler);
+        window.addEventListener('deviceorientation', deviceOrientationHandler as unknown as EventListener);
       }
     };
     shell.addEventListener('click', handleClick);
@@ -311,11 +311,11 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
     tiltEngine.beginInitial(ANIMATION_CONFIG.INITIAL_DURATION);
 
     return () => {
-      shell.removeEventListener('pointerenter', pointerEnterHandler as any);
-      shell.removeEventListener('pointermove', pointerMoveHandler as any);
-      shell.removeEventListener('pointerleave', pointerLeaveHandler as any);
+      shell.removeEventListener('pointerenter', pointerEnterHandler as unknown as EventListener);
+      shell.removeEventListener('pointermove', pointerMoveHandler as unknown as EventListener);
+      shell.removeEventListener('pointerleave', pointerLeaveHandler as unknown as EventListener);
       shell.removeEventListener('click', handleClick);
-      window.removeEventListener('deviceorientation', deviceOrientationHandler);
+      window.removeEventListener('deviceorientation', deviceOrientationHandler as unknown as EventListener);
       if (enterTimerRef.current) window.clearTimeout(enterTimerRef.current);
       if (leaveRafRef.current) cancelAnimationFrame(leaveRafRef.current);
       tiltEngine.cancel();
@@ -373,7 +373,7 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
 
   const shineStyle: React.CSSProperties = {
     maskImage: 'var(--icon)',
-    maskMode: 'luminance' as any,
+    maskMode: 'luminance' as unknown as string,
     maskRepeat: 'repeat',
     maskSize: '150%',
     maskPosition: 'top calc(200% - (var(--background-y) * 5)) left calc(100% - var(--background-x))',
@@ -381,7 +381,7 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
     animation: 'pc-holo-bg 18s linear infinite',
     animationPlayState: 'running',
     mixBlendMode: 'color-dodge',
-    // @ts-ignore
+    // @ts-expect-error: Custom property
     '--space': '5%',
     '--angle': '-45deg',
     transform: 'translate3d(0, 0, 1px)',
@@ -533,7 +533,7 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
                 <div
                   className="absolute z-[2] flex items-center justify-between backdrop-blur-[30px] border border-white/10 pointer-events-auto"
                   style={{
-                    // @ts-ignore
+                    // @ts-expect-error: Custom property
                     '--ui-inset': '20px',
                     '--ui-radius-bias': '6px',
                     bottom: 'var(--ui-inset)',

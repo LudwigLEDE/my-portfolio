@@ -17,7 +17,7 @@ export default function Navbar({ scrollToSection }: NavbarProps) {
     <nav className="fixed top-6 left-0 w-full z-50 flex justify-center pointer-events-none px-4">
       {/* Theme Toggle - Absolute Left */}
       <div className="absolute left-6 top-2 pointer-events-auto z-20 hidden md:block">
-        <button onClick={(e) => toggleTheme(e as any)} aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'} className="cursor-pointer transition-transform hover:scale-105 active:scale-95 bg-transparent border-0 p-0">
+        <button onClick={toggleTheme} aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'} className="cursor-pointer transition-transform hover:scale-105 active:scale-95 bg-transparent border-0 p-0">
             <GlassSurface
                 width="40px"
                 height="40px"
@@ -78,7 +78,7 @@ export default function Navbar({ scrollToSection }: NavbarProps) {
 
       {/* Mobile Controls (Language + Theme) */}
       <div className="absolute right-4 top-2 pointer-events-auto z-20 md:hidden flex gap-2">
-        <button onClick={(e) => toggleTheme(e as any)} aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'} className="cursor-pointer transition-transform active:scale-95 bg-transparent border-0 p-0">
+        <button onClick={toggleTheme} aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'} className="cursor-pointer transition-transform active:scale-95 bg-transparent border-0 p-0">
              <GlassSurface
                 width="40px"
                 height="40px"

@@ -4,11 +4,12 @@ import {
   Briefcase,
   GraduationCap,
   MapPin,
-  Download,
+  Mail,
   Calendar,
   Cpu,
   ScanLine,
   Info,
+  ArrowRight,
 } from "lucide-react";
 import {
   FaJava,
@@ -16,6 +17,8 @@ import {
   FaReact,
   FaNodeJs,
   FaLinux,
+  FaMicrochip,
+  FaCube,
 } from "react-icons/fa";
 import {
   SiJavascript,
@@ -51,6 +54,8 @@ const skills = [
   { name: "Illustrator", icon: SiAdobeillustrator, color: "text-orange-500", level: 85 },
   { name: "Premiere Pro", icon: SiAdobepremierepro, color: "text-purple-600", level: 80 },
   { name: "After Effects", icon: SiAdobeaftereffects, color: "text-indigo-500", level: 70 },
+  { name: "Cinema4D", icon: FaCube, color: "text-sky-400", level: 75 },
+  { name: "Microcontrollers", icon: FaMicrochip, color: "text-green-400", level: 60 },
 ];
 
 // --- Utilities ---
@@ -322,13 +327,18 @@ const CVSection: React.FC = () => {
                   "{t.about}"
                 </p>
 
-                <button 
-                    onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-                    className="w-full group relative overflow-hidden rounded-lg bg-slate-900 dark:bg-white text-white dark:text-black font-bold py-3.5 transition-all hover:scale-[1.02] active:scale-[0.98]"
+                <button
+                  onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                  className="w-full group relative overflow-hidden rounded-lg bg-slate-900 dark:bg-white/10 dark:border dark:border-white/10 text-white font-bold py-3.5 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] hover:shadow-[0_0_24px_rgba(59,130,246,0.35)]"
                 >
-                  <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-emerald-400 opacity-0 group-hover:opacity-10 transition-opacity"></div>
+                  {/* Gradient fill that sweeps in on hover */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-emerald-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  {/* Shimmer sweep */}
+                  <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/15 to-transparent skew-x-12" />
                   <span className="relative z-10 flex items-center justify-center gap-2 text-sm uppercase tracking-wider">
-                    {t.downloadResume} <Download className="w-4 h-4" />
+                    <Mail className="w-4 h-4 transition-transform duration-300 group-hover:-translate-y-px" />
+                    {t.downloadResume}
+                    <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
                   </span>
                 </button>
               </div>
@@ -361,7 +371,7 @@ const CVSection: React.FC = () => {
                     {/* Default View: Icon + Name */}
                     <div className="flex items-center gap-2.5 group-hover/skill:opacity-0 transition-all duration-300">
                         <skill.icon className={`w-5 h-5 ${skill.color} shrink-0`} />
-                        <span className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest leading-none">{skill.name}</span>
+                        <span className={`font-black text-slate-900 dark:text-white uppercase leading-none ${skill.name.length > 12 ? 'text-[8px] tracking-tight' : 'text-[10px] tracking-widest'}`}>{skill.name}</span>
                     </div>
                     
                     {/* Hover Reveal */}
@@ -409,7 +419,7 @@ const CVSection: React.FC = () => {
             <div className="space-y-0">
               {history.map((item, index) => (
                 <motion.div
-                  key={index}
+                  key={`${language}-${index}`}
                   initial={{ opacity: 0, x: 20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true, margin: "-100px" }}
