@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { ArrowLeft, Github, ExternalLink, Layers, Globe, Sun, Moon, Database, Shield, Zap } from 'lucide-react';
 import { projects } from '../data/content';
 import SpotlightCard from '../components/ui/SpotlightCard';
+import ProjectCard from '../components/ui/ProjectCard';
 import GlassSurface from '../components/ui/GlassSurface';
 import Footer from '../components/layout/Footer';
 import WarpBackground from '../components/visuals/WarpBackground';
@@ -26,6 +27,14 @@ export default function ProjectPage() {
       </div>
     );
   }
+
+  const currentIndex = projects.findIndex(p => p.id === id);
+  const prevProject = currentIndex > 0 ? projects[currentIndex - 1] : null;
+  const nextProject = currentIndex < projects.length - 1 ? projects[currentIndex + 1] : null;
+
+  const relatedProjects = projects
+    .filter(p => p.id !== project.id && p.categories.some(c => project.categories.includes(c)))
+    .slice(0, 3);
 
   const t = {
     back: language === 'en' ? 'Back to Base' : 'Zurück zur Basis',
@@ -214,6 +223,60 @@ export default function ProjectPage() {
                     </div>
                 </div>
 
+            </div>
+
+            {/* Related Projects */}
+            {relatedProjects.length > 0 && (
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2 }}
+                    className="mt-24"
+                >
+                    <div className="flex items-center gap-4 mb-8 border-b border-slate-200 dark:border-white/10 pb-4">
+                        <span className="text-xs font-mono font-bold uppercase tracking-widest text-slate-400 dark:text-slate-500">
+                            {language === 'en' ? '// Related Projects' : '// Ähnliche Projekte'}
+                        </span>
+                        <span className="h-px bg-slate-200 dark:bg-white/10 flex-grow" />
+                    </div>
+                    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                        {relatedProjects.map((p, i) => (
+                            <ProjectCard key={p.id} project={p} index={i} />
+                        ))}
+                    </div>
+                </motion.div>
+            )}
+
+            {/* Prev / Next navigation */}
+            <div className="mt-16 flex items-center justify-between gap-4">
+                {prevProject ? (
+                    <button
+                        onClick={() => navigate(`/project/${prevProject.id}`)}
+                        className="group flex items-center gap-3 px-6 py-4 rounded-2xl border border-slate-200 dark:border-white/10 hover:border-blue-500/30 dark:hover:border-blue-500/30 transition-all text-left"
+                    >
+                        <ArrowLeft className="w-4 h-4 text-slate-400 group-hover:text-blue-500 transition-colors flex-shrink-0" />
+                        <div>
+                            <div className="text-[10px] font-mono uppercase tracking-widest text-slate-400 dark:text-slate-500 mb-0.5">
+                                {language === 'en' ? 'Previous' : 'Vorheriges'}
+                            </div>
+                            <div className="text-sm font-bold text-slate-900 dark:text-white">{prevProject.title}</div>
+                        </div>
+                    </button>
+                ) : <div />}
+                {nextProject && (
+                    <button
+                        onClick={() => navigate(`/project/${nextProject.id}`)}
+                        className="group flex items-center gap-3 px-6 py-4 rounded-2xl border border-slate-200 dark:border-white/10 hover:border-blue-500/30 dark:hover:border-blue-500/30 transition-all text-right ml-auto"
+                    >
+                        <div>
+                            <div className="text-[10px] font-mono uppercase tracking-widest text-slate-400 dark:text-slate-500 mb-0.5">
+                                {language === 'en' ? 'Next' : 'Nächstes'}
+                            </div>
+                            <div className="text-sm font-bold text-slate-900 dark:text-white">{nextProject.title}</div>
+                        </div>
+                        <ArrowLeft className="w-4 h-4 text-slate-400 group-hover:text-blue-500 transition-colors flex-shrink-0 rotate-180" />
+                    </button>
+                )}
             </div>
 
         </div>
