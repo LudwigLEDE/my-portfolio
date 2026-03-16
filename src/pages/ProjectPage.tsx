@@ -57,7 +57,7 @@ export default function ProjectPage() {
         <div className="max-w-7xl mx-auto flex justify-between items-center pointer-events-auto">
             {/* Back Button with Glass Effect */}
             <div 
-                onClick={() => navigate('/#projects')}
+                onClick={() => navigate('/projects')}
                 className="cursor-pointer transition-transform hover:scale-105 active:scale-95"
             >
                 <GlassSurface
