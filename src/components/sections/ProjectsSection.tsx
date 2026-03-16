@@ -11,7 +11,7 @@ import { Terminal } from 'lucide-react';
 type ProjectCategory = Project['categories'][number];
 type FilterType = 'all' | ProjectCategory;
 
-const VALID_FILTERS: FilterType[] = ['all', 'frontend', 'backend', 'fullstack', 'mobile'];
+const VALID_FILTERS: FilterType[] = ['all', 'frontend', 'backend', 'fullstack', 'mobile', 'systems'];
 
 export default function ProjectsSection() {
   const { language } = useLanguage();
@@ -32,7 +32,8 @@ export default function ProjectsSection() {
     { id: 'frontend', label: 'Frontend' },
     { id: 'backend', label: 'Backend' },
     { id: 'fullstack', label: 'Full Stack' },
-    { id: 'mobile', label: 'Mobile' }
+    { id: 'mobile', label: 'Mobile' },
+    { id: 'systems', label: 'Systems' }
   ];
 
   return (

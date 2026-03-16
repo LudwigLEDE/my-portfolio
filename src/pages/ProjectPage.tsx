@@ -151,23 +151,16 @@ export default function ProjectPage() {
                 
                 {/* Left: Media & Narrative */}
                 <div className="space-y-12">
-                    <SpotlightCard className="rounded-lg aspect-video overflow-hidden border-slate-200 dark:border-white/10 shadow-2xl">
-                         {project.image ? (
+                    {project.image && (
+                        <SpotlightCard className="rounded-lg aspect-video overflow-hidden border-slate-200 dark:border-white/10 shadow-2xl">
                             <img
                                 src={project.image}
                                 alt={project.title}
                                 onLoad={() => setImgLoaded(true)}
                                 className={`w-full h-full object-cover group-hover:scale-105 transition-all duration-700 ${imgLoaded ? 'opacity-100' : 'opacity-0'}`}
                             />
-                         ) : (
-                            <div className="w-full h-full flex flex-col items-center justify-center bg-slate-50 dark:bg-black/20 gap-4">
-                                <div className="w-20 h-20 rounded-3xl bg-blue-500/5 flex items-center justify-center border border-blue-500/10">
-                                    <Layers className="w-10 h-10 text-blue-500/40" />
-                                </div>
-                                <p className="text-slate-400 dark:text-slate-600 font-mono text-xs uppercase tracking-widest">Visual data stream unavailable</p>
-                            </div>
-                         )}
-                    </SpotlightCard>
+                        </SpotlightCard>
+                    )}
                     
                     <div className="space-y-6">
                         <h3 className="text-3xl font-black text-slate-900 dark:text-white tracking-tight flex items-center gap-3">
@@ -178,7 +171,6 @@ export default function ProjectPage() {
                         </h3>
                         <div className="prose prose-lg dark:prose-invert max-w-none text-slate-600 dark:text-slate-400 font-light leading-relaxed">
                             <p>{project.description[language]}</p>
-                            <p>This project showcases a deep integration of {project.tags.join(', ')} to deliver a high-performance, scalable solution. The architecture focuses on modularity and user-centric design principles.</p>
                         </div>
                     </div>
                 </div>
@@ -187,14 +179,20 @@ export default function ProjectPage() {
                 <div className="space-y-8 lg:sticky lg:top-32">
                     {/* Tech Stack Card */}
                     <SpotlightCard className="rounded-lg p-8 border-slate-200 dark:border-white/10" spotlightColor="rgba(59, 130, 246, 0.1)">
-                        <h3 className="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-widest mb-8 flex items-center gap-2 border-b border-slate-100 dark:border-white/5 pb-4">
+                        <h3 className="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-widest mb-6 flex items-center gap-2 border-b border-slate-100 dark:border-white/5 pb-4">
                             <Shield className="w-4 h-4 text-blue-500" /> {t.stack}
                         </h3>
-                        <div className="grid grid-cols-1 gap-3">
-                            {project.tags.map(tag => (
-                                <div key={tag} className="flex items-center gap-3 p-3 rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/5 group/tag transition-colors hover:border-blue-500/20">
-                                    <div className="w-1.5 h-1.5 rounded-full bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.5)]" />
-                                    <span className="text-sm font-mono font-medium text-slate-600 dark:text-slate-300">{tag}</span>
+                        <div className="font-mono text-sm leading-relaxed">
+                            <div className="text-slate-400 dark:text-slate-500 mb-3 text-xs">
+                                <span className="text-slate-300 dark:text-slate-600">{'// '}</span>
+                                {project.title}
+                            </div>
+                            {project.tags.map((tag, i) => (
+                                <div key={i} className="flex flex-wrap gap-1 mb-1">
+                                    <span className="text-blue-500 dark:text-blue-400">import</span>
+                                    <span className="text-slate-700 dark:text-slate-200">{`{ ${tag} }`}</span>
+                                    <span className="text-blue-400 dark:text-blue-500">from</span>
+                                    <span className="text-slate-400 dark:text-slate-500">'{tag.toLowerCase()}'</span>
                                 </div>
                             ))}
                         </div>

@@ -6,7 +6,6 @@ import type { Project } from "../../types";
 import { useLanguage } from "../../hooks/useLanguage";
 import { useTheme } from "../../hooks/useTheme";
 import SpotlightCard from "./SpotlightCard";
-import CardPattern from "./CardPattern";
 
 interface ProjectCardProps {
   project: Project;
@@ -182,9 +181,22 @@ export default function ProjectCard({ project, index = 0 }: ProjectCardProps) {
               </div>
             )}
 
-            {/* Generative constellation pattern */}
-            <div className="absolute inset-0 transition-opacity duration-500 opacity-60 group-hover/card:opacity-100 pointer-events-none">
-              <CardPattern seed={index} accentRgb={cfg.accentRgb} isLight={isLight} />
+            {/* Tech stack code snippet */}
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none px-6">
+              <div className={`w-full font-mono text-[11px] leading-relaxed select-none ${isLight ? 'opacity-30' : 'opacity-20'} group-hover/card:opacity-60 transition-opacity duration-500`}>
+                <div className={`mb-1 ${isLight ? 'text-slate-400' : 'text-white/50'}`}>
+                  <span className={isLight ? 'text-slate-300' : 'text-white/25'}>{'// '}</span>
+                  {project.title}
+                </div>
+                {project.tags.slice(0, 4).map((tag, i) => (
+                  <div key={i} className="flex gap-1">
+                    <span style={{ color: `rgba(${cfg.accentRgb},0.9)` }}>import</span>
+                    <span className={isLight ? 'text-slate-600' : 'text-white/80'}>{`{ ${tag} }`}</span>
+                    <span style={{ color: `rgba(${cfg.accentRgb},0.6)` }}>from</span>
+                    <span className={isLight ? 'text-slate-400' : 'text-white/40'}>'{tag.toLowerCase()}'</span>
+                  </div>
+                ))}
+              </div>
             </div>
 
             {/* Category badge */}
