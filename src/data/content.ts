@@ -62,7 +62,7 @@ export const content: Record<"en" | "de", Content> = {
       subtitle:
 "",
       cta: "Send Message",
-      email: "ludwig.engelhardt@protonmail.com",
+      email: "ludwig.engelhardt@gmail.com",
       statusLabel: "Status: Open to work",
     },
     footer: {
@@ -132,7 +132,7 @@ export const content: Record<"en" | "de", Content> = {
       subtitle:
         "",
       cta: "Nachricht Senden",
-      email: "ludwig.engelhardt@protonmail.com",
+      email: "ludwig.engelhardt@gmail.com",
       statusLabel: "Status: Offen für Arbeit",
     },
     footer: {
